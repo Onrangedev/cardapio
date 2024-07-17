@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração do Cardápio Semanal</title>
+    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administração do Cardápio Semanal</title>
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        margin: 50px;
+    }
+    .menu-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .menu-day {
+        width: 250px;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+    }
+    .menu-day h3 {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        margin: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .meal {
+        margin-bottom: 10px;
+    }
+    .edit-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 10px;
+    }
+    .edit-button:hover {
+        background-color: #45a049;
+    }
+    .macro-button {
+        background-color: #f39c12;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 10px;
+    }
+    .macro-button:hover {
+        background-color: #e67e22;
+    }
+</style>
+</head>
+<body>
+    <h2>Administração do Cardápio Semanal</h2>
+    <div class="menu-container">
+        <div class="menu-day">
+            <h3>Segunda-feira</h3>
+            <div class="meal">
+                <strong>Almoço:</strong> <span id="segundaAlmoco">Vazio</span><br>
+                <strong>Merenda:</strong> <span id="segundaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('Segunda-feira')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Terça-feira</h3>
+            <div class="meal">
+                <strong>Almoço:</strong> <span id="tercaAlmoco">Vazio</span><br>
+                <strong>Merenda:</strong> <span id="tercaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('Terça-feira')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Quarta-feira</h3>
+            <div class="meal">
+                <strong>Almoço:</strong> <span id="quartaAlmoco">Vazio</span><br>
+                <strong>Merenda:</strong> <span id="quartaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('Quarta-feira')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Quinta-feira</h3>
+            <div class="meal">
+                <strong>Almoço:</strong> <span id="quintaAlmoco">Vazio</span><br>
+                <strong>Merenda:</strong> <span id="quintaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('Quinta-feira')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Sexta-feira</h3>
+            <div class="meal">
+                <strong>Almoço:</strong> <span id="sextaAlmoco">Vazio</span><br>
+                <strong>Merenda:</strong> <span id="sextaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('Sexta-feira')">Editar</button>
+        </div>
+    </div>
+
+    <!-- Botão de Macro para toda a semana -->
+    <button class="macro-button" onclick="editAllDays()">Definir Macro para Toda Semana</button>
+
+    <!-- Formulário de Edição -->
+    <div id="editForm" style="display: none;">
+        <h2>Editar Cardápio</h2>
+        <div id="editFormContent"></div>
+    </div>
+
+    <!-- SweetAlert2 script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+  
+        // Variável para armazenar o lanche da semana
+        let macroOption = '';
+        let notifyStudents = false;
+
+
+        async function editDay(day) {
+            const almoco = document.getElementById(`${day.split('-')[0].toLowerCase()}Almoco`).textContent;
+            const merenda = document.getElementById(`${day.split('-')[0].toLowerCase()}Merenda`).textContent;
+
+            const { value: formValues } = await Swal.fire({
+                title: `Editar ${day}`,
+                html: `
+                    <label for="almoco">Almoço</label>
+                    <input id="almoco" class="swal2-input" value="${almoco}">
+                    <label for="merenda">Merenda</label>
+                    <input id="merenda" class="swal2-input" value="${merenda}">
+                `,
+                focusConfirm: false,
+                preConfirm: () => {
+                    return {
+                        almoco: document.getElementById('almoco').value,
+                        merenda: document.getElementById('merenda').value
+                    }
+                }
+            });
+
+            if (formValues) {
+                document.getElementById(`${day.split('-')[0].toLowerCase()}Almoco`).textContent = formValues.almoco;
+                document.getElementById(`${day.split('-')[0].toLowerCase()}Merenda`).textContent = formValues.merenda;
+
+                const response = await fetch('http://localhost:3000/menu');
+                const menu = await response.json();
+                menu[day].almoco = formValues.almoco;
+                menu[day].merenda = formValues.merenda;
+
+                await fetch('http://localhost:3000/menu', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(menu)
+                });
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cardápio atualizado',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+        function editDay(day) {
+            // Obtém o lanche da semana se estiver definido
+            const almoco = macroOption !== '' ? macroOption : getAlmoco(day);
+            const merenda = macroOption !== '' ? macroOption : getMerenda(day);
+
+            // Constrói o conteúdo do formulário de edição
+            let formContent = `
+                <label for="almoco">Almoço:</label>
+                <input type="text" id="almoco" value="${almoco}"><br><br>
+                <label for="merenda">Merenda:</label>
+                <input type="text" id="merenda" value="${merenda}"><br><br>
+                <input type="checkbox" id="notifyStudents" ${notifyStudents ? 'checked' : ''}>
+                <label for="notifyStudents">Notificar os alunos</label>
+            `;
+
+            // Exibe o formulário de edição com SweetAlert2
+            Swal.fire({
+                title: `Editar Cardápio - ${day}`,
+                html: formContent,
+                showCancelButton: true,
+                confirmButtonText: 'Salvar',
+                cancelButtonText: 'Cancelar',
+                focusConfirm: false,
+                preConfirm: () => {
+                    const almoco = document.getElementById('almoco').value;
+                    const merenda = document.getElementById('merenda').value;
+                    notifyStudents = document.getElementById('notifyStudents').checked;
+                    // Formata o nome do lanche se estiver em minúsculo
+                    const formattedAlmoco = capitalizeFirstLetters(almoco);
+                    const formattedMerenda = capitalizeFirstLetters(merenda);
+                    saveChanges(day, formattedAlmoco, formattedMerenda);
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const message = `Cardápio da ${day} modificado com sucesso.` + (notifyStudents ? ' Alunos foram notificados.' : '');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso!',
+                        text: message
+                    });
+                }
+            });
+        }
+
+        function capitalizeFirstLetters(str) {
+            // Capitaliza a primeira letra de cada palavra
+            return str.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+        }
+
+        function editAllDays() {
+            // Exibe uma janela de seleção para definir o lanche da semana toda
+            Swal.fire({
+                title: 'Definir Lanche para Toda Semana',
+                html: `
+                    <select id="macroSelect" class="swal2-select">
+                        <option value="">Selecione um lanche</option>
+                        <option value="Cuscuz temperado">Cuscuz temperado</option>
+                        <option value="Cuscuz de Tapioca">Cuscuz de Tapioca</option>
+                        <option value="Pão com ovo">Pão com ovo</option>
+                        <option value="Pão com carne">Pão com carne</option>
+                        <option value="Frutas e suco">Frutas e suco</option>
+                    </select>
+                    <br><br>
+                    <input type="checkbox" id="notifyStudents">
+                    <label for="notifyStudents">Avisar aos alunos</label>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Confirmar',
+                cancelButtonText: 'Cancelar',
+                focusConfirm: false,
+                preConfirm: () => {
+                    const selectedOption = document.getElementById('macroSelect').value;
+                    notifyStudents = document.getElementById('notifyStudents').checked;
+                    if (selectedOption) {
+                        // Aplica o lanche selecionado para toda a semana
+                        applyMacro(selectedOption);
+                    } else {
+                        Swal.showValidationMessage('Você precisa selecionar um lanche!');
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const message = `Todos os dias foram atualizados para ${macroOption}.` + (notifyStudents ? ' Alunos foram notificados.' : '');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Macro Aplicada!',
+                        text: message
+                    });
+                }
+            });
+        }
+
+        function applyMacro(selectedOption) {
+            // Atualiza a variável de lanche da semana
+            macroOption = selectedOption;
+
+            // Aplica o lanche selecionado para todos os dias da semana
+            const days = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira'];
+            days.forEach(day => {
+                saveChanges(day, selectedOption, selectedOption);
+            });
+        }
+
+        function saveChanges(day, almoco, merenda) {
+            // Simula a função de salvar alterações (poderia ser uma requisição AJAX para o backend)
+            switch (day) {
+                case 'Segunda-feira':
+                    document.getElementById('segundaAlmoco').textContent = almoco;
+                    document.getElementById('segundaMerenda').textContent = merenda;
+                    break;
+                case 'Terça-feira':
+                    document.getElementById('tercaAlmoco').textContent = almoco;
+                    document.getElementById('tercaMerenda').textContent = merenda;
+                    break;
+                case 'Quarta-feira':
+                    document.getElementById('quartaAlmoco').textContent = almoco;
+                    document.getElementById('quartaMerenda').textContent = merenda;
+                    break;
+                case 'Quinta-feira':
+                    document.getElementById('quintaAlmoco').textContent = almoco;
+                    document.getElementById('quintaMerenda').textContent = merenda;
+                    break;
+                case 'Sexta-feira':
+                    document.getElementById('sextaAlmoco').textContent = almoco;
+                    document.getElementById('sextaMerenda').textContent = merenda;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function getAlmoco(day) {
+            // Simula a obtenção dos dados do servidor para o almoço do dia
+            switch (day) {
+                case 'Segunda-feira':
+                case 'Terça-feira':
+                case 'Quarta-feira':
+                case 'Quinta-feira':
+                case 'Sexta-feira':
+                    return 'Vazio';
+                default:
+                    return '';
+            }
+        }
+
+        function getMerenda(day) {
+            // Simula a obtenção dos dados do servidor para a merenda do dia
+            switch (day) {
+                case 'Segunda-feira':
+                case 'Terça-feira':
+                case 'Quarta-feira':
+                case 'Quinta-feira':
+                case 'Sexta-feira':
+                    return 'Vazio';
+                default:
+                    return '';
+            }
+        }
+       /* function saveChangesToLocalStorage(cardapio) {
+            localStorage.setItem('cardapio', JSON.stringify(cardapio));
+        }
+            saveChangesToLocalStorage(novoCardapio);
+            */
+    </script>    
+</body>
+</html>
