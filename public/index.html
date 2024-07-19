@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Administração do Cardápio Semanal - CETEPS</h2>
+    <div class="menu-container">
+        <div class="menu-day">
+            <h3>Segunda-feira</h3>
+            <div class="meal">
+                <strong class="almoco">Almoço:</strong> <span id="segundaAlmoco">Vazio</span><br>
+                <strong class="merenda">Merenda:</strong> <span id="segundaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('seg')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Terça-feira</h3>
+            <div class="meal">
+                <strong class="almoco">Almoço:</strong> <span id="tercaAlmoco">Vazio</span><br>
+                <strong class="merenda">Merenda:</strong> <span id="tercaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('ter')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Quarta-feira</h3>
+            <div class="meal">
+                <strong class="almoco">Almoço:</strong> <span id="quartaAlmoco">Vazio</span><br>
+                <strong class="merenda">Merenda:</strong> <span id="quartaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('qua')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Quinta-feira</h3>
+            <div class="meal">
+                <strong class="almoco">Almoço:</strong> <span id="quintaAlmoco">Vazio</span><br>
+                <strong class="merenda">Merenda:</strong> <span id="quintaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('qui')">Editar</button>
+        </div>
+        <div class="menu-day">
+            <h3>Sexta-feira</h3>
+            <div class="meal">
+                <strong class="almoco">Almoço:</strong> <span id="sextaAlmoco">Vazio</span><br>
+                <strong class="merenda">Merenda:</strong> <span id="sextaMerenda">Vazio</span>
+            </div>
+            <button class="edit-button" onclick="editDay('sex')">Editar</button>
+        </div>
+    </div>
+
+        <!-- Botão de Macro para toda a semana -->
+        <button class="macro-button" onclick="editAllDays()">Definir Macro para Toda Semana</button>
+
+        <!-- Formulário de Edição -->
+        <div id="editForm" style="display: none;">
+            <h2>Editar Cardápio</h2>
+            <div id="editFormContent"></div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
