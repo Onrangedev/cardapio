@@ -6,7 +6,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "Érick da Silva Lima <eierickdasilva@gmail.com>, Kiam Mota Couto Ferraz <somentekiam@gmail.com>, Gustavo Lima de Souza",
+  "author": "Érick da Silva Lima <eierickdasilva@gmail.com>, Kiam Mota Couto Ferraz <somentekiam@gmail.com>, Gustavo Lima de Souza, Davi Barbosa Cerqueira Machado <davi30092007@gmail.com>",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
