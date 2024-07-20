@@ -21,9 +21,12 @@ const fetchItems = async () => {
             if (dias[index] === dado.dia) saveChanges(dias[index], dado.almoco, dado.merenda);
         }
     });
+
+    printMenuToday();
 };
 
 const itemList = document.getElementById('itemList');
+
 fetchItems();
 
 async function add(dia, merenda, almoco) {
@@ -210,4 +213,35 @@ function getFullNameDay(dia) {
             break;
     }
     return diaCompleto;
+}
+
+function getDayName(dayNum) {
+    const todosOsDias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+    return todosOsDias[dayNum];
+}
+
+function printMenuToday() {
+    const data = new Date();
+    const dia = getDayName(data.getDay());
+
+    const hojeAlmoco = document.querySelector('#hojeAlmoco');
+    const hojeMerenda = document.querySelector('#hojeMerenda');
+
+    if (hojeAlmoco === null) return
+
+    if (dia === 'dom' || dia === 'sab') {
+        hojeAlmoco.textContent = 'Feriado';
+        hojeMerenda.textContent = 'Feriado';
+    } else {
+        dias.forEach((e) => {
+            if (dia === e) {
+                dados.forEach((dado) => {
+                    if (dado.dia === dia) {
+                        hojeAlmoco.textContent = dado.almoco;
+                        hojeMerenda.textContent = dado.merenda;
+                    }
+                });
+            }
+        });
+    }
 }
