@@ -6,11 +6,11 @@
     "orientation": "any",
     "scope": "/",
     "short_name": "cardapio",
-    "start_url": "/cardapio/",
+    "start_url": "/cardapio/public/",
     "theme_color": "#ffffff",
     "icons": [
       {
-        "src": "icon/512.png",
+        "src": "icon/icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }
