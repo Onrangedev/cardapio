@@ -1,34 +1,34 @@
 {
   "items": [
     {
+      "id": 1,
+      "dia": "qui",
+      "merenda": "",
+      "almoco": ""
+    },
+    {
       "id": 2,
-      "dia": "ter",
-      "merenda": "Pão com ovo",
-      "almoco": "Pão com ovo"
+      "dia": "qua",
+      "merenda": "",
+      "almoco": ""
     },
     {
       "id": 3,
-      "dia": "sex",
-      "merenda": "Pão com ovo",
-      "almoco": "Pão com ovo"
+      "dia": "seg",
+      "merenda": "",
+      "almoco": ""
     },
     {
       "id": 4,
-      "dia": "qui",
-      "merenda": "Pão com ovo",
-      "almoco": "Pão com ovo"
+      "dia": "sex",
+      "merenda": "",
+      "almoco": ""
     },
     {
-      "id": 6,
-      "dia": "seg",
-      "merenda": "Pão com ovo",
-      "almoco": "Pão com abóbora "
-    },
-    {
-      "id": 7,
-      "dia": "qua",
-      "merenda": "Pão com ovo",
-      "almoco": "Pão com ovo"
+      "id": 5,
+      "dia": "ter",
+      "merenda": "",
+      "almoco": ""
     }
   ]
 }

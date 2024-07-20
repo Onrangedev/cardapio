@@ -135,6 +135,21 @@ function editAllDays() {
     });
 }
 
+async function deleteAllMenuData() {
+    Swal.fire({
+        title: "Você tem certeza que desejar apagar todos os dados do cardápio?",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire("Dados deletados!", "", "success");
+            dias.forEach(dia => {
+                add(dia, '', '');
+            });
+        }
+    });
+}
+
 function applyMacro(selectedOption) {
     // Atualiza a variável de lanche da semana
     macroOption = selectedOption;
