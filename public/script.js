@@ -141,7 +141,7 @@ function applyMacro(selectedOption) {
 
     // Aplica o lanche selecionado para todos os dias da semana
     dias.forEach(dia => {
-        saveChanges(dia, selectedOption, selectedOption);
+        add(dia, selectedOption, selectedOption);
     });
 }
 
