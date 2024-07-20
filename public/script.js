@@ -69,7 +69,7 @@ function editDay(dia) {
 
     // Exibe o formulário de edição com SweetAlert2
     Swal.fire({
-        title: `Editar Cardápio - ${dia}`,
+        title: `Editar Cardápio - ${getFullNameDay(dia)}`,
         html: formContent,
         showCancelButton: true,
         confirmButtonText: 'Salvar',
@@ -171,4 +171,28 @@ function saveChanges(day, almoco, merenda) {
         default:
             break;
     }
+}
+
+function getFullNameDay(dia) {
+    let diaCompleto;
+    switch (dia) {
+        case 'seg':
+            diaCompleto = 'Segunda-feira';
+            break;
+        case 'ter':
+            diaCompleto = 'Terça-feira';
+            break;
+        case 'qua':
+            diaCompleto = 'Quarta-feira';
+            break;
+        case 'qui':
+            diaCompleto = 'Quinta-feira';
+            break;
+        case 'sex':
+            diaCompleto = 'Sexta-feira';
+            break;
+        default:
+            break;
+    }
+    return diaCompleto;
 }

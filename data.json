@@ -19,16 +19,16 @@
       "almoco": "Pão com ovo"
     },
     {
-      "id": 5,
-      "dia": "qua",
-      "merenda": "Pão com ovo",
-      "almoco": "Pão com ovo"
-    },
-    {
       "id": 6,
       "dia": "seg",
       "merenda": "Pão com ovo",
       "almoco": "Pão com abóbora "
+    },
+    {
+      "id": 7,
+      "dia": "qua",
+      "merenda": "Pão com ovo",
+      "almoco": "Pão com ovo"
     }
   ]
 }
