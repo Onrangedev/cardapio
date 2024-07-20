@@ -1,0 +1,24 @@
+{
+    "background_color": "#ffffff",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "cardapio",
+    "orientation": "any",
+    "scope": "/",
+    "short_name": "cardapio",
+    "start_url": "/cardapio/",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "icon/512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "description": "Cardapio oline do CETEPS",
+    "lang": "pt",
+    "categories": [
+      "productivity",
+      "utilities"
+    ]
+}
