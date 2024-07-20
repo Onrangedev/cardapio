@@ -1,12 +1,14 @@
 :root {
-    --green: #4caf50;
-    --green-hover: #45a049;
+    --blue: #152060;
+    --blue-hover: #152060;
     --color-text: #fff;
 }
 
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     text-align: center;
+    margin: 50px;
 }
 
 h2 {
@@ -30,7 +32,7 @@ h2 {
 }
 
 .menu-day h3 {
-    background-color: var(--green);
+    background-color: var(--blue);
     color: var(--color-text);
     padding: 10px;
     margin: 0;
@@ -43,7 +45,7 @@ h2 {
 }
 
 .edit-button {
-    background-color: var(--green);
+    background-color: var(--blue);
     color: var(--color-text);
     border: none;
     padding: 10px 20px;
@@ -55,11 +57,11 @@ h2 {
 }
 
 .edit-button:hover {
-    background-color: var(--green-hover);
+    background-color: var(--blue-hover);
 }
 
 .macro-button {
-    background-color: #f39c12;
+    background-color: #152060;
     color: var(--color-text);
     border: none;
     padding: 10px 20px;
