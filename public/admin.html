@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio - CETEPS</title>
+    <title>Cardápio AMD - CETEPS</title>
     <link rel="shortcut icon" href="../icon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="alunos.css">
     <!-- <link rel="manifest" href="../manifest.json"> -->
 </head>
 <body>
-    <h2>Cardápio Online - CETEPS</h2>
-    <div class="menu-hoje">
-        <h3>Hoje</h3>
-        <div class="meal">
-            <strong class="almoco">Almoço:</strong> <span id="hojeAlmoco"></span><br>
-            <strong class="merenda">Merenda:</strong> <span id="hojeMerenda"></span>
-        </div>
-    </div>
+    <h2>Administração do Cardápio Semanal - CETEPS</h2>
     <div class="menu-container">
         <div class="menu-day">
             <h3>Segunda-feira</h3>
@@ -25,6 +17,7 @@
                 <strong class="almoco">Almoço:</strong> <span id="segundaAlmoco"></span><br>
                 <strong class="merenda">Merenda:</strong> <span id="segundaMerenda"></span>
             </div>
+            <button class="edit-button" onclick="editDay('seg')">Editar</button>
         </div>
         <div class="menu-day">
             <h3>Terça-feira</h3>
@@ -32,6 +25,7 @@
                 <strong class="almoco">Almoço:</strong> <span id="tercaAlmoco"></span><br>
                 <strong class="merenda">Merenda:</strong> <span id="tercaMerenda"></span>
             </div>
+            <button class="edit-button" onclick="editDay('ter')">Editar</button>
         </div>
         <div class="menu-day">
             <h3>Quarta-feira</h3>
@@ -39,6 +33,7 @@
                 <strong class="almoco">Almoço:</strong> <span id="quartaAlmoco"></span><br>
                 <strong class="merenda">Merenda:</strong> <span id="quartaMerenda"></span>
             </div>
+            <button class="edit-button" onclick="editDay('qua')">Editar</button>
         </div>
         <div class="menu-day">
             <h3>Quinta-feira</h3>
@@ -46,6 +41,7 @@
                 <strong class="almoco">Almoço:</strong> <span id="quintaAlmoco"></span><br>
                 <strong class="merenda">Merenda:</strong> <span id="quintaMerenda"></span>
             </div>
+            <button class="edit-button" onclick="editDay('qui')">Editar</button>
         </div>
         <div class="menu-day">
             <h3>Sexta-feira</h3>
@@ -53,8 +49,28 @@
                 <strong class="almoco">Almoço:</strong> <span id="sextaAlmoco"></span><br>
                 <strong class="merenda">Merenda:</strong> <span id="sextaMerenda"></span>
             </div>
+            <button class="edit-button" onclick="editDay('sex')">Editar</button>
         </div>
     </div>
+
+    <!-- Botão de Macro para toda a semana -->
+    <button class="macro-button" onclick="editAllDays()">Definir Macro para Toda Semana</button>
+    
+    <!-- Formulário de Edição -->
+    <div id="editForm" style="display: none;">
+        <h2>Editar Cardápio</h2>
+        <div id="editFormContent"></div>
+    </div>
+
+    <!-- Botão para deletar todos os dados do Cardapio -->
+    <button class="macro-button" onclick="deleteAllMenuData()">Deletar todos os cardápios</button>
+
+    <!-- Formulário de Deletação -->
+    <div id="deleteForm" style="display: none;">
+        <h2>Deletar todos os dados do Cardápio</h2>
+        <div id="deleteFormContent"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 </body>
