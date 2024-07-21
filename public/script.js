@@ -86,7 +86,7 @@ function editDay(dia) {
         }
     }).then((result) => {
         if (result.isConfirmed) {
-            const message = `Cardápio da ${dia} modificado com sucesso.`;
+            const message = `Cardápio da ${getFullNameDay(dia)} modificado com sucesso.`;
             Swal.fire({
                 icon: 'success',
                 title: 'Sucesso!',
