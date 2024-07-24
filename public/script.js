@@ -245,3 +245,13 @@ function printMenuToday() {
         });
     }
 }
+
+// Abre menu de configurações
+if (document.querySelector('.botao-configuracao')) {
+    document.querySelector('.botao-configuracao').addEventListener('click', () => {
+        location.href = 'configuracao.html'
+    });
+}
+
+// Carrega tema escuro
+if (localStorage.getItem('cadapio-dark-mode') && localStorage.getItem('cadapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');

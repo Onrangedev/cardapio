@@ -1,19 +1,41 @@
 .menu-hoje {
     width: 560px;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--pg-color);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     margin: auto;
     margin-bottom: 30px;
+    color: var(--color-text);
 }
 
 .menu-hoje h3 {
     background-color: #00b809;
-    color: var(--color-text);
+    color: #fff;
     padding: 10px;
     margin: 0;
     border-radius: 8px;
+}
+
+.botao-configuracao {
+    transition: .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--blue);
+    width: 40px;
+    height: 40px;
+}
+
+.botao-configuracao:hover {
+    background-color: var(--blue-hover);
 }
 
 @media screen and (max-width: 615px) {
