@@ -2,10 +2,10 @@
     "background_color": "#ffffff",
     "dir": "ltr",
     "display": "standalone",
-    "name": "cardapio",
+    "name": "Cardapio",
     "orientation": "any",
     "scope": "/",
-    "short_name": "cardapio",
+    "short_name": "Cardapio",
     "start_url": "/cardapio/public/",
     "theme_color": "#ffffff",
     "icons": [
