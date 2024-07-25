@@ -78,7 +78,7 @@ h2 {
 }
 
 .macro-button {
-    background-color: #152060;
+    background-color: var(--blue);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -90,5 +90,5 @@ h2 {
 }
 
 .macro-button:hover {
-    background-color: #e67e22;
+    background-color: var(--blue-hover);
 }
