@@ -1,11 +1,13 @@
 const almoco = document.querySelectorAll('.almoco');
 const merenda = document.querySelectorAll('.merenda');
 
+// Endereço do servidor
 const apiUrl = 'http://localhost:3000/api/items';
 
 let dados = [];
 const dias = ['seg', 'ter', 'qua', 'qui', 'sex'];
 
+// Faz a requisição dos dados no servidor e manda mostra na tela
 const fetchItems = async () => {
     try {
         const response = await fetch(apiUrl);
@@ -46,6 +48,7 @@ const itemList = document.getElementById('itemList');
 
 fetchItems();
 
+// Adiciona a merenda e almoço ao servidor e apaga os dados do almoço e merenda antigos
 async function add(dia, merenda, almoco) {
     let id;
     dados.forEach((dado) => {
@@ -67,8 +70,8 @@ async function add(dia, merenda, almoco) {
 
 let macroOption = '';
 
+// Exibe uma janela de edição para definir o lanche e o almoço do dia
 function editDay(dia) {
-    // Obtém o lanche da semana se estiver definido
     let almoco = "";
     let merenda = "";
 
@@ -79,7 +82,6 @@ function editDay(dia) {
         }
     });
 
-    // Constrói o conteúdo do formulário de edição
     let formContent = `
         <label for="almoco">Almoço:</label>
         <input type="text" id="almoco" value="${almoco}"><br><br>
@@ -87,7 +89,6 @@ function editDay(dia) {
         <input type="text" id="merenda" value="${merenda}"><br><br>
     `;
 
-    // Exibe o formulário de edição com SweetAlert2
     Swal.fire({
         title: `Editar Cardápio - ${getFullNameDay(dia)}`,
         html: formContent,
@@ -113,13 +114,13 @@ function editDay(dia) {
     });
 }
 
+// Capitaliza a primeira letra de cada palavra
 function capitalizeFirstLetters(str) {
-    // Capitaliza a primeira letra de cada palavra
     return str.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 }
 
+// Exibe uma janela de seleção para definir o lanche da semana toda
 function editAllDays() {
-    // Exibe uma janela de seleção para definir o lanche da semana toda
     Swal.fire({
         title: 'Definir Lanche para Toda Semana',
         html: `
@@ -139,9 +140,10 @@ function editAllDays() {
         preConfirm: () => {
             const selectedOption = document.getElementById('macroSelect').value;
             if (selectedOption) {
-                // Aplica o lanche selecionado para toda a semana
                 applyMacro(selectedOption);
-            } else Swal.showValidationMessage('Você precisa selecionar um lanche!');
+            } else {
+                Swal.showValidationMessage('Você precisa selecionar um lanche!');
+            }
         }
     }).then((result) => {
         if (result.isConfirmed) {
@@ -155,6 +157,7 @@ function editAllDays() {
     });
 }
 
+// Apaga os dados do cardápio no servidor e exibe na tela
 async function deleteAllMenuData() {
     Swal.fire({
         title: "Você tem certeza que desejar apagar todos os dados do cardápio?",
@@ -170,18 +173,17 @@ async function deleteAllMenuData() {
     });
 }
 
+// Atualiza todos os lanches e almoços para o mesmo tipo
 function applyMacro(selectedOption) {
-    // Atualiza a variável de lanche da semana
     macroOption = selectedOption;
 
-    // Aplica o lanche selecionado para todos os dias da semana
     dias.forEach(dia => {
         add(dia, selectedOption, selectedOption);
     });
 }
 
+// Exibe os dados do servidor na tela
 function saveChanges(day, almoco, merenda) {
-    // Simula a função de salvar alterações (poderia ser uma requisição AJAX para o backend)
     switch (day) {
         case 'seg':
             document.getElementById('segundaAlmoco').textContent = almoco;
@@ -208,6 +210,7 @@ function saveChanges(day, almoco, merenda) {
     }
 }
 
+// Obtem o nome do dia completo através da abreviatura do dia
 function getFullNameDay(dia) {
     let diaCompleto;
     switch (dia) {
@@ -232,11 +235,13 @@ function getFullNameDay(dia) {
     return diaCompleto;
 }
 
+// Obtem a abreviatura do dia através da número do dia
 function getDayName(dayNum) {
     const todosOsDias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
     return todosOsDias[dayNum];
 }
 
+// Exibe os dados do lanche e da merenda do dia atual
 function printMenuToday() {
     const data = new Date();
     const dia = getDayName(data.getDay());
@@ -266,9 +271,11 @@ function printMenuToday() {
 // Abre menu de configurações
 if (document.querySelector('.botao-configuracao')) {
     document.querySelector('.botao-configuracao').addEventListener('click', () => {
-        location.href = 'configuracao.html'
+        location.href = 'configuracao.html';
     });
 }
 
 // Carrega tema escuro
-if (localStorage.getItem('cadapio-dark-mode') && localStorage.getItem('cadapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
+if (localStorage.getItem('cadapio-dark-mode') && localStorage.getItem('cadapio-dark-mode') === 'true') {
+    document.documentElement.classList.add('tema-escuro');
+}

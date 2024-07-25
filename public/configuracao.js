@@ -11,4 +11,6 @@ checkboxTheme.addEventListener('change', () => {
 });
 
 // Carrega tema escuro
-if (localStorage.getItem('cadapio-dark-mode') && localStorage.getItem('cadapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
+if (localStorage.getItem('cadapio-dark-mode') && localStorage.getItem('cadapio-dark-mode') === 'true') {
+    document.documentElement.classList.add('tema-escuro');
+}
