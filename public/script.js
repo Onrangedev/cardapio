@@ -7,22 +7,39 @@ let dados = [];
 const dias = ['seg', 'ter', 'qua', 'qui', 'sex'];
 
 const fetchItems = async () => {
-    const response = await fetch(apiUrl);
-    const itens = await response.json();
-    dados = [];
-    itens.forEach(item => {
-        dados.push(item);
-    });
-
-    let index;
-
-    dados.forEach((dado) => {
-        for (index = 0; index < dias.length; index++) {
-            if (dias[index] === dado.dia) saveChanges(dias[index], dado.almoco, dado.merenda);
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('Server is down');
         }
-    });
 
-    printMenuToday();
+        const itens = await response.json();
+        dados = [];
+        itens.forEach(item => {
+            dados.push(item);
+        });
+
+        let index;
+
+        dados.forEach((dado) => {
+            for (index = 0; index < dias.length; index++) {
+                if (dias[index] === dado.dia) saveChanges(dias[index], dado.almoco, dado.merenda);
+            }
+        });
+
+        printMenuToday();
+    } catch (error) {
+        console.error('Failed to fetch items:', error);
+
+        Swal.fire({
+            title: "Fora do ar :/",
+            text: "Infelizmente o nosso servidor está fora do ar, tente novamente mais tarde!",
+            imageUrl: "../icon/tux.png",
+            imageWidth: 197.9,
+            imageHeight: 218.6,
+            imageAlt: "Piguim Tux"
+        });
+    }
 };
 
 const itemList = document.getElementById('itemList');
