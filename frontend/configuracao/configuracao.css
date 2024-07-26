@@ -87,3 +87,12 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.menu-creditos {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-creditos a {
+    color: var(--text-color);
+}
