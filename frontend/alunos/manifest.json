@@ -10,7 +10,7 @@
     "theme_color": "#ffffff",
     "icons": [
       {
-        "src": "frontend/icon/icon.png",
+        "src": "/cardapio/frontend/icon/icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }
