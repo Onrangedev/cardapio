@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+:root {
+    --blue: #152060;
+    --blue-hover: #152db8;
+    --green: #00b809;
+    --color-text: #000;
+    --bg-color: #fff;
+    --pg-color: #ebebeb;
+    --border-color: #00000033;
+}
+
+.tema-escuro {
+    --bg-color: #242424;
+    --pg-color: #1e1e1e;
+    --color-text: #fff;
+    --border-color: #ffffff33;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    background-color: var(--bg-color);
+    text-align: center;
+    margin: 0;
+}
+
+#installBanner {
+    display: none;
+    background-color: var(--pg-color);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--color-text);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+#installButton {
+    background-color: var(--green);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.menu-hoje {
+    width: 560px;
+    background-color: var(--pg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 30px;
+    color: var(--color-text);
+}
+
+.menu-hoje h3 {
+    background-color: #00b809;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    border-radius: 8px;
+}
+
+.menu-day {
+    width: 250px;
+    background-color: var(--pg-color);
+    border: .1rem solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    color: var(--color-text);
+}
+
+.menu-day h3 {
+    background-color: var(--blue);
+    color: var(--color-text);
+    padding: 10px;
+    margin: 0;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.meal {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.botao-configuracao {
+    transition: .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--blue);
+    width: 40px;
+    height: 40px;
+}
+
+.botao-configuracao:hover {
+    background-color: var(--blue-hover);
+}
+
+@media screen and (max-width: 615px) {
+    .menu-hoje {
+        width: 250px;
+    }
+}

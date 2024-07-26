@@ -28,18 +28,16 @@ const fetchItems = async () => {
                 if (dias[index] === dado.dia) saveChanges(dias[index], dado.almoco, dado.merenda);
             }
         });
-
-        printMenuToday();
     } catch (error) {
         console.error('Failed to fetch items:', error);
 
         Swal.fire({
             title: "Fora do ar :/",
             text: "Infelizmente o nosso servidor está fora do ar, tente novamente mais tarde!",
-            imageUrl: "../icon/tux.png",
+            imageUrl: "../icon/tux.svg",
             imageWidth: 197.9,
             imageHeight: 218.6,
-            imageAlt: "Piguim Tux"
+            imageAlt: "Pinguim Tux"
         });
     }
 };
@@ -233,49 +231,4 @@ function getFullNameDay(dia) {
             break;
     }
     return diaCompleto;
-}
-
-// Obtem a abreviatura do dia através da número do dia
-function getDayName(dayNum) {
-    const todosOsDias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
-    return todosOsDias[dayNum];
-}
-
-// Exibe os dados do lanche e da merenda do dia atual
-function printMenuToday() {
-    const data = new Date();
-    const dia = getDayName(data.getDay());
-
-    const hojeAlmoco = document.querySelector('#hojeAlmoco');
-    const hojeMerenda = document.querySelector('#hojeMerenda');
-
-    if (hojeAlmoco === null) return
-
-    if (dia === 'dom' || dia === 'sab') {
-        hojeAlmoco.textContent = 'Feriado';
-        hojeMerenda.textContent = 'Feriado';
-    } else {
-        dias.forEach((e) => {
-            if (dia === e) {
-                dados.forEach((dado) => {
-                    if (dado.dia === dia) {
-                        hojeAlmoco.textContent = dado.almoco;
-                        hojeMerenda.textContent = dado.merenda;
-                    }
-                });
-            }
-        });
-    }
-}
-
-// Abre menu de configurações
-if (document.querySelector('.botao-configuracao')) {
-    document.querySelector('.botao-configuracao').addEventListener('click', () => {
-        location.href = 'configuracao.html';
-    });
-}
-
-// Carrega tema escuro
-if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') {
-    document.documentElement.classList.add('tema-escuro');
 }

@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const dataFilePath = path.join(__dirname, 'data.json');
+const dataFilePath = path.join(__dirname, 'cardapio.json');
 
 const readData = () => {
     try {

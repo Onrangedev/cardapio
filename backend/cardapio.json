@@ -2,31 +2,31 @@
   "items": [
     {
       "id": 1,
-      "dia": "qui",
-      "merenda": "",
-      "almoco": ""
-    },
-    {
-      "id": 2,
-      "dia": "qua",
-      "merenda": "",
-      "almoco": ""
-    },
-    {
-      "id": 3,
       "dia": "seg",
       "merenda": "",
       "almoco": ""
     },
     {
-      "id": 4,
+      "id": 2,
+      "dia": "ter",
+      "merenda": "",
+      "almoco": ""
+    },
+    {
+      "id": 3,
       "dia": "sex",
       "merenda": "",
       "almoco": ""
     },
     {
+      "id": 4,
+      "dia": "qui",
+      "merenda": "",
+      "almoco": ""
+    },
+    {
       "id": 5,
-      "dia": "ter",
+      "dia": "qua",
       "merenda": "",
       "almoco": ""
     }
