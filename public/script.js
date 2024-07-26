@@ -276,6 +276,6 @@ if (document.querySelector('.botao-configuracao')) {
 }
 
 // Carrega tema escuro
-if (localStorage.getItem('cadapio-dark-mode') && localStorage.getItem('cadapio-dark-mode') === 'true') {
+if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') {
     document.documentElement.classList.add('tema-escuro');
 }
