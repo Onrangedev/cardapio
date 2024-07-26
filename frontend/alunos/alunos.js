@@ -90,8 +90,7 @@ function printMenuToday() {
     if (hojeAlmoco === null) return
 
     if (dia === 'dom' || dia === 'sab') {
-        hojeAlmoco.textContent = 'Feriado';
-        hojeMerenda.textContent = 'Feriado';
+        hojeAlmoco.parentNode.textContent = 'Feriado';
     } else {
         dias.forEach((e) => {
             if (dia === e) {
