@@ -38,6 +38,27 @@
     background-color: var(--blue-hover);
 }
 
+#installBanner {
+    display: none;
+    background-color: var(--pg-color);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--color-text);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+#installButton {
+    background-color: var(--green);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
 @media screen and (max-width: 615px) {
     .menu-hoje {
         width: 250px;

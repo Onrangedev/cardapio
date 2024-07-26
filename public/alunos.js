@@ -29,3 +29,51 @@ if (!localStorage.getItem('cardapio-turno')) {
         }
     });
 }
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    console.log(deferredPrompt);
+    // Update UI notify the user they can install the PWA
+    showInstallBanner();
+});
+
+window.addEventListener('appinstalled', (event) => {
+    // Log install to analytics
+    console.log('PWA installed');
+    hideInstallBanner();
+});
+
+function showInstallBanner() {
+    const installBanner = document.getElementById('installBanner');
+    installBanner.style.display = 'block';
+}
+
+function hideInstallBanner() {
+    const installBanner = document.getElementById('installBanner');
+    installBanner.style.display = 'none';
+}
+
+document.getElementById('installButton').addEventListener('click', async () => {
+    hideInstallBanner();
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+        } else {
+            console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+    }
+});
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    console.log('PWA is already installed');
+} else {
+    console.log('PWA is not installed');
+}

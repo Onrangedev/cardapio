@@ -3,12 +3,12 @@
 :root {
     --blue: #152060;
     --blue-hover: #152db8;
+    --green: #00b809;
     --color-text: #000;
     --bg-color: #fff;
     --pg-color: #ebebeb;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --border-color: #00000033;
-
 }
 
 .tema-escuro {
@@ -23,6 +23,7 @@ body {
     font-family: "Manrope", sans-serif;
     background-color: var(--bg-color);
     text-align: center;
+    margin: 0;
 }
 
 h2 {
