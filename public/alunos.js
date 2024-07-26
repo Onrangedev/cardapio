@@ -1,3 +1,4 @@
+// Define o turno do aluno
 if (!localStorage.getItem('cardapio-turno')) {
     Swal.fire({
         title: 'Qual é o seu turno?',
@@ -33,47 +34,33 @@ if (!localStorage.getItem('cardapio-turno')) {
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
-    // Stash the event so it can be triggered later.
     deferredPrompt = e;
-    console.log(deferredPrompt);
-    // Update UI notify the user they can install the PWA
     showInstallBanner();
 });
 
+// Agarda o app estar instalado para retirar o banner
 window.addEventListener('appinstalled', (event) => {
-    // Log install to analytics
-    console.log('PWA installed');
     hideInstallBanner();
 });
 
+// Mostra o banner o banner de instalação
 function showInstallBanner() {
     const installBanner = document.getElementById('installBanner');
     installBanner.style.display = 'block';
 }
 
+// Oculta o banner o banner de instalação
 function hideInstallBanner() {
     const installBanner = document.getElementById('installBanner');
     installBanner.style.display = 'none';
 }
 
+// Agarda o click no botão de instalação do banner
 document.getElementById('installButton').addEventListener('click', async () => {
     hideInstallBanner();
     if (deferredPrompt) {
         deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-            console.log('User accepted the install prompt');
-        } else {
-            console.log('User dismissed the install prompt');
-        }
         deferredPrompt = null;
     }
 });
-
-if (window.matchMedia('(display-mode: standalone)').matches) {
-    console.log('PWA is already installed');
-} else {
-    console.log('PWA is not installed');
-}
