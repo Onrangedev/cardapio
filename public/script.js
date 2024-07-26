@@ -62,7 +62,7 @@ async function add(dia, merenda, almoco) {
     await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({'dia': dia, 'merenda': merenda, 'almoco': almoco})
+        body: JSON.stringify({'dia': dia, 'merenda': capitalizeFirstLetters(merenda), 'almoco': capitalizeFirstLetters(almoco)})
     });
 
     fetchItems();
