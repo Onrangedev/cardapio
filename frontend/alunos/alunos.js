@@ -38,6 +38,10 @@ const fetchItems = async () => {
             imageHeight: 218.6,
             imageAlt: "Pinguim Tux"
         });
+
+        document.querySelectorAll('.meal').forEach((e) => {
+            console.log(e.textContent = 'Fora do ar :/');
+        })
     }
 };
 
