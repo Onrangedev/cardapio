@@ -48,22 +48,33 @@ fetchItems();
 
 // Adiciona a merenda e almoço ao servidor e apaga os dados do almoço e merenda antigos
 async function add(dia, merenda, almoco) {
-    let id;
-    dados.forEach((dado) => {
-        if (dado.dia === dia) id = dado.id;
-    });
+    try {
+        
+        let id;
+        dados.forEach((dado) => {
+            if (dado.dia === dia) id = dado.id;
+        });
+        
+        await fetch(apiUrl + `/${id}`, {
+            method: 'DELETE'
+        });
+        
+        await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({'dia': dia, 'merenda': capitalizeFirstLetters(merenda), 'almoco': capitalizeFirstLetters(almoco)})
+        });
+        
+        fetchItems();
+    } catch (error) {
+        console.error('Failed to fetch items:', error);
 
-    await fetch(apiUrl + `/${id}`, {
-        method: 'DELETE'
-    });
-
-    await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({'dia': dia, 'merenda': capitalizeFirstLetters(merenda), 'almoco': capitalizeFirstLetters(almoco)})
-    });
-
-    fetchItems();
+        Swal.fire({
+            icon: "error",
+            title: "Fora do ar :/",
+            text: "Infelizmente o nosso servidor está fora do ar e não podemos editar os dados do cardápio, tente novamente mais tarde!",
+        });
+    }
 }
 
 let macroOption = '';
