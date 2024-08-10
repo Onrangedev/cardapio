@@ -33,6 +33,18 @@ h2 {
     color: var(--text-color);
 }
 
+.menu-creditos a {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icone-instagram {
+
+}
+
 .switch {
     position: relative;
     display: inline-block;
