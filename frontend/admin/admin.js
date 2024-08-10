@@ -25,7 +25,9 @@ const fetchItems = async () => {
 
         dados.forEach((dado) => {
             for (index = 0; index < dias.length; index++) {
-                if (dias[index] === dado.dia) saveChanges(dias[index], dado.almoco, dado.merenda);
+                if (dias[index] === dado.dia) {
+                    saveChanges(dias[index], dado.almoco, dado.merenda);
+                }
             }
         });
     } catch (error) {
@@ -49,10 +51,11 @@ fetchItems();
 // Adiciona a merenda e almoço ao servidor e apaga os dados do almoço e merenda antigos
 async function add(dia, merenda, almoco) {
     try {
-        
         let id;
         dados.forEach((dado) => {
-            if (dado.dia === dia) id = dado.id;
+            if (dado.dia === dia) {
+                id = dado.id;
+            }
         });
         
         await fetch(apiUrl + `/${id}`, {
@@ -64,7 +67,7 @@ async function add(dia, merenda, almoco) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({'dia': dia, 'merenda': capitalizeFirstLetters(merenda), 'almoco': capitalizeFirstLetters(almoco)})
         });
-        
+
         fetchItems();
     } catch (error) {
         console.error('Failed to fetch items:', error);
@@ -78,6 +81,38 @@ async function add(dia, merenda, almoco) {
 }
 
 let macroOption = '';
+
+// Adicona a data da última alreração no servidor
+async function addDateLastChange() {
+    try {
+        let id;
+        dados.forEach((dado) => {
+            if (dado.ultimaAlteracao) {
+                id = dado.id;
+            }
+        });
+        
+        await fetch(apiUrl + `/${id}`, {
+            method: 'DELETE'
+        });
+        
+        await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({'ultimaAlteracao': getFormattedDate()})
+        });
+
+        fetchItems();
+    } catch (error) {
+        console.error('Failed to fetch items:', error);
+
+        Swal.fire({
+            icon: "error",
+            title: "Fora do ar :/",
+            text: "Infelizmente o nosso servidor está fora do ar e não podemos editar os dados do cardápio, tente novamente mais tarde!",
+        });
+    }
+}
 
 // Exibe uma janela de edição para definir o lanche e o almoço do dia
 function editDay(dia) {
@@ -110,6 +145,7 @@ function editDay(dia) {
             const merenda = document.getElementById('merenda').value;
 
             add(dia, merenda, almoco);
+            addDateLastChange();
         }
     }).then((result) => {
         if (result.isConfirmed) {
@@ -189,6 +225,8 @@ function applyMacro(selectedOption) {
     dias.forEach(dia => {
         add(dia, selectedOption, selectedOption);
     });
+    
+    addDateLastChange();
 }
 
 // Exibe os dados do servidor na tela
@@ -242,4 +280,15 @@ function getFullNameDay(dia) {
             break;
     }
     return diaCompleto;
+}
+
+// Retorna a data atual formatada. Ex: 00/00/0000
+function getFormattedDate() {
+    const date = new Date();
+
+    const dia = date.getDate() < 10 ? '0' + date.getDate().toString() : date.getDate();
+    const mes = date.getMonth()+1 < 10 ? '0' + (date.getMonth()+1).toString() : date.getMonth()+1;
+    const ano = date.getFullYear();
+
+    return `${dia}/${mes}/${ano}`;
 }

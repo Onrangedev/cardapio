@@ -24,7 +24,13 @@ const fetchItems = async () => {
         let index;
         dados.forEach((dado) => {
             for (index = 0; index < dias.length; index++) {
-                if (dias[index] === dado.dia) saveChanges(dias[index], dado.almoco, dado.merenda);
+                if (dias[index] === dado.dia) {
+                    saveChanges(dias[index], dado.almoco, dado.merenda);
+                }
+            }
+
+            if (dado.ultimaAlteracao) {
+                document.querySelector('.dia-ultima-alteracao').textContent = dado.ultimaAlteracao;
             }
         });
 
@@ -40,13 +46,13 @@ const fetchItems = async () => {
         });
 
         document.querySelectorAll('.meal').forEach((e) => {
-            console.log(e.textContent = 'Fora do ar :/');
-        })
+            e.textContent = 'Fora do ar :/';
+        });
+        document.querySelector('.container-ultima-alteracao').style.display = 'none';
     }
 };
 
 const itemList = document.getElementById('itemList');
-
 fetchItems();
 
 // Exibe os dados do servidor na tela
@@ -91,7 +97,9 @@ function printMenuToday() {
     const hojeAlmoco = document.querySelector('#hojeAlmoco');
     const hojeMerenda = document.querySelector('#hojeMerenda');
 
-    if (hojeAlmoco === null) return
+    if (hojeAlmoco === null) {
+        return;
+    }
 
     if (dia === 'dom' || dia === 'sab') {
         hojeAlmoco.parentNode.textContent = 'Feriado';
