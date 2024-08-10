@@ -100,6 +100,10 @@ h2 {
     font-size: 18px;
 }
 
+.container-ultima-alteracao {
+    color: var(--color-text);
+}
+
 .botao-configuracao {
     transition: .2s;
     display: flex;
