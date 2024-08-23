@@ -8,6 +8,22 @@ body {
     color: var(--color-text);
 }
 
+.back-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    top: 12px;
+    left: 2px;
+}
+
 h2 {
     text-align: center;
     margin-bottom: 20px;

@@ -14,4 +14,6 @@ checkboxTheme.addEventListener('change', () => {
 if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') {
     document.documentElement.classList.add('tema-escuro');
 }
-  
+
+// Volta para a home
+document.querySelector('.back-home').addEventListener('click', () => location.href = '../alunos/index.html');
