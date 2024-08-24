@@ -17,19 +17,6 @@
     --border-color: #ffffff33;
 }
 
-/* Remover outline de todos os elementos ao focar */
-* {
-    outline: none;
-}
-
-/* Ou remover de elementos específicos, como botões e links */
-button:focus,
-div:focus,
-a:focus,
-input:focus {
-    outline: none;
-}
-
 body {
     font-family: "Manrope", sans-serif;
     background-color: var(--bg-color);
