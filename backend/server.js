@@ -81,5 +81,7 @@ app.delete('/api/items/:id', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor rodando em http://localhost:${PORT}\n`);
+    console.log(`Frontend ALUNOS rodando em file://${require('path').resolve(__dirname, '../frontend/alunos/index.html')}`);
+    console.log(`Frontend ADMIN rodando em file://${require('path').resolve(__dirname, '../frontend/admin/index.html')}`);
 });
