@@ -3,42 +3,41 @@
 
 Projeto do carpadio oline para o CETEPS!
 
-<!-- ![Logo](https://eierick.github.io/financeiro/img/financeiro.png) -->
+![Logo](https://eierick.github.io/cardapio/frontend/icon/icon.png)
 
 
-## Run Locally
+## Rodando Localmente
 
-Clone the project
+Clone o projeto
 
 ```bash
   git clone https://github.com/eierick/cardapio
 ```
 
-Go to the project directory
+Entre no diretório do backend
 
 ```bash
-  cd cardapio
+  cd ./cardapio/backend
 ```
 
-Install dependencies
+Instale as dependências
 
 ```bash
   npm install
 ```
 
-Start the qnote
+Inicie o servidor
 
 ```bash
   npm run start
 ```
-
 
 ## Tech Stack
 
 JS, HTML5, CSS3, EXPRESS, CORS, FS and GIT
 
 
-## Authors
+## Autores no GitHub
 
 - [@eierick](https://www.github.com/eierick)
 - [@kiamMota](https://github.com/KiamMota/)
