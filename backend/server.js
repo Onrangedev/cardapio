@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const port = 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -80,8 +80,9 @@ app.delete('/api/items/:id', (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}\n`);
+app.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost:${port}`);
+    console.log(`API rodando em http://localhost:${port}/api/items\n`);
     console.log(`Frontend ALUNOS rodando em file://${require('path').resolve(__dirname, '../frontend/alunos/index.html')}`);
     console.log(`Frontend ADMIN rodando em file://${require('path').resolve(__dirname, '../frontend/admin/index.html')}`);
 });
