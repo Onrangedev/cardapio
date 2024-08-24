@@ -1,6 +1,3 @@
-const almoco = document.querySelectorAll('.almoco');
-const merenda = document.querySelectorAll('.merenda');
-
 // Endereço do servidor
 const apiUrl = 'http://localhost:3000/api/items';
 
@@ -11,10 +8,6 @@ const dias = ['seg', 'ter', 'qua', 'qui', 'sex'];
 const fetchItems = async () => {
     try {
         const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error('Server is down');
-        }
-
         const itens = await response.json();
         dados = [];
         itens.forEach(item => {
@@ -37,8 +30,9 @@ const fetchItems = async () => {
         printMenuToday();
     } catch (error) {
         document.querySelectorAll('.meal').forEach((e) => {
-            e.textContent = 'Fora do ar :/';
+            e.textContent = 'Fora do ar :/'
         });
+
         document.querySelector('.container-ultima-alteracao').style.display = 'none';
     }
 };
@@ -48,29 +42,17 @@ fetchItems();
 
 // Exibe os dados do servidor na tela
 function saveChanges(day, almoco, merenda) {
-    switch (day) {
-        case 'seg':
-            document.getElementById('segundaAlmoco').textContent = almoco;
-            document.getElementById('segundaMerenda').textContent = merenda;
-            break;
-        case 'ter':
-            document.getElementById('tercaAlmoco').textContent = almoco;
-            document.getElementById('tercaMerenda').textContent = merenda;
-            break;
-        case 'qua':
-            document.getElementById('quartaAlmoco').textContent = almoco;
-            document.getElementById('quartaMerenda').textContent = merenda;
-            break;
-        case 'qui':
-            document.getElementById('quintaAlmoco').textContent = almoco;
-            document.getElementById('quintaMerenda').textContent = merenda;
-            break;
-        case 'sex':
-            document.getElementById('sextaAlmoco').textContent = almoco;
-            document.getElementById('sextaMerenda').textContent = merenda;
-            break;
-        default:
-            break;
+    const ids = {
+        seg: ['segundaAlmoco', 'segundaMerenda'],
+        ter: ['tercaAlmoco', 'tercaMerenda'],
+        qua: ['quartaAlmoco', 'quartaMerenda'],
+        qui: ['quintaAlmoco', 'quintaMerenda'],
+        sex: ['sextaAlmoco', 'sextaMerenda']
+    };
+    
+    if (ids[day]) {
+        document.getElementById(ids[day][0]).textContent = almoco;
+        document.getElementById(ids[day][1]).textContent = merenda;
     }
 }
 
