@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 .tema-escuro {
     --bg-color: #242424;
     --color-text: #fff;
 }
 
 body {
+    font-family: "Manrope", sans-serif;
     background-color: var(--bg-color);
     color: var(--color-text);
+    margin: 0;
 }
 
 .back-home {
@@ -55,10 +59,6 @@ h2 {
     align-items: center;
     justify-content: center;
     gap: 10px;
-}
-
-.icone-instagram {
-
 }
 
 .switch {
