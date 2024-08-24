@@ -133,10 +133,3 @@ document.getElementById('installButton').addEventListener('click', async () => {
         deferredPrompt = null;
     }
 });
-
-// Evita o evento de recarregar a página ao puxar a para baixo
-window.addEventListener('touchmove', function(event) {
-    if (window.scrollY === 0 && event.touches[0].clientY > event.touches[0].clientY) {
-        event.preventDefault();
-    }
-}, { passive: false });
