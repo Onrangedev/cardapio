@@ -92,7 +92,6 @@ function printMenuToday() {
 
 // Abre menu de configurações
 document.querySelector('.botao-configuracao').addEventListener('click', (e) => {
-    e.preventDefault();
     location.href = '../configuracao/index.html';
 });
 
