@@ -36,15 +36,6 @@ const fetchItems = async () => {
 
         printMenuToday();
     } catch (error) {
-        Swal.fire({
-            title: "Fora do ar :/",
-            text: "Infelizmente o nosso servidor está fora do ar, tente novamente mais tarde!",
-            imageUrl: "../icon/tux.svg",
-            imageWidth: 197.9,
-            imageHeight: 218.6,
-            imageAlt: "Pinguim Tux"
-        });
-
         document.querySelectorAll('.meal').forEach((e) => {
             e.textContent = 'Fora do ar :/';
         });
