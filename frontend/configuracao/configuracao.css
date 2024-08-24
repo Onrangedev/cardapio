@@ -55,7 +55,6 @@ h2 {
 
 .menu-creditos a {
     display: flex;
-    width: 200px;
     align-items: center;
     justify-content: center;
     gap: 10px;
