@@ -14,6 +14,27 @@ document.querySelector('.container-ultima-alteracao').style.display = 'none';
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
+document.querySelectorAll('.menu-day-title').forEach((menu) => {
+    menu.addEventListener('click', (e) => {
+        console.log(e.target.parentNode.childNodes[3].childNodes);
+        Swal.fire({
+            title: `<strong>${e.target.textContent}</strong>`,
+            html: `
+            <div>
+                <div class="meal">
+                    <strong class="merenda">Merenda</strong> <span id="sextaMerenda">${e.target.parentNode.childNodes[3].childNodes[3].textContent}</span>
+                    <strong class="almoco">Almoço</strong> <span id="sextaAlmoco">${e.target.parentNode.childNodes[3].childNodes[7].textContent}</span><br>
+                </div>
+            </div>  
+            `,
+            showCloseButton: true,
+            showCancelButton: false,
+            focusConfirm: false,
+            confirmButtonText: 'Ok'
+          });
+    });
+})
+
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     gapi.load('client', initializeGapiClient);
