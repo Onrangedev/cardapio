@@ -3,60 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>Cardápio - CETEPS</title>
+    <title>Cardápio Online</title>
     <link rel="shortcut icon" href="../icon/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="alunos.css">
     <link rel="manifest" href="./manifest.json">
 </head>
 <body>
-
+    <!-- Banner de instalação do app -->
     <div id="installBanner">
         <span>Instale nosso app!</span>
         <button id="installButton">Instalar</button>
     </div>
 
-    <h2>Cardápio Online - CETEPS</h2>
+    <h2>Cardápio Online</h2>
+    <h2><strong>📢 Versão experimental (Alpha)</strong></h2>
+
+    <!-- Menu do dia -->
     <div class="menu-hoje">
         <h3>Hoje</h3>
         <div class="meal">
-            <strong class="almoco">Almoço:</strong> <span id="hojeAlmoco"></span><br>
-            <strong class="merenda">Merenda:</strong> <span id="hojeMerenda"></span>
+            <strong class="almoco">Almoço</strong> <span id="hojeAlmoco"></span><br>
+            <strong class="merenda">Merenda</strong> <span id="hojeMerenda"></span>
         </div>
     </div>
+
     <div class="menu-container">
         <div class="menu-day">
             <h3>Segunda-feira</h3>
             <div class="meal">
-                <strong class="almoco">Almoço:</strong> <span id="segundaAlmoco"></span><br>
-                <strong class="merenda">Merenda:</strong> <span id="segundaMerenda"></span>
+                <strong class="almoco">Almoço</strong> <span id="segundaAlmoco"></span><br>
+                <strong class="merenda">Merenda</strong> <span id="segundaMerenda"></span>
             </div>
         </div>
         <div class="menu-day">
             <h3>Terça-feira</h3>
             <div class="meal">
-                <strong class="almoco">Almoço:</strong> <span id="tercaAlmoco"></span><br>
-                <strong class="merenda">Merenda:</strong> <span id="tercaMerenda"></span>
+                <strong class="almoco">Almoço</strong> <span id="tercaAlmoco"></span><br>
+                <strong class="merenda">Merenda</strong> <span id="tercaMerenda"></span>
             </div>
         </div>
         <div class="menu-day">
             <h3>Quarta-feira</h3>
             <div class="meal">
-                <strong class="almoco">Almoço:</strong> <span id="quartaAlmoco"></span><br>
-                <strong class="merenda">Merenda:</strong> <span id="quartaMerenda"></span>
+                <strong class="almoco">Almoço</strong> <span id="quartaAlmoco"></span><br>
+                <strong class="merenda">Merenda</strong> <span id="quartaMerenda"></span>
             </div>
         </div>
         <div class="menu-day">
             <h3>Quinta-feira</h3>
             <div class="meal">
-                <strong class="almoco">Almoço:</strong> <span id="quintaAlmoco"></span><br>
-                <strong class="merenda">Merenda:</strong> <span id="quintaMerenda"></span>
+                <strong class="almoco">Almoço</strong> <span id="quintaAlmoco"></span><br>
+                <strong class="merenda">Merenda</strong> <span id="quintaMerenda"></span>
             </div>
         </div>
         <div class="menu-day">
             <h3>Sexta-feira</h3>
             <div class="meal">
-                <strong class="almoco">Almoço:</strong> <span id="sextaAlmoco"></span><br>
-                <strong class="merenda">Merenda:</strong> <span id="sextaMerenda"></span>
+                <strong class="almoco">Almoço</strong> <span id="sextaAlmoco"></span><br>
+                <strong class="merenda">Merenda</strong> <span id="sextaMerenda"></span>
             </div>
         </div>
     </div>
@@ -66,10 +70,15 @@
         <p>Útima alteração: <span class="dia-ultima-alteracao">**/**/****</span></p>
     </div>
     
+    <!-- Botão para o menu de configurações -->
     <div class="botao-configuracao">
         <img src="../icon/settings.svg" alt="settings">
     </div>
+
+    <pre id="content" style="white-space: pre-wrap;"></pre>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="alunos.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
 </body>
 </html>

@@ -54,6 +54,26 @@ h2 {
     color: var(--text-color);
 }
 
+.menu-descricao {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-descricao p {
+    max-width: 400px;
+    margin: 0 20px;
+    text-align: justify;
+}
+
+.menu-horario {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-horario p {
+    margin: 0;
+}
+
 .menu-creditos a {
     display: flex;
     align-items: center;

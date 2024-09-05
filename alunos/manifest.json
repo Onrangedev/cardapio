@@ -2,20 +2,20 @@
     "background_color": "#ffffff",
     "dir": "ltr",
     "display": "standalone",
-    "name": "Cardapio",
+    "name": "Cardápio",
     "orientation": "any",
     "scope": "/",
-    "short_name": "Cardapio",
-    "start_url": "/cardapio/frontend/alunos",
+    "short_name": "Cardápio",
+    "start_url": "/cardapio/",
     "theme_color": "#ffffff",
     "icons": [
       {
-        "src": "/cardapio/frontend/icon/icon.png",
+        "src": "/cardapio/icon/icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "description": "Cardapio online do CETEPS",
+    "description": "Cardápio online",
     "lang": "pt",
     "categories": [
       "productivity",

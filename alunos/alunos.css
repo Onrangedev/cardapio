@@ -22,6 +22,7 @@ body {
     background-color: var(--bg-color);
     text-align: center;
     margin: 0;
+    padding: 0;
     user-select: none;
 }
 
@@ -97,12 +98,25 @@ h2 {
 }
 
 .meal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
     margin: 10px 0;
     font-size: 18px;
 }
 
+.meal strong {
+    flex-shrink: 0;
+}
+
 .container-ultima-alteracao {
     color: var(--color-text);
+}
+
+.container-politica-privacidade a {
+    color: var(--color-text);
+    font-size: 10px;
 }
 
 .botao-configuracao {
