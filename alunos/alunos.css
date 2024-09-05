@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 :root {
-    --blue: #152060;
+    --blue: #4a5c6a;
     --blue-hover: #152db8;
     --green: #00b809;
     --color-text: #000;
@@ -11,9 +11,9 @@
 }
 
 .tema-escuro {
-    --bg-color: #242424;
-    --pg-color: #1e1e1e;
-    --color-text: #fff;
+    --bg-color: #123;
+    --pg-color: #11212d;
+    --color-text: #ccd0cf;
     --border-color: #ffffff33;
 }
 
@@ -72,7 +72,7 @@ h2 {
 }
 
 .menu-hoje h3 {
-    background-color: #00b809;
+    background-color: var(--green);
     color: #fff;
     padding: 10px;
     margin: 0;
