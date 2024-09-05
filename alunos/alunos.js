@@ -109,7 +109,7 @@ let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    // showInstallBanner();
+    showInstallBanner();
 });
 
 // Aguarda o app estar instalado para retirar o banner
