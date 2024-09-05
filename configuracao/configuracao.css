@@ -82,6 +82,15 @@ h2 {
     gap: 10px;
 }
 
+.menu-qrcode {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-qrcode img {
+    border-radius: 20px;
+}
+
 .switch {
     position: relative;
     display: inline-block;
