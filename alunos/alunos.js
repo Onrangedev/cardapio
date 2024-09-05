@@ -116,8 +116,10 @@ document.querySelector('.botao-configuracao').addEventListener('click', (e) => {
 
 function foraDoAr() {
     document.querySelectorAll('.meal').forEach(element => {
-        element.textContent = 'Fora do Ar :/'
+        element.textContent = 'Fora do Ar :/';
     });
+
+    document.querySelector('.menu-hoje').style.display = 'none';
 }
 
 // Carrega tema escuro
