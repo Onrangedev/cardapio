@@ -11,9 +11,9 @@
 }
 
 .tema-escuro {
-    --bg-color: #123;
+    --bg-color: #06141b;
     --pg-color: #11212d;
-    --color-text: #ccd0cf;
+    --color-text: #fff;
     --border-color: #ffffff33;
 }
 
