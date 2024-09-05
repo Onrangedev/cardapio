@@ -3,7 +3,7 @@
 
 Projeto do carpadio oline para o CETEPS!
 
-![Logo](https://eierick.github.io/cardapio/frontend/icon/icon.png)
+![Logo](https://eierick.github.io/cardapio/icon/icon.png)
 
 
 ## Site do projeto
