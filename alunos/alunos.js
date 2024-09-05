@@ -36,16 +36,24 @@ async function listMajors() {
         // Busca os primeiros 10 arquivos
         response = await gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: '1X1p6laul5yRw330M1ROaP8F4T70asWE7IieVsT1Qb7c',
-            range: 'A2:D',
+            range: 'A2:E',
         });
     } catch (err) {
         document.getElementById('content').innerText = err.message;
+        foraDoAr();
         return;
     }
 
+    
     const range = response.result;
     if (!range || !range.values || range.values.length == 0) {
         document.getElementById('content').innerText = 'Nenhum valor encontrado.';
+        foraDoAr();
+        return;
+    }
+    
+    if (range.values[0][4] !== 'Ativo') {
+        foraDoAr();
         return;
     }
 
@@ -105,6 +113,12 @@ document.querySelector('.botao-configuracao').addEventListener('click', (e) => {
         location.href = '../configuracao/index.html';
     }, 100);
 });
+
+function foraDoAr() {
+    document.querySelectorAll('.meal').forEach(element => {
+        element.textContent = 'Fora do Ar :/'
+    });
+}
 
 // Carrega tema escuro
 if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') {
