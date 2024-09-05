@@ -6,7 +6,7 @@
     "orientation": "any",
     "scope": "/",
     "short_name": "Cardápio",
-    "start_url": "/cardapio/",
+    "start_url": "/cardapio/alunos",
     "theme_color": "#ffffff",
     "icons": [
       {
