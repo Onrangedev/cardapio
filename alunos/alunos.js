@@ -94,9 +94,16 @@ function imprimirUltimaModificacao(range) {
     document.querySelector('.dia-ultima-alteracao').textContent = range.values[0][3];
 }
 
-// Abre menu de configurações
+// Abre menu de configurações com animação de transição na tela inteira
 document.querySelector('.botao-configuracao').addEventListener('click', (e) => {
-    location.href = '../configuracao/index.html';
+    // Aplica a animação de transição de fade-out à tela inteira
+    document.body.style.transition = 'opacity 0.5s ease';
+    document.body.style.opacity = '0';
+
+    // Espera a animação terminar (500ms) antes de redirecionar para a página de configuração
+    setTimeout(() => {
+        location.href = '../configuracao/index.html';
+    }, 100);
 });
 
 // Carrega tema escuro

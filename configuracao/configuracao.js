@@ -15,5 +15,14 @@ if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio
     document.documentElement.classList.add('tema-escuro');
 }
 
-// Volta para a home
-document.querySelector('.back-home').addEventListener('click', () => location.href = '../alunos/index.html');
+// Exemplo: botão para voltar à página principal com animação de transição na tela inteira
+document.querySelector('.back-home').addEventListener('click', (e) => {
+    // Aplica a animação de transição de fade-out à tela inteira
+    document.body.style.transition = 'opacity 0.5s ease';
+    document.body.style.opacity = '0';
+
+    // Espera a animação terminar (500ms) antes de redirecionar para a página inicial
+    setTimeout(() => {
+        location.href = '../alunos/index.html';
+    }, 100);
+});
