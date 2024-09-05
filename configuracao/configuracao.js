@@ -26,3 +26,9 @@ document.querySelector('.back-home').addEventListener('click', (e) => {
         location.href = '../alunos/index.html';
     }, 100);
 });
+
+document.querySelector('.btn-copy-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
+    alert('Link copiado!');
+});

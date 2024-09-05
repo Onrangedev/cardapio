@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
+:root {
+    --blue: #4a5c6a;
+    --blue-hover: #9ba8ab;
+    --green: #00b809;
+    --color-text: #000;
+    --bg-color: #fff;
+    --pg-color: #ebebeb;
+    --border-color: #00000033;
+}
+
 .tema-escuro {
     --bg-color: #06141b;
+    --pg-color: #11212d;
     --color-text: #fff;
-    --blue: #4a5c6a;
+    --border-color: #ffffff33;
 }
 
 body {
@@ -89,6 +100,21 @@ h2 {
 
 .menu-qrcode img {
     border-radius: 20px;
+}
+
+.menu-qrcode button {
+    background-color: var(--blue);
+    border-radius: 100px;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #fff;
+    transition: .3s;
+}
+
+.menu-qrcode button:hover {
+    background-color: var(--blue-hover);
 }
 
 .switch {
