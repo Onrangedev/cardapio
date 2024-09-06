@@ -54,6 +54,27 @@ h2 {
     color: var(--color-text);
 }
 
+.btn-atualizar {
+    background-color: var(--blue);
+    border-radius: 20px;
+    border: none;
+    padding: 10px 0;
+    font-size: 18px;
+    cursor: pointer;
+    color: #fff;
+    transition: .3s;
+    width: 128px;
+    margin-bottom: 20px;
+}
+
+.btn-atualizar:hover {
+    background-color: var(--blue-light);
+}
+
+.btn-atualizar:active {
+    background-color: var(--blue-dark);
+}
+
 .menu-container {
     display: flex;
     justify-content: center;

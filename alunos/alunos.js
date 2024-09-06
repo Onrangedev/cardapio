@@ -11,6 +11,13 @@ let gisInited = false;
 
 document.querySelector('.container-ultima-alteracao').style.display = 'none';
 
+let cardapio = [];
+
+const dadosSalvos = localStorage.getItem('cardapio');
+if (dadosSalvos) {
+    cardapio = JSON.parse(dadosSalvos);
+}
+
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
 const frases = ['Alimente seu corpo, cultive sua saúde.', 'Uma boa alimentação é o primeiro passo para uma vida mais saudável.', 'Coma bem, viva melhor.', 'Seu corpo agradece cada alimento saudável.', 'A comida é o combustível do seu corpo. Abasteça-o com o melhor!', 'A saúde começa no prato.', 'Alimente seus sonhos com uma dieta balanceada.', 'Uma dieta equilibrada é a receita para uma vida feliz e saudável.', 'Invista em sua saúde, invista em uma boa alimentação.',
@@ -18,9 +25,23 @@ const frases = ['Alimente seu corpo, cultive sua saúde.', 'Uma boa alimentaçã
 
 imprimiFrase();
 
+document.querySelector('.btn-atualizar').addEventListener('click', () => {
+    document.querySelector('.btn-atualizar').style.display = 'none';
+    gapi.load('client', initializeGapiClient);
+
+    // Mostra a tela de carregamento
+    document.querySelectorAll('#loading-screen').forEach((load) => {
+        load.style.display = 'flex';
+    });
+
+    // Oculta o 'meal' da página
+    document.querySelectorAll('.meal').forEach((meal) => {
+        meal.style.display = 'none';
+    });
+});
+
 document.querySelectorAll('.menu-day-title').forEach((menu) => {
     menu.addEventListener('click', (e) => {
-        console.log(e.target.parentNode.childNodes[3].childNodes);
         Swal.fire({
             title: `<strong>${e.target.textContent}</strong>`,
             html: `
@@ -41,6 +62,16 @@ document.querySelectorAll('.menu-day-title').forEach((menu) => {
 
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
+    if (cardapio) {
+        if (new Date().getDay() === cardapio.dia) {
+            imprimirAlmoco(cardapio.menu);
+            imprimirMerenda(cardapio.menu);
+            imprimirMenuDoDia(cardapio.menu);
+            imprimirUltimaModificacao(cardapio.menu);
+            return;
+        }
+    }
+
     gapi.load('client', initializeGapiClient);
 
     // Mostra a tela de carregamento
@@ -98,6 +129,8 @@ async function listMajors() {
     imprimirMerenda(range);
     imprimirMenuDoDia(range);
     imprimirUltimaModificacao(range);
+
+    localStorage.setItem('cardapio', JSON.stringify({'dia': new Date().getDay(), 'menu': range}));
 
     // Esconde a tela de carregamento após o processamento dos dados
     document.querySelectorAll('#loading-screen').forEach((load) => {
