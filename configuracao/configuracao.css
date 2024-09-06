@@ -2,7 +2,8 @@
 
 :root {
     --blue: #4a5c6a;
-    --blue-hover: #9ba8ab;
+    --blue-light: #9ba8ab;
+    --blue-dark: #253745;
     --green: #00b809;
     --color-text: #000;
     --bg-color: #fff;
@@ -104,17 +105,22 @@ h2 {
 
 .menu-qrcode button {
     background-color: var(--blue);
-    border-radius: 100px;
+    border-radius: 20px;
     border: none;
-    padding: 12px;
+    padding: 10px 0;
     font-size: 18px;
     cursor: pointer;
     color: #fff;
     transition: .3s;
+    width: 128px;
 }
 
 .menu-qrcode button:hover {
-    background-color: var(--blue-hover);
+    background-color: var(--blue-light);
+}
+
+.menu-qrcode button:active {
+    background-color: var(--blue-dark);
 }
 
 .switch {

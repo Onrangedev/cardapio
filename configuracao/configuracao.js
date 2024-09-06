@@ -30,5 +30,9 @@ document.querySelector('.back-home').addEventListener('click', (e) => {
 document.querySelector('.btn-copy-link').addEventListener('click', (e) => {
     e.preventDefault();
     navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
-    alert('Link copiado!');
+
+    e.target.innerText = 'Copiado!';
+    setTimeout(() => {
+        e.target.innerText = 'Copiar link';
+    }, 2000);
 });
