@@ -38,9 +38,6 @@ document.querySelectorAll('.menu-day-title').forEach((menu) => {
     });
 });
 
-document.getElementById('loading-screen').style.display = 'flex';
-
-
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     gapi.load('client', initializeGapiClient);
