@@ -1,5 +1,4 @@
 const API_KEY = 'AIzaSyAEOb_1iv4NXFeV7OQph2FW5UpqCUiGMcc';
-const CLIENT_ID = '293531894729-3uaa8kgj0rfj9v2qatoorpi4a99rhnnq.apps.googleusercontent.com';
 
 const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
@@ -37,11 +36,24 @@ document.querySelectorAll('.menu-day-title').forEach((menu) => {
             confirmButtonText: 'Ok'
           });
     });
-})
+});
+
+document.getElementById('loading-screen').style.display = 'flex';
+
 
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     gapi.load('client', initializeGapiClient);
+
+    // Mostra a tela de carregamento
+    document.querySelectorAll('#loading-screen').forEach((load) => {
+        load.style.display = 'flex';
+    });
+
+    // Oculta o 'meal' da página
+    document.querySelectorAll('.meal').forEach((meal) => {
+        meal.style.display = 'none';
+    });
 }
 
 // Callback após o cliente da API ser carregado. Carrega o discovery doc para inicializar a API.
@@ -69,7 +81,6 @@ async function listMajors() {
         return;
     }
 
-    
     const range = response.result;
     if (!range || !range.values || range.values.length == 0) {
         document.getElementById('content').innerText = 'Nenhum valor encontrado.';
@@ -86,6 +97,16 @@ async function listMajors() {
     imprimirMerenda(range);
     imprimirMenuDoDia(range);
     imprimirUltimaModificacao(range);
+
+    // Esconde a tela de carregamento após o processamento dos dados
+    document.querySelectorAll('#loading-screen').forEach((load) => {
+        load.style.display = 'none';
+    });
+
+    // Mostra o 'meal' após o processamento dos dados
+    document.querySelectorAll('.meal').forEach((meal) => {
+        meal.style.display = 'flex';
+    });
 }
 
 function imprimirAlmoco(range) {
@@ -120,6 +141,8 @@ function imprimirMenuDoDia(range) {
         hojeMerenda.textContent = range.values[dia-1][1];
         hojeAlmoco.textContent = range.values[dia-1][2];
     }
+
+    document.querySelector('.menu-hoje').style.display = 'block';
 }
 
 function imprimirUltimaModificacao(range) {
