@@ -123,6 +123,11 @@ h2 {
     background-color: var(--blue-dark);
 }
 
+.menu-github {
+    display: flex;
+    flex-direction: column;
+}
+
 .switch {
     position: relative;
     display: inline-block;
