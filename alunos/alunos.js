@@ -14,6 +14,10 @@ document.querySelector('.container-ultima-alteracao').style.display = 'none';
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
+const frases = ['Alimente seu corpo, cultive sua saúde.', 'Uma boa alimentação é o primeiro passo para uma vida mais saudável.', 'Coma bem, viva melhor.', 'Seu corpo agradece cada alimento saudável.', 'A comida é o combustível do seu corpo. Abasteça-o com o melhor!', 'A saúde começa no prato.', 'Alimente seus sonhos com uma dieta balanceada.', 'Uma dieta equilibrada é a receita para uma vida feliz e saudável.', 'Invista em sua saúde, invista em uma boa alimentação.',
+'Cada garfada é uma oportunidade para nutrir seu corpo.', 'A alimentação saudável não é uma dieta, é um estilo de vida.', 'Você é o que você come. Escolha bem!', 'A comida é o nosso melhor remédio.', 'Cozinhar com amor é nutrir a alma.', 'Uma alimentação saudável é um presente para o seu futuro.','A comida é a nossa primeira medicina.', 'A alimentação saudável é a base para uma vida ativa e produtiva.', 'Ame seu corpo, alimente-o com carinho.', 'O que você come hoje define como você se sentirá amanhã.', 'A comida não é apenas combustível, é uma experiência.', 'A alimentação é uma forma de amor próprio.', 'Escolha alimentos que alimentem seu corpo e seu espírito.', 'A comida conecta as pessoas e a natureza.', 'A alimentação saudável é um ato de amor por você mesmo.', 'A alimentação saudável é um investimento a longo prazo.', 'Cada escolha alimentar é uma oportunidade para crescer.','A comida é a nossa linguagem universal. Fale a linguagem da saúde.'];
+imprimiFrase();
+
 document.querySelectorAll('.menu-day-title').forEach((menu) => {
     menu.addEventListener('click', (e) => {
         console.log(e.target.parentNode.childNodes[3].childNodes);
@@ -121,6 +125,11 @@ function imprimirMenuDoDia(range) {
 function imprimirUltimaModificacao(range) {
     document.querySelector('.container-ultima-alteracao').style.display = 'block';
     document.querySelector('.dia-ultima-alteracao').textContent = range.values[0][3];
+}
+
+function imprimiFrase() {
+    const num = Math.floor(Math.random() * (frases.length - 0) + 0);
+    document.querySelector('.frase').textContent = frases[num];
 }
 
 // Abre menu de configurações com animação de transição na tela inteira
