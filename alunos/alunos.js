@@ -88,6 +88,9 @@ async function listMajors() {
     if (range.values[0][4] !== 'Ativo') {
         foraDoAr();
         return;
+    } else if (range.values[0][4] === 'Manutenção' && location.href === 'https://eierick.github.io/cardapio/alunos/' || range.values[0][4] === 'Manutenção' && location.href === 'https://eierick.github.io/cardapio/alunos/index.html') {
+        foraDoAr();
+        return;
     }
 
     imprimirAlmoco(range);
