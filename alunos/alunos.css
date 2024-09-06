@@ -3,6 +3,7 @@
 :root {
     --blue: #4a5c6a;
     --blue-hover: #9ba8ab;
+    --blue-dark: #253745;
     --green: #00b809;
     --color-text: #000;
     --bg-color: #fff;
@@ -134,6 +135,10 @@ h2 {
 
 .botao-configuracao:hover {
     background-color: var(--blue-hover);
+}
+
+.botao-configuracao:active {
+    background-color: var(--blue-dark);
 }
 
 @media screen and (max-width: 615px) {
