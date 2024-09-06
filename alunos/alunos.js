@@ -172,6 +172,10 @@ function foraDoAr() {
         element.textContent = 'Fora do Ar :/';
     });
 
+    document.querySelectorAll('#loading-screen').forEach((load) => {
+        load.style.display = 'none';
+    });
+
     document.querySelector('.menu-hoje').style.display = 'none';
 }
 
