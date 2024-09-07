@@ -164,6 +164,7 @@ h2 {
 }
 
 .frase {
+    cursor: pointer;
     color: var(--color-text);
     font-size: 18px;
 }
