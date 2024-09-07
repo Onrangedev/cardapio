@@ -37,25 +37,6 @@ document.querySelector('.btn-atualizar').addEventListener('click', () => {
     document.querySelectorAll('.meal').forEach((meal) => meal.style.display = 'none');
 });
 
-// Exibi um menu extra ao clicar no nome do dia 
-document.querySelectorAll('.menu-day-title').forEach((menu) => {
-    menu.addEventListener('click', (e) => {
-        Swal.fire({
-            title: `<strong>${e.target.textContent}</strong>`,
-            html: `
-            <div>
-                <div class="meal">
-                    <strong class="merenda">Merenda</strong> <span id="sextaMerenda">${e.target.parentNode.childNodes[3].childNodes[3].textContent}</span>
-                    <strong class="almoco">Almoço</strong> <span id="sextaAlmoco">${e.target.parentNode.childNodes[3].childNodes[7].textContent}</span><br>
-                </div>
-            </div>  
-            `,
-            showCloseButton: true,
-            confirmButtonText: 'Ok'
-        });
-    });
-});
-
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     if (cardapio) {
