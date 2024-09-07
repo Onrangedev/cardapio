@@ -14,7 +14,6 @@ Projeto do carpadio oline para o CETEPS!
 
 JS, HTML5, CSS3 and GIT
 
-
 ## Autores no github
 
 - [@eierick](https://www.github.com/eierick)
