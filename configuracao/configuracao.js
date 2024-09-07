@@ -39,7 +39,7 @@ document.querySelector('.btn-compartilhar').addEventListener('click', async (e) 
     } catch (err) {
         navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
 
-        e.target.innerText = 'Copiado!';
+        e.target.innerText = 'Link Copiado!';
         setTimeout(() => {
             e.target.innerText = 'Compartilhar';
         }, 2000);
