@@ -40,10 +40,7 @@ document.querySelector('.btn-atualizar').addEventListener('click', () => {
 function gapiLoaded() {
     if (cardapio) {
         if (new Date().getDay() === cardapio.dia) {
-            imprimirAlmoco(cardapio.menu);
-            imprimirMerenda(cardapio.menu);
-            imprimirMenuDoDia(cardapio.menu);
-            imprimirUltimaModificacao(cardapio.menu);
+            imprimirDados(cardapio.menu);
             return;
         }
     }
@@ -68,63 +65,47 @@ async function initializeGapiClient() {
 
 // Imprime a merenda e o lanche do dia. Spreadsheet: https://docs.google.com/spreadsheets/d/1X1p6laul5yRw330M1ROaP8F4T70asWE7IieVsT1Qb7c/edit
 async function listMajors() {
-    let response;
     try {
-        // Busca os dados na planilha
-        response = await gapi.client.sheets.spreadsheets.values.get({
+        const response = await gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: '1X1p6laul5yRw330M1ROaP8F4T70asWE7IieVsT1Qb7c',
             range: 'A2:E',
         });
+
+        const range = response.result;
+        if (!range?.values?.length) throw new Error('Nenhum valor encontrado.');
+
+        const status = range.values[0][4];
+        const isManutencao = status === 'Manutenção';
+        const isAlunosPage = location.href.includes('/cardapio/alunos/');
+        
+        if (status !== 'Ativo' || (isManutencao && isAlunosPage)) {
+            foraDoAr();
+            return;
+        }
+
+        imprimirDados(range);
+        localStorage.setItem('cardapio', JSON.stringify({ 'dia': new Date().getDay(), 'menu': range }));
+
+        document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
+
     } catch (err) {
         console.error(err.message);
         foraDoAr();
-        return;
     }
+}
 
-    const range = response.result;
-    if (!range || !range.values || range.values.length == 0) {
-        console.error('Nenhum valor encontrado.');
-        foraDoAr();
-        return;
-    }
-    
-    if (range.values[0][4] !== 'Ativo') {
-        foraDoAr();
-        return;
-    } else if (range.values[0][4] === 'Manutenção' && location.href === 'https://eierick.github.io/cardapio/alunos/' || range.values[0][4] === 'Manutenção' && location.href === 'https://eierick.github.io/cardapio/alunos/index.html') {
-        foraDoAr();
-        return;
-    }
+// Função para imprimir almoço e merenda de forma genérica
+function imprimirDados(range) {
+    const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
-    imprimirAlmoco(range);
-    imprimirMerenda(range);
+    dias.forEach((dia, index) => {
+        document.getElementById(`${dia}Almoco`).textContent = range.values[index][2];
+        document.getElementById(`${dia}Merenda`).textContent = range.values[index][1];
+    });
+
     imprimirMenuDoDia(range);
     imprimirUltimaModificacao(range);
-
-    localStorage.setItem('cardapio', JSON.stringify({'dia': new Date().getDay(), 'menu': range}));
-
-    // Esconde a tela de carregamento após o processamento dos dados
-    document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'none');
-    // Mostra o 'meal' após o processamento dos dados
-    document.querySelectorAll('.meal').forEach((meal) => meal.style.display = 'flex');
-}
-
-// Imprime o almoço
-function imprimirAlmoco(range) {
-    document.getElementById('segundaAlmoco').textContent = range.values[0][2];
-    document.getElementById('tercaAlmoco').textContent = range.values[1][2];
-    document.getElementById('quartaAlmoco').textContent = range.values[2][2];
-    document.getElementById('quintaAlmoco').textContent = range.values[3][2];
-    document.getElementById('sextaAlmoco').textContent = range.values[4][2];
-}
-
-// Imprime a merenda
-function imprimirMerenda(range) {
-    document.getElementById('segundaMerenda').textContent = range.values[0][1];
-    document.getElementById('tercaMerenda').textContent = range.values[1][1];
-    document.getElementById('quartaMerenda').textContent = range.values[2][1];
-    document.getElementById('quintaMerenda').textContent = range.values[3][1];
-    document.getElementById('sextaMerenda').textContent = range.values[4][1];
 }
 
 // Imprimi o menu do dia
@@ -162,7 +143,11 @@ document.querySelector('.botao-configuracao').addEventListener('click', () => lo
 
 // Exibi que o sistema está fora do ar
 function foraDoAr() {
-    document.querySelectorAll('.meal').forEach(element => element.textContent = 'Fora do Ar :/');
+    document.querySelectorAll('.meal').forEach((meal) => {
+        meal.style.display = 'flex';
+        meal.textContent = 'Fora do Ar :/'
+    });
+
     document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'none');
     document.querySelector('.menu-hoje').style.display = 'none';
 }
