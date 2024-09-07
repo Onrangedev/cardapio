@@ -31,15 +31,15 @@ body {
     align-items: center;
     justify-content: center;
     position: fixed;
+    top: 15px;
+    left: 2px;
+    width: 40px;
+    height: 40px;
     border: none;
     background-color: transparent;
     color: var(--text-color);
     font-size: 32px;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
-    top: 15px;
-    left: 2px;
 }
 
 h2 {
@@ -47,56 +47,30 @@ h2 {
     margin-bottom: 20px;
 }
 
-.menu-configuracoes {
+.menu-configuracoes, .menu-descricao, .menu-horario, .menu-qrcode, .menu-github, .menu-creditos {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.menu-configuracoes div {
+.menu-configuracoes div, .menu-creditos a {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
     gap: 20px;
+    padding: 10px;
 }
 
-.menu-configuracoes div p {
+.menu-configuracoes div p, .menu-creditos a, .menu-qrcode button {
     font-size: 18px;
     color: var(--text-color);
 }
 
-.menu-descricao {
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-descricao p {
-    max-width: 400px;
-    margin: 0 20px;
-    text-align: justify;
-}
-
-.menu-horario {
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-horario p {
+.menu-descricao p, .menu-horario p {
     margin: 0;
-}
-
-.menu-creditos a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.menu-qrcode {
-    display: flex;
-    flex-direction: column;
+    max-width: 400px;
+    text-align: justify;
 }
 
 .menu-qrcode img {
@@ -105,14 +79,13 @@ h2 {
 
 .menu-qrcode button {
     background-color: var(--blue);
-    border-radius: 20px;
     border: none;
+    border-radius: 20px;
     padding: 10px 0;
-    font-size: 18px;
-    cursor: pointer;
-    color: #fff;
-    transition: .3s;
     width: 128px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color .3s;
 }
 
 .menu-qrcode button:hover {
@@ -123,35 +96,28 @@ h2 {
     background-color: var(--blue-dark);
 }
 
-.menu-github {
-    display: flex;
-    flex-direction: column;
-}
-
 .switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
 }
-  
-/* Hide default HTML checkbox */
+
 .switch input {
     display: none;
 }
-  
-/* The slider */
+
 .slider {
     position: absolute;
-    cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: #ccc;
     transition: .2s;
+    cursor: pointer;
 }
-  
+
 .slider:before {
     position: absolute;
     content: "";
@@ -162,11 +128,11 @@ h2 {
     background-color: white;
     transition: .2s;
 }
-  
+
 input:checked + .slider {
     background-color: var(--blue);
 }
-  
+
 input:focus + .slider {
     box-shadow: 0 0 1px var(--blue);
 }
@@ -174,20 +140,11 @@ input:focus + .slider {
 input:checked + .slider:before {
     transform: translateX(26px);
 }
-  
+
 .slider.round {
     border-radius: 34px;
 }
-  
+
 .slider.round:before {
     border-radius: 50%;
-}
-
-.menu-creditos {
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-creditos a {
-    color: var(--text-color);
 }
