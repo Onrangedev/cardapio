@@ -1,10 +1,8 @@
-
 # Cardapio
 
 Projeto do carpadio oline para o CETEPS!
 
 ![Logo](https://eierick.github.io/cardapio/icon/icon-512x512.png)
-
 
 ## Site do projeto
 
