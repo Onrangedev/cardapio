@@ -1,24 +1,39 @@
 {
-    "background_color": "#ffffff",
-    "dir": "ltr",
-    "display": "standalone",
-    "name": "Cardápio",
-    "orientation": "any",
-    "scope": "/",
-    "short_name": "Cardápio",
-    "start_url": "/cardapio/alunos",
-    "theme_color": "#ffffff",
-    "icons": [
-      {
-        "src": "/cardapio/icon/icon.png",
-        "type": "image/png",
-        "sizes": "512x512"
-      }
-    ],
-    "description": "Cardápio online",
-    "lang": "pt",
-    "categories": [
-      "productivity",
-      "utilities"
-    ]
+  "name": "Cardápio Online",
+  "short_name": "Cardápio",
+  "description": "Acesse o cardápio de forma rápida e prática.",
+  "start_url": "/cardapio/alunos",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": [
+    "productivity",
+    "utilities",
+    "food"
+  ],
+  "icons": [
+    {
+      "src": "/cardapio/icon/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/cardapio/icon/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/cardapio/icon/screenshot.png",
+      "type": "image/png",
+      "sizes": "671x1279"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
