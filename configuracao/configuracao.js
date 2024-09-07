@@ -1,3 +1,13 @@
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/cardapio/alunos/pwabuilder-sw.js').then((registration) => {
+            console.log('Service Worker registrado com sucesso:', registration);
+        }).catch((error) => {
+            console.log('Falha ao registrar o Service Worker:', error);
+        });
+    });
+}
+
 const checkboxTheme = document.querySelector('.checkbox-theme');
 
 // Obtem os dados salvos em local storage
