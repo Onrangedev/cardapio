@@ -12,10 +12,9 @@ document.querySelector('.container-ultima-alteracao').style.display = 'none';
 
 let cardapio = [];
 
+// Recupera os dados salvos no local storage
 const dadosSalvos = localStorage.getItem('cardapio');
-if (dadosSalvos) {
-    cardapio = JSON.parse(dadosSalvos);
-}
+if (dadosSalvos) cardapio = JSON.parse(dadosSalvos);
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
