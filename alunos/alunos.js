@@ -1,3 +1,13 @@
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/cardapio/alunos/pwabuilder-sw.js').then((registration) => {
+            console.log('Service Worker registrado com sucesso:', registration);
+        }).catch((error) => {
+            console.log('Falha ao registrar o Service Worker:', error);
+        });
+    });
+}
+
 const API_KEY = 'AIzaSyAEOb_1iv4NXFeV7OQph2FW5UpqCUiGMcc';
 const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
@@ -81,7 +91,6 @@ async function listMajors() {
 
         document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
         document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
-
     } catch (err) {
         console.error(err.message);
         foraDoAr();
@@ -90,8 +99,6 @@ async function listMajors() {
 
 // Função para imprimir almoço e merenda de forma genérica
 function imprimirDados(range) {
-    const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
-
     dias.forEach((dia, index) => {
         document.getElementById(`${dia}Almoco`).textContent = range.values[index][2];
         document.getElementById(`${dia}Merenda`).textContent = range.values[index][1];
