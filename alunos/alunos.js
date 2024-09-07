@@ -177,17 +177,8 @@ function imprimiFrase() {
     document.querySelector('.frase').textContent = `"${frases[num]}"`;
 }
 
-// Abre menu de configurações com animação de transição na tela inteira
-document.querySelector('.botao-configuracao').addEventListener('click', (e) => {
-    // Aplica a animação de transição de fade-out à tela inteira
-    document.body.style.transition = 'opacity 0.5s ease';
-    document.body.style.opacity = '0';
-
-    // Espera a animação terminar (500ms) antes de redirecionar para a página de configuração
-    setTimeout(() => {
-        location.href = '../configuracao/index.html';
-    }, 100);
-});
+// Aguarda evento de clique para abrir menu de configurações
+document.querySelector('.botao-configuracao').addEventListener('click', () => location.href = '../configuracao/index.html');
 
 // Exibi que o sistema está fora do ar
 function foraDoAr() {

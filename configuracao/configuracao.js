@@ -16,16 +16,7 @@ checkboxTheme.addEventListener('change', () => {
 if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro')
 
 // Aguarda evento de clique no botão de voltar para voltar a ppagina inicial
-document.querySelector('.back-home').addEventListener('click', (e) => {
-    // Aplica a animação de transição de fade-out à tela inteira
-    document.body.style.transition = 'opacity 0.5s ease';
-    document.body.style.opacity = '0';
-
-    // Espera a animação terminar (500ms) antes de redirecionar para a página inicial
-    setTimeout(() => {
-        location.href = '../alunos/index.html';
-    }, 100);
-});
+document.querySelector('.back-home').addEventListener('click', () => location.href = '../alunos/index.html');
 
 // Aguarda evento de clique no botão de copia para copiar o link do site
 document.querySelector('.btn-copy-link').addEventListener('click', (e) => {
