@@ -26,30 +26,23 @@ imprimiFrase();
 // Aguarda o evento de clique para trocar a frase
 document.querySelector('.frase').addEventListener('click', () => imprimiFrase());
 
+// Aguarda o evento de clique para atualizar os dados manualmente
 document.querySelector('.btn-atualizar').addEventListener('click', () => {
     document.querySelector('.btn-atualizar').style.display = 'none';
-    gapi.load('client', initializeGapiClient);
-
-    // Mostra a tela de carregamento
-    document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'flex');
-    // Oculta o 'meal' da página
-    document.querySelectorAll('.meal').forEach((meal) => meal.style.display = 'none');
+    requisitarDados();
 });
 
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
-    if (cardapio) {
-        if (new Date().getDay() === cardapio.dia) {
-            imprimirDados(cardapio.menu);
-            return;
-        }
-    }
+    if (cardapio && new Date().getDay() === cardapio.dia) {
+        imprimirDados(cardapio.menu);
+    } else requisitarDados();
+}
 
+// Chama a função para fazer requisição dos dados e exibi tela de load
+function requisitarDados() {
     gapi.load('client', initializeGapiClient);
-
-    // Mostra a tela de carregamento
     document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'flex');
-    // Oculta o 'meal' da página
     document.querySelectorAll('.meal').forEach((meal) => meal.style.display = 'none');
 }
 
