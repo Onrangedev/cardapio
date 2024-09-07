@@ -38,3 +38,15 @@ document.querySelector('.btn-copy-link').addEventListener('click', (e) => {
         e.target.innerText = 'Copiar link';
     }, 2000);
 });
+
+document.querySelector('.btn-compartilhar-cardapio').addEventListener('click', async () => {
+    try {
+        await navigator.share({
+            title: 'Cardápio Online',
+            text: 'Acesse o cardápio escolar de forma simples e digital!',
+            url: 'https://eierick.github.io/cardapio/alunos/',
+        });
+    } catch (err) {
+        console.error(err);
+    }
+});

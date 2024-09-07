@@ -81,8 +81,7 @@ h2 {
     background-color: var(--blue);
     border: none;
     border-radius: 20px;
-    padding: 10px 0;
-    width: 128px;
+    padding: 10px 20px;
     color: #fff;
     cursor: pointer;
     transition: background-color .3s;
