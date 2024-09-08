@@ -36,7 +36,6 @@ h2 {
 }
 
 .menu-configuracoes div p, .menu-creditos a {
-    font-size: 18px;
     color: var(--text-color);
 }
 
