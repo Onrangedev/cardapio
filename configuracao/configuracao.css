@@ -20,7 +20,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-.menu-configuracoes, .menu-descricao, .menu-horario, .menu-qrcode, .menu-github, .menu-creditos {
+.menu-configuracoes, .menu-descricao, .menu-horario, .menu-qrcode, .menu-github, .menu-creditos, .menu-escala {
     display: flex;
     flex-direction: column;
     justify-content: center;
