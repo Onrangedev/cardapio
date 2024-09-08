@@ -1,30 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
-:root {
-    --blue: #4a5c6a;
-    --blue-light: #9ba8ab;
-    --blue-dark: #253745;
-    --green: #00b809;
-    --color-text: #000;
-    --bg-color: #fff;
-    --pg-color: #ebebeb;
-    --border-color: #00000033;
-}
-
-.tema-escuro {
-    --bg-color: #06141b;
-    --pg-color: #11212d;
-    --color-text: #fff;
-    --border-color: #ffffff33;
-}
-
-body {
-    font-family: "Manrope", sans-serif;
-    background-color: var(--bg-color);
-    color: var(--color-text);
-    margin: 0;
-    user-select: none;
-}
+@import url('../root.css');
 
 .back-home {
     display: flex;
@@ -43,7 +17,6 @@ body {
 }
 
 h2 {
-    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -62,7 +35,7 @@ h2 {
     padding: 10px;
 }
 
-.menu-configuracoes div p, .menu-creditos a, .menu-qrcode button {
+.menu-configuracoes div p, .menu-creditos a {
     font-size: 18px;
     color: var(--text-color);
 }
@@ -75,24 +48,6 @@ h2 {
 
 .menu-qrcode img {
     border-radius: 20px;
-}
-
-.menu-qrcode button {
-    background-color: var(--blue);
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color .3s;
-}
-
-.menu-qrcode button:hover {
-    background-color: var(--blue-light);
-}
-
-.menu-qrcode button:active {
-    background-color: var(--blue-dark);
 }
 
 .switch {

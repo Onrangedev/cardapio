@@ -1,31 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
-:root {
-    --blue: #4a5c6a;
-    --blue-light: #9ba8ab;
-    --blue-dark: #253745;
-    --green: #00b809;
-    --color-text: #000;
-    --bg-color: #fff;
-    --pg-color: #ebebeb;
-    --border-color: #00000033;
-}
-
-.tema-escuro {
-    --bg-color: #06141b;
-    --pg-color: #11212d;
-    --color-text: #fff;
-    --border-color: #ffffff33;
-}
-
-body {
-    font-family: "Manrope", sans-serif;
-    background-color: var(--bg-color);
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    user-select: none;
-}
+@import url('../root.css');
 
 #installBanner {
     display: none;
@@ -49,30 +22,11 @@ body {
 }
 
 h2 {
-    text-align: center;
     margin-bottom: 20px;
-    color: var(--color-text);
 }
 
 .btn-atualizar {
-    background-color: var(--blue);
-    border-radius: 20px;
-    border: none;
-    padding: 10px 0;
-    font-size: 18px;
-    cursor: pointer;
-    color: #fff;
-    transition: .3s;
-    width: 128px;
     margin-bottom: 20px;
-}
-
-.btn-atualizar:hover {
-    background-color: var(--blue-light);
-}
-
-.btn-atualizar:active {
-    background-color: var(--blue-dark);
 }
 
 .menu-container {
@@ -91,7 +45,6 @@ h2 {
     padding: 20px;
     margin: auto;
     margin-bottom: 30px;
-    color: var(--color-text);
 }
 
 .menu-hoje h3 {
@@ -108,12 +61,10 @@ h2 {
     border: .1rem solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
-    color: var(--color-text);
 }
 
 .menu-day h3 {
     background-color: var(--blue);
-    color: var(--color-text);
     padding: 10px;
     margin: 0;
     border-radius: 8px;
@@ -129,42 +80,19 @@ h2 {
     font-size: 20px;
 }
 
-.meal strong {
-    flex-shrink: 0;
-}
-
-.container-ultima-alteracao {
-    color: var(--color-text);
-}
-
 .botao-configuracao {
-    transition: .2s;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
     position: fixed;
     bottom: 10px;
     right: 10px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: var(--blue);
-    width: 40px;
-    height: 40px;
-}
-
-.botao-configuracao:hover {
-    background-color: var(--blue-light);
-}
-
-.botao-configuracao:active {
-    background-color: var(--blue-dark);
+    width: 5px;
+    height: 25px;
 }
 
 .frase {
     cursor: pointer;
-    color: var(--color-text);
     font-size: 18px;
 }
 
