@@ -152,17 +152,11 @@ function foraDoAr() {
     document.querySelector('.menu-hoje').style.display = 'none';
 }
 
-// Altera o zoom na página
-function carregarZoom(valor) {
-    if (valor < 0.50 || valor > 3) return;
-    document.body.style.zoom = valor;
-}
-
 // Carrega tema escuro
 if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
 
 // Carrega o zoom salvo em local storage
-if (localStorage.getItem('cardapio-escala')) carregarZoom(localStorage.getItem('cardapio-escala'));
+if (localStorage.getItem('cardapio-escala')) document.body.style.zoom = localStorage.getItem('cardapio-escala');
 
 let deferredPrompt;
 
