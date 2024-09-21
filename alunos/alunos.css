@@ -41,7 +41,7 @@ body {
 .dia-semana {
     background: linear-gradient(to right, #ff3300, #ff6600);
     padding: 20px; /* Ajustando o padding */
-    border-radius:px;
+    border-radius: 10px;
     font-size: 1em; /* Diminuindo o tamanho da fonte */
     color: white;
     font-family: 'Lexend Peta', sans-serif;
@@ -56,12 +56,12 @@ body {
     background-color: #3a3a3a;
     padding: 10px;
     border-radius: 10px;
-    flex: 1; /* Usando flex: 1 para ocupar o espaço disponível */
-    display: flex; /* Corrigido para 'flex' */
+    flex: 1;
+    display: cen;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    font-size: 0.9em; /* Tamanho da fonte */
+    font-size: 0.9em; /* Diminuindo ainda mais o tamanho da fonte */
     overflow: hidden; /* Para evitar transbordamento */
     text-overflow: ellipsis; /* Adiciona '...' se o texto for muito longo */
     white-space: nowrap; /* Impede que o texto quebre em várias linhas */
