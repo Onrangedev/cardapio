@@ -18,10 +18,16 @@ body {
     overflow: hidden;
 }
 
+/* Contêiner dos Dias */
+.dias-wrapper {
+    display: flex; /* Alinha os blocos em linha */
+    gap: 20px; /* Espaçamento entre os blocos */
+}
+
 /* Blocos do Carrossel */
 .dia-container {
-    min-width: 100%; /* Faz com que cada bloco cubra a tela inteira */
-    height: 100%; /* Cobre a altura do carrossel */
+    width: 250px; /* Aumentando a largura dos blocos */
+    height: 400px; /* Altura dos blocos */
     padding: 20px;
     background-color: #33353a;
     border-radius: 20px;
@@ -29,19 +35,20 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease-in-out;
-    opacity: 1;
-    position: relative;
-    flex-shrink: 0;
 }
+
 /* Dia da Semana */
 .dia-semana {
     background: linear-gradient(to right, #ff3300, #ff6600);
-    padding: 20px;
-    border-radius: 20px;
-    font-size: 1.5em; /* Aumenta a fonte para dispositivos móveis */
+    padding: 20px; /* Ajustando o padding */
+    border-radius:px;
+    font-size: 1em; /* Diminuindo o tamanho da fonte */
     color: white;
     font-family: 'Lexend Peta', sans-serif;
     margin-bottom: 10px;
+    overflow: hidden; /* Para evitar transbordamento */
+    text-overflow: ellipsis; /* Adiciona '...' se o texto for muito longo */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
 }
 
 /* Conteúdo */
@@ -49,10 +56,13 @@ body {
     background-color: #3a3a3a;
     padding: 10px;
     border-radius: 10px;
-    flex: 1;
-    display: flex;
+    flex: 1; /* Usando flex: 1 para ocupar o espaço disponível */
+    display: flex; /* Corrigido para 'flex' */
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    font-size: 1.2em; /* Ajustado para manter proporcionalidade */
+    font-size: 0.9em; /* Tamanho da fonte */
+    overflow: hidden; /* Para evitar transbordamento */
+    text-overflow: ellipsis; /* Adiciona '...' se o texto for muito longo */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
 }
