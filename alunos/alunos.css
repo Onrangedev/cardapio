@@ -20,14 +20,17 @@ body {
 
 /* Contêiner dos Dias */
 .dias-wrapper {
-    display: flex; /* Alinha os blocos em linha */
+    display: flex;
     gap: 20px; /* Espaçamento entre os blocos */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Para que os blocos possam quebrar em linha em dispositivos menores */
 }
 
 /* Blocos do Carrossel */
 .dia-container {
-    width: 250px; /* Aumentando a largura dos blocos */
-    height: 400px; /* Altura dos blocos */
+    width: 250px;
+    height: 400px;
     padding: 20px;
     background-color: #33353a;
     border-radius: 20px;
@@ -40,15 +43,15 @@ body {
 /* Dia da Semana */
 .dia-semana {
     background: linear-gradient(to right, #ff3300, #ff6600);
-    padding: 20px; /* Ajustando o padding */
+    padding: 20px;
     border-radius: 10px;
-    font-size: 1em; /* Diminuindo o tamanho da fonte */
+    font-size: 1em;
     color: white;
     font-family: 'Lexend Peta', sans-serif;
     margin-bottom: 10px;
-    overflow: hidden; /* Para evitar transbordamento */
-    text-overflow: ellipsis; /* Adiciona '...' se o texto for muito longo */
-    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* Conteúdo */
@@ -57,12 +60,92 @@ body {
     padding: 10px;
     border-radius: 10px;
     flex: 1;
-    display: cen;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    font-size: 0.9em; /* Diminuindo ainda mais o tamanho da fonte */
-    overflow: hidden; /* Para evitar transbordamento */
-    text-overflow: ellipsis; /* Adiciona '...' se o texto for muito longo */
-    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Botão de configuração */
+.botao-config {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.botao-config svg {
+    width: 30px;
+    height: auto;
+    fill: #fff;
+}
+
+/* Contêiner da logo */
+.logo-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.logo-container svg {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Alinha os elementos na vertical */
+        justify-content: flex-start; /* Centraliza no topo */
+        height: auto; /* Permite a rolagem no mobile */
+        padding: 20px;
+        margin-top: 40px; /* Espaço no topo para dispositivos móveis */
+    }
+
+    /* Dias em coluna no mobile */
+    .dias-wrapper {
+        flex-direction: column; /* Empilha os blocos em uma coluna no mobile */
+        gap: 10px; /* Menor espaço entre os blocos */
+        align-items: center; /* Centraliza os blocos no mobile */
+    }
+
+    /* Mantendo o tamanho original, apenas ajustando o layout */
+    .dia-container {
+        width: 100%; /* O bloco ocupará toda a largura no mobile */
+        max-width: 350px; /* Limite de largura */
+        height: auto; /* Altura automática para se ajustar ao conteúdo */
+        padding: 20px;
+    }
+
+    /* Ajustando o tamanho da fonte para melhor visualização no mobile */
+    .dia-semana {
+        font-size: 1.2em; /* Mantém o texto visível em dispositivos móveis */
+        padding: 15px;
+    }
+
+    .conteudo {
+        font-size: 1em; /* Fonte adequada para leitura no mobile */
+        padding: 10px;
+    }
+
+    /* Ajustes no botão de configuração */
+    .botao-config svg {
+        width: 25px; /* Botão um pouco menor no mobile */
+    }
+
+    /* Logo um pouco menor */
+    .logo-container {
+        width: 40px; /* Logo menor no mobile */
+        height: 40px;
+    }
 }
