@@ -9,6 +9,8 @@ html {
     /* background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); */
     /* background-color: var(--bg-color); */
     /* overflow: center; */
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 body {
@@ -40,6 +42,8 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow-x: scroll;
+    overflow-y: auto;
 }
 
 .my-card {
