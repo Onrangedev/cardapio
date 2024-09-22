@@ -21,7 +21,7 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 15px;
 }
 
 .header h2 {
@@ -31,45 +31,15 @@
 
 .header .container-btn {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
 .btn-atualizar {
     margin-bottom: 20px;
 }
 
-/* .menu-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-} */
-
-/* .menu-hoje {
-    display: none;
-    width: 560px;
-    background-color: var(--pg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-    margin: auto;
-    margin-bottom: 30px;
-} */
-
-/* .menu-hoje h3 {
-    background-color: var(--green);
-    color: #fff;
-    padding: 10px;
-    margin: 0;
-    border-radius: 8px;
-} */
-
 .menu-dia {
-    /* width: 250px; */
     background-color: var(--pg-color);
-    /* border: .1rem solid var(--border-color); */
-    /* border-radius: 8px; */
-    /* padding: 20px; */
 }
 
 .menu-dia h3 {
@@ -112,8 +82,9 @@
 }
 
 .navigation .nav-point {
-    width: 16px;
-    height: 8px;
+    transition: .3s;
+    width: 10px;
+    height: 10px;
     background-color: white;
     border-radius: 12px;
     cursor: pointer;
@@ -121,6 +92,7 @@
 
 .navigation .nav-active {
     background-color: var(--orange);
+    width: 26px;
 }
 
 .container-frase {
