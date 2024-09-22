@@ -12,14 +12,6 @@
     <title>On-range</title>
 </head>
 <body>
-    <div class="navigation">
-        <div class="nav-point" data-day="1"></div>
-        <div class="nav-point" data-day="2"></div>
-        <div class="nav-point" data-day="3"></div>
-        <div class="nav-point" data-day="4"></div>
-        <div class="nav-point" data-day="5"></div>
-    </div>
-    
     <!-- Banner de instalação do app -->
     <div id="installBanner">
         <span>Instale nosso app!</span>
@@ -39,7 +31,7 @@
 
     <div class="card-carousel" aria-label="Carousel de Cartões">
 
-        <div class="my-card" tabindex="0" aria-label="Cartão 1">
+        <div class="my-card" data-day="1" tabindex="0" aria-label="Cartão 1">
             <div class="menu-dia">
                 <h3>Segunda-feira</h3>
                 <div class="meal">
@@ -50,7 +42,7 @@
             </div>
         </div>
 
-        <div class="my-card" tabindex="0" aria-label="Cartão 2">
+        <div class="my-card" data-day="2" tabindex="0" aria-label="Cartão 2">
             <div class="menu-dia">
                 <h3>Terça-feira</h3>
                 <div class="meal">
@@ -65,7 +57,7 @@
             </div>
         </div>
 
-        <div class="my-card" tabindex="0" aria-label="Cartão 3">
+        <div class="my-card" data-day="3" tabindex="0" aria-label="Cartão 3">
             <div class="menu-dia">
                 <h3>Quarta-feira</h3>
                 <div class="meal">
@@ -80,7 +72,7 @@
             </div>
         </div>
 
-        <div class="my-card" tabindex="0" aria-label="Cartão 4">
+        <div class="my-card" data-day="4" tabindex="0" aria-label="Cartão 4">
             <div class="menu-dia">
                 <h3>Quinta-feira</h3>
                 <div class="meal">
@@ -95,7 +87,7 @@
             </div>
         </div>
 
-        <div class="my-card" tabindex="0" aria-label="Cartão 5">
+        <div class="my-card" data-day="5" tabindex="0" aria-label="Cartão 5">
             <div class="menu-dia">
                 <h3>Sexta-feira</h3>
                 <div class="meal">
@@ -111,7 +103,14 @@
         </div>
         
     </div>
-    
+
+    <div class="navigation">
+        <div class="nav-point" data-day="1"></div>
+        <div class="nav-point" data-day="2"></div>
+        <div class="nav-point" data-day="3"></div>
+        <div class="nav-point" data-day="4"></div>
+        <div class="nav-point" data-day="5"></div>
+    </div>
 
     <!-- Exibi quando foi a última alteração no servidor -->
     <!-- <div class="container-ultima-alteracao">

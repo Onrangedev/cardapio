@@ -105,6 +105,24 @@
     height: 22px;
 }
 
+.navigation {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.navigation .nav-point {
+    width: 16px;
+    height: 8px;
+    background-color: white;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.navigation .nav-active {
+    background-color: var(--orange);
+}
+
 .container-frase {
     position: absolute;
     top: 100vh;

@@ -93,5 +93,19 @@ $(document).ready(function() {
         // Calcula o deslocamento para centralizar o cartão ativo
         const offset = $activeCard.index() * cardWidth - (carouselWidth / 2) + (cardWidth / 2);
         $carousel.stop(true, true).animate({ left: -offset }, 300);
+        
+        updateNavPoit($activeCard[0].dataset.day);
+    }
+
+    function updateNavPoit(num) {
+        if (document.querySelector('.nav-active')) {
+            document.querySelector('.nav-active').classList.remove('nav-active');
+        }
+
+        document.querySelectorAll('.nav-point').forEach((point) => {
+            if (point.dataset.day == num) {
+                point.classList.add('nav-active');
+            }
+        });
     }
 });
