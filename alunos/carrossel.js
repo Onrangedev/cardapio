@@ -22,6 +22,13 @@ $(document).ready(function() {
         handleCardClick($(this));
     });
 
+    // Agurada evento de clique em nav-point
+    document.querySelectorAll('.nav-point').forEach((point) => {
+        point.addEventListener('click', () => {
+            handleCardClick($('.my-card:nth-child(' + point.dataset.day + ')'))
+        });
+    });
+
     // Suporte a gestos de toque
     let startX, isDragging = false;
 
