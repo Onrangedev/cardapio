@@ -1,41 +1,34 @@
 $(document).ready(function() {
     const $num = $('.my-card').length;
-    const $even = $num / 2;
-    const $odd = ($num + 1) / 2;
-
     const date = new Date();
-    
 
-    // Inicializa o cartão ativo
-    // if ($num % 2 == 0) {
-    //     $('.my-card:nth-child(' + $even + ')').addClass('active');
-    // } else {
-    //     $('.my-card:nth-child(' + $odd + ')').addClass('active');
-    // }
-
-    if (numDia()) {
-        $('.my-card:nth-child(' + numDia() +')').addClass('active');
-        $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].style.background = 'var(--green)';
-        $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].textContent = 'HOJE';
-        handleCardClick($('.my-card:nth-child(' + numDia() +')'));
+    // Verifica o dia da semana e inicializa o cartão ativo
+    const currentDay = numDia();
+    if (currentDay) {
+        const $currentCard = $('.my-card:nth-child(' + currentDay + ')');
+        $currentCard.addClass('active');
+        $currentCard.find('.merenda').css('background', 'var(--green)').text('HOJE');
+        handleCardClick($currentCard);
     } else {
-        $('.my-card:nth-child(1)').addClass('active');
-        handleCardClick($('.my-card:nth-child(1)'));
+        const $firstCard = $('.my-card:nth-child(1)');
+        $firstCard.addClass('active');
+        handleCardClick($firstCard);
     }
 
     updateCarousel();
 
+    // Click event nos cartões
     $('.my-card').click(function() {
         handleCardClick($(this));
     });
 
-    // Touch support
+    // Suporte a gestos de toque
     let startX, isDragging = false;
 
     $('.card-carousel').on('touchstart', function(event) {
         startX = event.changedTouches[0].screenX;
-        isDragging = true; // Inicia o arrasto
-        event.preventDefault(); // Impede scroll da página
+        isDragging = true;
+        event.preventDefault();
     });
 
     $('.card-carousel').on('touchmove', function(event) {
@@ -45,59 +38,60 @@ $(document).ready(function() {
 
             if (Math.abs(diff) > 50) { // Detecta a direção do arrasto
                 if (diff > 0) {
-                    $('.active').next().trigger('click'); // Arrastando para a esquerda
+                    $('.active').next().trigger('click'); // Arrasto para a esquerda
                 } else {
-                    $('.active').prev().trigger('click'); // Arrastando para a direita
+                    $('.active').prev().trigger('click'); // Arrasto para a direita
                 }
-                isDragging = false; // Finaliza o arrasto
+                isDragging = false;
             }
-            event.preventDefault(); // Impede scroll da página durante o arrasto
+            event.preventDefault();
         }
     });
 
-    $('.card-carousel').on('touchend', function(event) {
-        isDragging = false; // Finaliza o arrasto ao soltar
+    $('.card-carousel').on('touchend', function() {
+        isDragging = false;
     });
 
-    // Keyboard nav
+    // Suporte ao teclado
     $('html body').keydown(function(e) {
         if (e.keyCode == 37) {
-            $('.active').prev().trigger('click');
+            $('.active').prev().trigger('click'); // Seta esquerda
         } else if (e.keyCode == 39) {
-            $('.active').next().trigger('click');
+            $('.active').next().trigger('click'); // Seta direita
         }
     });
 
+    // Função que retorna o número do dia útil (1-5) ou null se for fim de semana
     function numDia() {
-        if (date.getDay() !== 0 && date.getDay() !== 7) {
-            return date.getDay();
-        } else {
-            return null;
-        }
+        const day = date.getDay();
+        return day >= 1 && day <= 5 ? day : null;
     }
 
+    // Lida com o clique no cartão
     function handleCardClick(card) {
-        const $slide = $('.active').width();
         const $carousel = $('.card-carousel');
 
+        // Remove classes 'prev', 'active' e 'next' de todos os cartões
         card.removeClass('prev next');
         card.siblings().removeClass('prev active next');
 
+        // Define o cartão clicado como ativo
         card.addClass('active');
         card.prev().addClass('prev');
-        card.next().addClass('next');     
+        card.next().addClass('next');
 
         updateCarousel();
     }
 
+    // Atualiza a posição do carrossel para centralizar o cartão ativo
     function updateCarousel() {
         const $activeCard = $('.active');
         const $carousel = $('.card-carousel');
         const carouselWidth = $carousel.width();
         const cardWidth = $activeCard.width();
-        
-        // Calcula o novo deslocamento para centralizar o cartão ativo
+
+        // Calcula o deslocamento para centralizar o cartão ativo
         const offset = $activeCard.index() * cardWidth - (carouselWidth / 2) + (cardWidth / 2);
-        $carousel.stop(true, true).animate({ left: -offset }, 300); // Ajuste do tempo conforme desejado
+        $carousel.stop(true, true).animate({ left: -offset }, 300);
     }
 });
