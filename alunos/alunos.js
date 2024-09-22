@@ -18,7 +18,7 @@ let tokenClient;
 let gapiInited = false;
 let gisInited = false;
 
-document.querySelector('.container-ultima-alteracao').style.display = 'none';
+// document.querySelector('.container-ultima-alteracao').style.display = 'none';
 
 let cardapio = [];
 
@@ -105,7 +105,7 @@ function imprimirDados(range) {
     });
 
     imprimirMenuDoDia(range);
-    imprimirUltimaModificacao(range);
+    // imprimirUltimaModificacao(range);
 }
 
 // Imprimi o menu do dia
@@ -152,18 +152,40 @@ function foraDoAr() {
     document.querySelector('.menu-hoje').style.display = 'none';
 }
 
-// Altera o zoom na página
-function carregarZoom(valor) {
-    if (valor < 0.50 || valor > 3) return;
-    document.body.style.zoom = valor;
-}
-
 // Carrega tema escuro
 if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
 
 // Carrega o zoom salvo em local storage
-if (localStorage.getItem('cardapio-escala')) carregarZoom(localStorage.getItem('cardapio-escala'));
 if (localStorage.getItem('cardapio-escala')) document.body.style.zoom = localStorage.getItem('cardapio-escala');
 
 let deferredPrompt;
 
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    showInstallBanner();
+});
+
+// Aguarda o app estar instalado para retirar o banner
+window.addEventListener('appinstalled', () => hideInstallBanner());
+
+// Mostra o banner de instalação
+function showInstallBanner() {
+    const installBanner = document.getElementById('installBanner');
+    installBanner.style.display = 'block';
+}
+
+// Oculta o banner de instalação
+function hideInstallBanner() {
+    const installBanner = document.getElementById('installBanner');
+    installBanner.style.display = 'none';
+}
+
+// Aguarda o click no botão de instalação do banner
+document.getElementById('installButton').addEventListener('click', async () => {
+    hideInstallBanner();
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt = null;
+    }
+});

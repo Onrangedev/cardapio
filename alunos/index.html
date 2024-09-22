@@ -2,94 +2,121 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@400;700&display=swap">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@400;700&display=swap"> -->
+    <link rel="stylesheet" href="alunos.css">
+    <link rel="stylesheet" href="carrossel.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sem Carrossel</title>
-    <link rel="stylesheet" href="alunos.css"> <!-- Certifique-se de que este arquivo CSS contém os ajustes responsivos -->
+    <title>On-range</title>
 </head>
 <body>
-    <div class="logo-container">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-        width="1080" height="1080" viewBox="0 0 1080 1080"
-        preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(0.000000,1080.000000) scale(0.100000,-0.100000)"
-            fill="#000000" stroke="none">
-            <!-- Aqui você pode adicionar o conteúdo do SVG -->
-            </g>
-        </svg>
+    <!-- Banner de instalação do app -->
+    <div id="installBanner">
+        <span>Instale nosso app!</span>
+        <button id="installButton" class="btns">Instalar</button>
     </div>
 
-    <a href="../configuracao/index.html" class="botao-config">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 16 16">
-            <path d="m 7.5 1.019531 c -0.550781 0 -0.996094 0.445313 -0.996094 0.996094 v 0.453125 c -0.472656 0.128906 -0.929687 0.320312 -1.355468 0.566406 l -0.324219 -0.324218 c -0.390625 -0.390626 -1.019531 -0.390626 -1.410157 0 l -0.703124 0.707031 c -0.390626 0.390625 -0.390626 1.019531 0 1.410156 l 0.320312 0.320313 c -0.246094 0.425781 -0.433594 0.882812 -0.5625 1.355468 h -0.453125 c -0.550781 0 -0.996094 0.445313 -0.996094 0.996094 v 1 c 0 0.550781 0.445313 0.996094 0.996094 0.996094 h 0.449219 c 0.132812 0.472656 0.320312 0.929687 0.566406 1.355468 l -0.320312 0.320313 c -0.390626 0.390625 -0.390626 1.019531 0 1.410156 l 0.703124 0.707031 c 0.390626 0.390626 1.019532 0.390626 1.410157 0 l 0.320312 -0.320312 c 0.429688 0.242188 0.882813 0.433594 1.359375 0.558594 v 0.457031 c 0 0.550781 0.445313 0.996094 0.996094 0.996094 h 0.996094 c 0.554687 0 1 -0.445313 1 -0.996094 v -0.453125 c 0.472656 -0.128906 0.929687 -0.320312 1.355468 -0.566406 l 0.320313 0.324218 c 0.390625 0.390626 1.019531 0.390626 1.410156 0 l 0.707031 -0.707031 c 0.390626 -0.390625 0.390626 -1.019531 0 -1.410156 l -0.320312 -0.320313 c 0.242188 -0.425781 0.433594 -0.882812 0.558594 -1.355468 h 0.453125 c 0.554687 0 1 -0.445313 1 -0.996094 v -1 c 0 -0.550781 -0.445313 -0.996094 -1 -0.996094 h -0.449219 c -0.128906 -0.472656 -0.320312 -0.929687 -0.566406 -1.355468 l 0.324218 -0.320313 c 0.390626 -0.390625 0.390626 -1.019531 0 -1.410156 l -0.707031 -0.707031 c -0.390625 -0.390626 -1.019531 -0.390626 -1.410156 0 l -0.320313 0.320312 c -0.425781 -0.242188 -0.882812 -0.429688 -1.355468 -0.558594 v -0.457031 c 0 -0.550781 -0.445313 -0.996094 -1 -0.996094 z m 0.515625 3.976563 c 1.660156 0 3 1.34375 3 3 s -1.339844 3 -3 3 c -1.65625 0 -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 z m 0 0" fill="#fff"/>
-        </svg>
-    </a>
-
-    <div class="dias-wrapper">
-        <div class="dia-container">
-            <div class="dia-semana">Segunda-feira</div>
-            <div class="conteudo">
-                <h2>Lanche:</h2>
-                <p>Vazio</p>
-            </div>
-            <div class="conteudo">
-                <h2>Almoço:</h2>
-                <p>Vazio</p>
-            </div>
-        </div>
-        <div class="dia-container">
-            <div class="dia-semana">Terça-feira</div>
-            <div class="conteudo">
-                <h2>Lanche:</h2>
-                <p>Vazio</p>
-            </div>
-            <div class="conteudo">
-                <h2>Almoço:</h2>
-                <p>Vazio</p>
-            </div>
-        </div>
-        <div class="dia-container">
-            <div class="dia-semana">Quarta-feira</div>
-            <div class="conteudo">
-                <h2>Lanche:</h2>
-                <p>Vazio</p>
-            </div>
-            <div class="conteudo">
-                <h2>Almoço:</h2>
-                <p>Vazio</p>
-            </div>
-        </div>
-        <div class="dia-container">
-            <div class="dia-semana">Quinta-feira</div>
-            <div class="conteudo">
-                <h2>Lanche:</h2>
-                <p>Vazio</p>
-            </div>
-            <div class="conteudo">
-                <h2>Almoço:</h2>
-                <p>Vazio</p>
-            </div>
-        </div>
-        <div class="dia-container">
-            <div class="dia-semana">Sexta-feira</div>
-            <div class="conteudo">
-                <h2>Lanche:</h2>
-                <p>Vazio</p>
-            </div>
-            <div class="conteudo">
-                <h2>Almoço:</h2>
-                <p>Vazio</p>
+    <div class="header">
+        <h2 class="title">On-range</h2>
+        <div class="container-btn">
+            <button class="btn-atualizar btns">Atualizar</button>
+            <div class="botao-configuracao btns">
+                <img src="../icon/settings.svg" alt="settings">
             </div>
         </div>
     </div>
-    
-    <footer>
-        <!-- Rodapé -->
-    </footer>
+    <!-- <h3><strong>📢 Versão experimental (Beta)</strong></h3> -->
 
+    <div class="card-carousel" aria-label="Carousel de Cartões">
+
+        <div class="my-card" tabindex="0" aria-label="Cartão 1">
+            <div class="menu-dia">
+                <h3>Segunda-feira</h3>
+                <div class="meal">
+                    <strong class="merenda">Merenda</strong> <span id="segundaMerenda">Pão com Quijo + suco</span>
+                    <strong class="almoco">Almoço</strong> <span id="segundaAlmoco">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, dolores.</span>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="my-card" tabindex="0" aria-label="Cartão 2">
+            <div class="menu-dia">
+                <h3>Terça-feira</h3>
+                <div class="meal">
+                    <strong class="merenda">Merenda</strong> <span id="tercaMerenda"></span>
+                    <strong class="almoco">Almoço</strong> <span id="tercaAlmoco"></span><br>
+                </div>
+                <!-- Tela de carregamento -->
+                <div id="loading-screen" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-card" tabindex="0" aria-label="Cartão 3">
+            <div class="menu-dia">
+                <h3>Quarta-feira</h3>
+                <div class="meal">
+                    <strong class="merenda">Merenda</strong> <span id="quartaMerenda"></span>
+                    <strong class="almoco">Almoço</strong> <span id="quartaAlmoco"></span><br>
+                </div>
+                <!-- Tela de carregamento -->
+                <div id="loading-screen" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-card" tabindex="0" aria-label="Cartão 4">
+            <div class="menu-dia">
+                <h3>Quinta-feira</h3>
+                <div class="meal">
+                    <strong class="merenda">Merenda</strong> <span id="quintaMerenda"></span>
+                    <strong class="almoco">Almoço</strong> <span id="quintaAlmoco"></span><br>
+                </div>
+                <!-- Tela de carregamento -->
+                <div id="loading-screen" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-card" tabindex="0" aria-label="Cartão 5">
+            <div class="menu-dia">
+                <h3>Sexta-feira</h3>
+                <div class="meal">
+                    <strong class="merenda">Merenda</strong> <span id="sextaMerenda"></span>
+                    <strong class="almoco">Almoço</strong> <span id="sextaAlmoco"></span><br>
+                </div>
+                <!-- Tela de carregamento -->
+                <div id="loading-screen" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Carregando...</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Exibi quando foi a última alteração no servidor -->
+    <!-- <div class="container-ultima-alteracao">
+        <p>Útima alteração: <span class="dia-ultima-alteracao">**/**/****</span></p>
+    </div> -->
+
+    <!-- Exibi frases sobre a importância da alimentação -->
+    <div class="container-frase">
+        <p class="frase"></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+    <script src="carrossel.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script src="alunos.js"></script>
 </body>
 </html>

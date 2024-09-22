@@ -1,151 +1,136 @@
-/* Estilos Globais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none; /* Impede a seleção de texto em todo o documento */
-}
+@import url('../root.css');
 
-/* Corpo da Página */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1f24;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-}
-
-/* Contêiner dos Dias */
-.dias-wrapper {
-    display: flex;
-    gap: 20px; /* Espaçamento entre os blocos */
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; /* Para que os blocos possam quebrar em linha em dispositivos menores */
-}
-
-/* Blocos do Carrossel */
-.dia-container {
-    width: 250px;
-    height: 400px;
-    padding: 20px;
-    background-color: #33353a;
-    border-radius: 20px;
+#installBanner {
+    display: none;
+    background-color: var(--pg-color);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: bold;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Dia da Semana */
-.dia-semana {
-    background: linear-gradient(to right, #ff3300, #ff6600);
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 1em;
-    color: white;
-    font-family: 'Lexend Peta', sans-serif;
-    margin-bottom: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Conteúdo */
-.conteudo {
-    background-color: #3a3a3a;
-    padding: 10px;
-    border-radius: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.9em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Botão de configuração */
-.botao-config {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.botao-config svg {
-    width: 30px;
-    height: auto;
-    fill: #fff;
-}
-
-/* Contêiner da logo */
-.logo-container {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-}
-
-.logo-container svg {
+    padding: 6px;
     width: 100%;
-    height: auto;
 }
 
-/* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column; /* Alinha os elementos na vertical */
-        justify-content: flex-start; /* Centraliza no topo */
-        height: auto; /* Permite a rolagem no mobile */
-        padding: 20px;
-        margin-top: 40px; /* Espaço no topo para dispositivos móveis */
-    }
+#installButton {
+    margin-left: 10px;
+}
 
-    /* Dias em coluna no mobile */
-    .dias-wrapper {
-        flex-direction: column; /* Empilha os blocos em uma coluna no mobile */
-        gap: 10px; /* Menor espaço entre os blocos */
-        align-items: center; /* Centraliza os blocos no mobile */
-    }
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
 
-    /* Mantendo o tamanho original, apenas ajustando o layout */
-    .dia-container {
-        width: 100%; /* O bloco ocupará toda a largura no mobile */
-        max-width: 350px; /* Limite de largura */
-        height: auto; /* Altura automática para se ajustar ao conteúdo */
-        padding: 20px;
-    }
+.header h2 {
+    color: var(--orange);
+    margin: 0 0 0 10px;
+}
 
-    /* Ajustando o tamanho da fonte para melhor visualização no mobile */
-    .dia-semana {
-        font-size: 1.2em; /* Mantém o texto visível em dispositivos móveis */
-        padding: 15px;
-    }
+.header .container-btn {
+    display: flex;
+    gap: 5px;
+}
 
-    .conteudo {
-        font-size: 1em; /* Fonte adequada para leitura no mobile */
-        padding: 10px;
-    }
+.btn-atualizar {
+    margin-bottom: 20px;
+}
 
-    /* Ajustes no botão de configuração */
-    .botao-config svg {
-        width: 25px; /* Botão um pouco menor no mobile */
-    }
+/* .menu-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+} */
 
-    /* Logo um pouco menor */
-    .logo-container {
-        width: 40px; /* Logo menor no mobile */
-        height: 40px;
-    }
+/* .menu-hoje {
+    display: none;
+    width: 560px;
+    background-color: var(--pg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 30px;
+} */
+
+/* .menu-hoje h3 {
+    background-color: var(--green);
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    border-radius: 8px;
+} */
+
+.menu-dia {
+    /* width: 250px; */
+    background-color: var(--pg-color);
+    /* border: .1rem solid var(--border-color); */
+    /* border-radius: 8px; */
+    /* padding: 20px; */
+}
+
+.menu-dia h3 {
+    background-image: linear-gradient(to right, var(--orange-light) 0%, var(--orange-dark) 100%);
+    padding: 15px 0;
+    margin: 15px;
+    font-size: 24px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.meal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 0;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.botao-configuracao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px 0 0;
+    width: 2px;
+    height: 22px;
+}
+
+.container-frase {
+    position: absolute;
+    top: 100vh;
+    transform: translateY(-100%);
+}
+
+.frase {
+    cursor: pointer;
+}
+
+/* .container-ultima-alteracao {
+    position: absolute;
+    top: 100vh;
+    transform: translateY(-100%);
+} */
+
+#loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--blue);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

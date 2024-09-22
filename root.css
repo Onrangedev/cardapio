@@ -5,6 +5,9 @@
     --blue-light: #9ba8ab;
     --blue-dark: #253745;
     --green: #00b809;
+    --orange-light: #ff7c36;
+    --orange-dark: #883000;
+    --orange: #ff6600;
     --color-text: #000;
     --bg-color: #fff;
     --pg-color: #ebebeb;
@@ -12,14 +15,14 @@
 }
 
 .tema-escuro {
-    --bg-color: #06141b;
-    --pg-color: #11212d;
+    --bg-color: #1a1f24;
+    --pg-color: #33353a;
     --color-text: #fff;
     --border-color: #ffffff33;
 }
 
 .btns {
-    background-color: var(--blue);
+    background-color: var(--orange);
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
@@ -30,11 +33,11 @@
 }
 
 .btns:hover {
-    background-color: var(--blue-light);
+    background-color: var(--orange-light);
 }
 
 .btns:active {
-    background-color: var(--blue-dark);
+    background-color: var(--orange-dark);
 }
 
 body {
@@ -46,4 +49,5 @@ body {
     padding: 0;
     user-select: none;
     font-size: 18px;
+    /* height: 100vh; */
 }
