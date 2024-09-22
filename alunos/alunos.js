@@ -36,6 +36,11 @@ imprimiFrase();
 // Aguarda o evento de clique para trocar a frase
 document.querySelector('.frase').addEventListener('click', () => imprimiFrase());
 
+document.querySelector('.title').addEventListener('click', () => {
+    const kiamSound = new Audio('../icon/kiam-sound.mp3');
+    kiamSound.play();
+});
+
 // Aguarda o evento de clique para atualizar os dados manualmente
 document.querySelector('.btn-atualizar').addEventListener('click', () => {
     document.querySelector('.btn-atualizar').style.display = 'none';
