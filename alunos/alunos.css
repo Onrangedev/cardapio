@@ -89,6 +89,11 @@
     padding: 10px;
 }
 
+.meal strong {
+    font-family: "League Spartan", sans-serif;
+    color: var(--orange);
+}
+
 .botao-configuracao {
     display: flex;
     justify-content: center;
