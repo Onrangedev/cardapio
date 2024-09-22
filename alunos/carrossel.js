@@ -17,8 +17,10 @@ $(document).ready(function() {
         $('.my-card:nth-child(' + numDia() +')').addClass('active');
         $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].style.background = 'var(--green)';
         $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].textContent = 'HOJE';
+        handleCardClick($('.my-card:nth-child(' + numDia() +')'));
     } else {
         $('.my-card:nth-child(1)').addClass('active');
+        handleCardClick($('.my-card:nth-child(1)'));
     }
 
     updateCarousel();
