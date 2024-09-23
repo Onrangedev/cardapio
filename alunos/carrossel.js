@@ -1,18 +1,15 @@
 $(document).ready(function() {
-    const $num = $('.my-card').length;
+    // const $num = $('.my-card').length;
     const date = new Date();
 
-    // Verifica o dia da semana e inicializa o cartão ativo
-    const currentDay = numDia();
-    if (currentDay) {
-        const $currentCard = $('.my-card:nth-child(' + currentDay + ')');
-        $currentCard.addClass('active');
-        $currentCard.find('.merenda').css('background', 'var(--green)').text('HOJE');
-        handleCardClick($currentCard);
+    if (numDia()) {
+        $('.my-card:nth-child(' + numDia() +')').addClass('active');
+        $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].style.background = 'var(--green)';
+        $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].textContent = 'HOJE';
+        handleCardClick($('.my-card:nth-child(' + numDia() +')'));
     } else {
-        const $firstCard = $('.my-card:nth-child(1)');
-        $firstCard.addClass('active');
-        handleCardClick($firstCard);
+        $('.my-card:nth-child(1)').addClass('active');
+        handleCardClick($('.my-card:nth-child(1)'));
     }
 
     updateCarousel();
