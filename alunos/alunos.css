@@ -15,6 +15,7 @@
 }
 
 .header {
+    display: none;
     position: none;
     top: 0;
     display: flex;
