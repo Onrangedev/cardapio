@@ -26,14 +26,15 @@ checkboxTheme.addEventListener('change', () => {
 if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
 
 // Carrega o zoom salvo em local storage
-if (localStorage.getItem('cardapio-escala')) alterarZoom(localStorage.getItem('cardapio-escala'));
+// if (localStorage.getItem('cardapio-escala')) alterarZoom(localStorage.getItem('cardapio-escala'));
 
 // Aguarda evento de clique no botão de adicionar escala para aumentar a escala
-document.querySelector('.btn-adicionar-escala').addEventListener('click', () => alterarZoom((Number(document.querySelector('.valor-escala').textContent) + 10) / 100));
+// document.querySelector('.btn-adicionar-escala').addEventListener('click', () => alterarZoom((Number(document.querySelector('.valor-escala').textContent) + 10) / 100));
 // Aguarda evento de clique no botão de reduzir escala para diminuir a escala
-document.querySelector('.btn-reduzir-escala').addEventListener('click', () => alterarZoom((Number(document.querySelector('.valor-escala').textContent) - 10) / 100));
+// document.querySelector('.btn-reduzir-escala').addEventListener('click', () => alterarZoom((Number(document.querySelector('.valor-escala').textContent) - 10) / 100));
+
 // Aguarda evento de clique no valor da escala para retornar ao padrão
-document.querySelector('.valor-escala').addEventListener('click', () => alterarZoom(1));
+// document.querySelector('.valor-escala').addEventListener('click', () => alterarZoom(1));
 
 // Aguarda evento de clique no botão de voltar para voltar a ppagina inicial
 document.querySelector('.back-home').addEventListener('click', () => location.href = '../alunos/index.html');
