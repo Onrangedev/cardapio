@@ -15,7 +15,7 @@
 }
 
 .header {
-    position: absolute;
+    position: none;
     top: 0;
     display: flex;
     justify-content: space-between;
