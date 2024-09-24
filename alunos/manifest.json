@@ -1,6 +1,6 @@
 {
-  "name": "Cardápio Online",
-  "short_name": "Cardápio",
+  "name": "Onrange",
+  "short_name": "Onrange",
   "description": "Acesse o cardápio de forma rápida e prática.",
   "start_url": "/cardapio/alunos",
   "display": "standalone",
