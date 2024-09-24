@@ -17,19 +17,19 @@
   ],
   "icons": [
     {
-      "src": "/cardapio/icon/icon-192x192.png",
+      "src": "/cardapio/assets/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/cardapio/icon/icon-512x512.png",
+      "src": "/cardapio/assets/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "screenshots": [
     {
-      "src": "/cardapio/icon/screenshot.png",
+      "src": "/cardapio/assets/screenshot.png",
       "type": "image/png",
       "sizes": "671x1279"
     }
