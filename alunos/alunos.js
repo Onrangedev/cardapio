@@ -23,8 +23,8 @@ let gisInited = false;
 let cardapio = [];
 
 // Recupera os dados salvos no local storage
-const dadosSalvos = localStorage.getItem('cardapio');
-if (dadosSalvos) cardapio = JSON.parse(dadosSalvos);
+// const dadosSalvos = localStorage.getItem('cardapio');
+// if (dadosSalvos) cardapio = JSON.parse(dadosSalvos);
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
@@ -50,17 +50,12 @@ document.querySelector('.title').addEventListener('click', () => {
     }, 5000);
 });
 
-// Aguarda o evento de clique para atualizar os dados manualmente
-document.querySelector('.btn-atualizar').addEventListener('click', () => {
-    document.querySelector('.btn-atualizar').style.display = 'none';
-    requisitarDados();
-});
-
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
-    if (cardapio && new Date().getDay() === cardapio.dia) {
-        imprimirDados(cardapio.menu);
-    } else requisitarDados();
+    // if (cardapio && new Date().getDay() === cardapio.dia) {
+    //     imprimirDados(cardapio.menu);
+    // }
+    requisitarDados();
 }
 
 // Chama a função para fazer requisição dos dados e exibi tela de load
@@ -101,7 +96,7 @@ async function listMajors() {
         }
 
         imprimirDados(range);
-        localStorage.setItem('cardapio', JSON.stringify({ 'dia': new Date().getDay(), 'menu': range }));
+        // localStorage.setItem('cardapio', JSON.stringify({ 'dia': new Date().getDay(), 'menu': range }));
 
         document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
         document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
