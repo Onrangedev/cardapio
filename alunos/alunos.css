@@ -19,7 +19,7 @@
     top: 0;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 98%;
     margin-bottom: 20px;
     padding: 15px;
 }
@@ -70,7 +70,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 10px 0 0;
     width: 2px;
     height: 22px;
 }
