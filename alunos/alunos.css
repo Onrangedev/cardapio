@@ -84,7 +84,7 @@
     transition: .3s;
     width: 10px;
     height: 10px;
-    background-color: white;
+    background-color: #bbb;
     border-radius: 12px;
     cursor: pointer;
 }
