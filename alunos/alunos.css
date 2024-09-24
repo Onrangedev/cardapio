@@ -9,10 +9,11 @@
     top: 0;
     display: flex;
     justify-content: space-between;
-    width: 98%;
+    width: 100%;
     margin-bottom: 20px;
     padding: 15px;
     border-bottom: 1px solid var(--border-color);
+    background-color: #1a1f24;
 }
 
 .header h2 {
@@ -63,6 +64,7 @@
     align-items: center;
     width: 2px;
     height: 22px;
+    margin-right: 10px;
 }
 
 .navigation {
