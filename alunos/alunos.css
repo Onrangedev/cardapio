@@ -1,17 +1,7 @@
 @import url('../root.css');
 
-#installBanner {
-    display: none;
-    background-color: var(--pg-color);
-    border-bottom: 1px solid var(--border-color);
-    font-weight: bold;
-    text-align: center;
-    padding: 6px;
-    width: 100%;
-}
-
 #installButton {
-    margin-left: 10px;
+    display: none;
 }
 
 .header {

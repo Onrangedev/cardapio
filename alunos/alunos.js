@@ -180,13 +180,13 @@ window.addEventListener('appinstalled', () => hideInstallBanner());
 
 // Mostra o banner de instalação
 function showInstallBanner() {
-    const installBanner = document.getElementById('installBanner');
+    const installBanner = document.getElementById('installButton');
     installBanner.style.display = 'block';
 }
 
 // Oculta o banner de instalação
 function hideInstallBanner() {
-    const installBanner = document.getElementById('installBanner');
+    const installBanner = document.getElementById('installButton');
     installBanner.style.display = 'none';
 }
 
