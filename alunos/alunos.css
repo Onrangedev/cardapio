@@ -13,7 +13,7 @@
     margin-bottom: 20px;
     padding: 5px;
     border-bottom: 1px solid var(--border-color);
-    background-color: #1a1f24;
+    background-color: var(--header);
 }
 
 .header h2 {
