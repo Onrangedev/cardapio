@@ -58,7 +58,8 @@
     color: var(--orange);
 }
 
-.botao-configuracao {
+div.botao-configuracao {
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
