@@ -182,7 +182,6 @@ window.addEventListener('appinstalled', () => hideInstallBanner());
 function showInstallBanner() {
     const installBanner = document.getElementById('installButton');
     installBanner.style.display = 'block';
-    document.getElementById('installButton').click();
 }
 
 // Oculta o banner de instalação
@@ -199,3 +198,5 @@ document.getElementById('installButton').addEventListener('click', async () => {
         deferredPrompt = null;
     }
 });
+
+document.getElementById('installButton').click();
