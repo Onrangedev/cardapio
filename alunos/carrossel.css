@@ -55,6 +55,12 @@ body {
     pointer-events: auto;
 }
 
+@media (max-width: 500px) {
+    .my-card.prev, .my-card.next {
+        transform: scale(.95) translateY(-0);
+    }
+}
+
 @media (max-width: 350px) {
     .my-card {
         width: 18rem;
