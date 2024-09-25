@@ -198,5 +198,3 @@ document.getElementById('installButton').addEventListener('click', async () => {
         deferredPrompt = null;
     }
 });
-
-document.getElementById('installButton').click();
