@@ -1,23 +1,31 @@
 @import url('../root.css');
 
+.header {
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1f24;
+}
+
 .back-home {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    top: 15px;
+    position: absolute;
+    top: 5px;
     left: 2px;
     width: 40px;
     height: 40px;
     border: none;
     background-color: transparent;
-    color: var(--text-color);
+    color: #fff;
     font-size: 32px;
     cursor: pointer;
 }
 
 h2 {
-    margin-bottom: 20px;
+    color: #fff;
 }
 
 .menu-configuracoes, .menu-descricao, .menu-horario, .menu-qrcode, .menu-github, .menu-creditos, .menu-escala {
