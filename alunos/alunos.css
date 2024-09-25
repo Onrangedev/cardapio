@@ -19,6 +19,8 @@
 .header h2 {
     color: var(--orange);
     margin: 0 0 0 10px;
+    display: flex;
+    align-items: center;
 }
 
 .header .container-btn {
