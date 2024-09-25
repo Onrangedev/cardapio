@@ -36,18 +36,8 @@ imprimiFrase();
 // Aguarda o evento de clique para trocar a frase
 document.querySelector('.frase').addEventListener('click', () => imprimiFrase());
 
-let isplaying = false;
-
 document.querySelector('.title').addEventListener('click', () => {
-    if (!isplaying) {
-        const kiamSound = new Audio('../assets/kiam-sound.mp3');
-        kiamSound.play();
-        isplaying = true;
-    }
-
-    setTimeout(function() {
-        isplaying = false;
-    }, 5000);
+    playMusic();
 });
 
 // Callback após o carregamento do api.js.
@@ -159,6 +149,16 @@ function foraDoAr() {
 
     document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'none');
     document.querySelector('.menu-hoje').style.display = 'none';
+}
+
+let isplaying = false;
+
+function playMusic() {
+    if (!isplaying) {
+        const kiamSound = new Audio('../assets/kiam-sound.mp3');
+        kiamSound.play();
+        isplaying = true;
+    }
 }
 
 // Carrega tema escuro
