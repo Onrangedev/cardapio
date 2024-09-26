@@ -44,6 +44,7 @@
 }
 
 body {
+    -webkit-tap-highlight-color: transparent;
     font-family: "Ubuntu", sans-serif;
     background-color: var(--bg-color);
     color: var(--color-text);
