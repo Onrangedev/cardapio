@@ -29,7 +29,7 @@ h2 {
     color: #fff;
 }
 
-.menu-configuracoes, .menu-descricao, .menu-horario, .menu-qrcode, .menu-github, .menu-creditos, .menu-escala {
+.menu-configuracoes, .menu-descricao, .menu-horario, .menu-qrcode, .menu-creditos, .menu-escala {
     display: flex;
     flex-direction: column;
     justify-content: center;
