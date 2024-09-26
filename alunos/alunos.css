@@ -76,6 +76,10 @@ div.botao-configuracao {
     margin-right: 10px;
 }
 
+div.botao-configuracao:hover, div.botao-configuracao:active {
+    background-color: transparent;
+}
+
 .navigation {
     display: flex;
     gap: 8px;
