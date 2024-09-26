@@ -168,7 +168,7 @@ function playMusic() {
 
 function bannerForChrome() {
     Swal.fire({
-        title: "Abrir no Google Chrome",
+        title: "Abrir no Google Chrome!",
         html: `
             <img width="200px" src="../assets/chrome.svg" alt="chrome">
             <h3>Para instalar o App Onrange é necessário que você utilize o navegador Google Chrome!</h3>
@@ -178,6 +178,30 @@ function bannerForChrome() {
         focusConfirm: false,
         cancelButtonText: 'Continuar no usando no navegador atual',
         confirmButtonText: 'Abrir o Google Chrome',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "googlechrome://eierick.github.io/cardapio/alunos";
+            navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
+        }
+    });
+}
+
+function bannerForInstall() {
+    Swal.fire({
+        title: "Instale o nosso App!",
+        html: `
+            <img width="200px" src="../assets/icon-512x512.png" alt="Onrange">
+            <h3>Faça a instalação do App e facilite o acesso ao cardápio de forma online!</h3>
+        `,
+        showCloseButton: false,
+        showCancelButton: true,
+        focusConfirm: false,
+        cancelButtonText: 'Continuar no usando no navegador.',
+        confirmButtonText: 'Instalar App!',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            installApp();
+        }
     });
 }
 
@@ -195,13 +219,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 // Verifica se o app está instalado para mostrar ou retirar o banner
-if (!window.matchMedia('(display-mode: standalone)').matches) {
+if (!window.matchMedia('(display-mode: standalone)').matches || !window.navigator.standalone) {
     showBtnInstall();
-}
-
-// Verifica se o app está instalado para mostrar ou retirar o banner no IOS
-if (window.navigator.standalone) {
-    showBtnInstall();
+    bannerForInstall();
 }
 
 // Mostra o banner de instalação
@@ -216,8 +236,7 @@ function hideInstallBanner() {
     installBanner.style.display = 'none';
 }
 
-// Aguarda o click no botão de instalação do banner
-document.getElementById('installButton').addEventListener('click', async () => {
+function installApp() {
     if (navigator.userAgent.includes("Chrome")) {
         hideInstallBanner();
         if (deferredPrompt) {
@@ -225,7 +244,11 @@ document.getElementById('installButton').addEventListener('click', async () => {
             deferredPrompt = null;
         }
     } else {
-        if (confirm = window.confirm('Para instalar o app você precisa usar o Google Chrome. Deseja abrir o Chrome?')) window.location.href = "googlechrome://eierick.github.io/cardapio/alunos";
-        navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
+        bannerForChrome();
     }
+}
+
+// Aguarda o click no botão de instalação do banner
+document.getElementById('installButton').addEventListener('click', async () => {
+    installApp();
 });
