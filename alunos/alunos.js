@@ -166,6 +166,21 @@ function playMusic() {
     }
 }
 
+function bannerForChrome() {
+    Swal.fire({
+        title: "Abrir no Google Chrome",
+        html: `
+            <img width="200px" src="../assets/chrome.svg" alt="chrome">
+            <h3>Para instalar o App Onrange é necessário que você utilize o navegador Google Chrome!</h3>
+        `,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        cancelButtonText: 'Continuar no usando no navegador atual',
+        confirmButtonText: 'Abrir o Google Chrome',
+    });
+}
+
 // Carrega tema escuro
 if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
 
@@ -181,16 +196,16 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 // Verifica se o app está instalado para mostrar ou retirar o banner
 if (!window.matchMedia('(display-mode: standalone)').matches) {
-    showInstallBanner();
+    showBtnInstall();
 }
 
 // Verifica se o app está instalado para mostrar ou retirar o banner no IOS
 if (window.navigator.standalone) {
-    showInstallBanner();
+    showBtnInstall();
 }
 
 // Mostra o banner de instalação
-function showInstallBanner() {
+function showBtnInstall() {
     const installBanner = document.getElementById('installButton');
     installBanner.style.display = 'block';
 }
