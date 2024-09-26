@@ -40,6 +40,11 @@ document.querySelector('.title').addEventListener('click', () => {
     playMusic();
 });
 
+// Se a página foi carregada do cache, forçamos o recarregamento para evitar bugs
+window.addEventListener('pageshow', function (event) {
+    if (event.persisted) window.location.reload();
+});
+
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     // if (cardapio && new Date().getDay() === cardapio.dia) {
