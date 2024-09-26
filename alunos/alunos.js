@@ -169,11 +169,7 @@ if (localStorage.getItem('cardapio-escala')) document.body.style.zoom = localSto
 
 let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    showInstallBanner();
-});
+showInstallBanner();
 
 // Aguarda o app estar instalado para retirar o banner
 window.addEventListener('appinstalled', () => hideInstallBanner());
@@ -192,9 +188,15 @@ function hideInstallBanner() {
 
 // Aguarda o click no botão de instalação do banner
 document.getElementById('installButton').addEventListener('click', async () => {
-    hideInstallBanner();
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt = null;
+    if (navigator.userAgent.includes("Chrome")) {
+        hideInstallBanner();
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt = null;
+        }
+    } else {
+        if (confirm = window.confirm('Para instalar o app você precisa usar o Google Chrome. Deseja abrir o Chrome?')) {
+            location.href = 'googlechrome://eiErick.github.io/cardapio/alunos';
+        }
     }
 });
