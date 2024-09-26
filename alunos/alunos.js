@@ -169,10 +169,12 @@ if (localStorage.getItem('cardapio-escala')) document.body.style.zoom = localSto
 
 let deferredPrompt;
 
-showInstallBanner();
-
-// Aguarda o app estar instalado para retirar o banner
-window.addEventListener('appinstalled', () => hideInstallBanner());
+// Verifica se o app está instalado para mostrar ou retirar o banner
+if (window.location.protocol === 'https:') {
+    hideInstallBanner();
+} else {
+    showInstallBanner();
+}
 
 // Mostra o banner de instalação
 function showInstallBanner() {
