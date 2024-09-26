@@ -219,7 +219,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 // Verifica se o app está instalado para mostrar ou retirar o banner
-if (!window.matchMedia('(display-mode: standalone)').matches || !window.navigator.standalone) {
+if (!window.matchMedia('(display-mode: standalone)').matches) {
     showBtnInstall();
     bannerForInstall();
 }
