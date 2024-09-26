@@ -175,9 +175,12 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 // Verifica se o app está instalado para mostrar ou retirar o banner
-if (window.location.protocol === 'https:') {
-    hideInstallBanner();
-} else {
+if (!window.matchMedia('(display-mode: standalone)').matches) {
+    showInstallBanner();
+}
+
+// Verifica se o app está instalado para mostrar ou retirar o banner no IOS
+if (window.navigator.standalone) {
     showInstallBanner();
 }
 
