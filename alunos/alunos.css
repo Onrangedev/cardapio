@@ -132,7 +132,14 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
     animation: spin 2s linear infinite;
 }
 
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+@media (max-height: 550px) {
+    .container-frase {
+        display: none;
+    }
 }
