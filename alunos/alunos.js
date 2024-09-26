@@ -211,5 +211,6 @@ document.getElementById('installButton').addEventListener('click', async () => {
         }
     } else {
         if (confirm = window.confirm('Para instalar o app você precisa usar o Google Chrome. Deseja abrir o Chrome?')) window.location.href = "googlechrome://eierick.github.io/cardapio/alunos";
+        navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
     }
 });
