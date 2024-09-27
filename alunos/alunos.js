@@ -167,6 +167,9 @@ function playMusic() {
 }
 
 function bannerForChrome() {
+    document.querySelector('.card-carousel').style.opacity = '0';
+    document.querySelector('.header').style.opacity = '0';
+
     Swal.fire({
         title: "Abrir no Google Chrome!",
         html: `
@@ -183,25 +186,9 @@ function bannerForChrome() {
             window.location.href = "googlechrome://eierick.github.io/cardapio/alunos";
             navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
         }
-    });
-}
 
-function bannerForInstall() {
-    Swal.fire({
-        title: "Instale o nosso App!",
-        html: `
-            <img width="200px" src="../assets/icon-512x512.png" alt="Onrange">
-            <h3>Faça a instalação do App e facilite o acesso ao cardápio de forma online!</h3>
-        `,
-        showCloseButton: false,
-        showCancelButton: true,
-        focusConfirm: false,
-        cancelButtonText: 'Continuar no usando no navegador.',
-        confirmButtonText: 'Instalar App!',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            installApp();
-        }
+        document.querySelector('.card-carousel').style.opacity = '1';
+        document.querySelector('.header').style.opacity = '1';
     });
 }
 
@@ -221,7 +208,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 // Verifica se o app está instalado para mostrar ou retirar o banner
 if (!window.matchMedia('(display-mode: standalone)').matches) {
     showBtnInstall();
-    bannerForInstall();
 }
 
 // Mostra o banner de instalação
