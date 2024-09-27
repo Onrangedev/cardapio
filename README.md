@@ -2,7 +2,7 @@
 
 Projeto do carpadio oline!
 
-![Logo](https://eierick.github.io/cardapio/assets/icon-512x512.png)
+![Logo](https://eierick.github.io/cardapio/assets/icon-x512.png)
 
 ## Screenshot
 
