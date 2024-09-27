@@ -107,6 +107,9 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
 }
 
 .frase {
+    background-color: var(--pg-color);
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
