@@ -192,8 +192,20 @@ function bannerForChrome() {
     });
 }
 
-// Carrega tema escuro
-if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
+// Carrega o tema
+const savedTheme = localStorage.getItem('cardapio-theme');
+
+if (savedTheme) {
+    if (savedTheme === 'auto') {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.add('light');
+        }
+    } else {
+        document.documentElement.classList.add(savedTheme);
+    }
+}
 
 // Carrega o zoom salvo em local storage
 if (localStorage.getItem('cardapio-escala')) document.body.style.zoom = localStorage.getItem('cardapio-escala');

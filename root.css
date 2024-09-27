@@ -17,8 +17,15 @@
     --border-color: #00000033;
 }
 
-.tema-escuro {
+.dark {
     --bg-color: #1a1f24;
+    --pg-color: #33353a;
+    --color-text: #fff;
+    --border-color: #ffffff33;
+}
+
+.full-dark {
+    --bg-color: #000000;
     --pg-color: #33353a;
     --color-text: #fff;
     --border-color: #ffffff33;

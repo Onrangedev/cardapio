@@ -8,22 +8,29 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-const checkboxTheme = document.querySelector('.checkbox-theme');
+const themeSelect = document.querySelector('.theme');
+const savedTheme = localStorage.getItem('cardapio-theme');
 
-// Obtem os dados salvos em local storage
-if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') {
-    checkboxTheme.checked = true;
-    document.documentElement.classList.add('tema-escuro');
+// Obtem os dados salvos em local storage e carrega o tema
+if (savedTheme) {
+    themeSelect.value = savedTheme;
+    
+    if (savedTheme === 'auto') {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.add('light');
+        }
+    } else {
+        document.documentElement.classList.add(savedTheme);
+    }
 }
 
 // Aguarda mudança no swith para alterar o tema
-checkboxTheme.addEventListener('change', () => {
-    localStorage.setItem('cardapio-dark-mode', checkboxTheme.checked);
+themeSelect.addEventListener('change', () => {
+    localStorage.setItem('cardapio-theme', themeSelect.value);
     location.reload();
 });
-
-// Carrega tema escuro
-if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio-dark-mode') === 'true') document.documentElement.classList.add('tema-escuro');
 
 // Carrega o zoom salvo em local storage
 // if (localStorage.getItem('cardapio-escala')) alterarZoom(localStorage.getItem('cardapio-escala'));
