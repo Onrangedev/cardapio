@@ -199,10 +199,12 @@ if (localStorage.getItem('cardapio-dark-mode') && localStorage.getItem('cardapio
 if (localStorage.getItem('cardapio-escala')) document.body.style.zoom = localStorage.getItem('cardapio-escala');
 
 let deferredPrompt;
+let AllowsPwa = false;
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
+    AllowsPwa = true;
 });
 
 // Verifica se o app está instalado para mostrar ou retirar o banner
@@ -216,15 +218,8 @@ function showBtnInstall() {
     installBanner.style.display = 'block';
 }
 
-// Oculta o banner de instalação
-function hideInstallBanner() {
-    const installBanner = document.getElementById('installButton');
-    installBanner.style.display = 'none';
-}
-
 function installApp() {
-    if (navigator.userAgent.includes("Chrome")) {
-        hideInstallBanner();
+    if (AllowsPwa) {
         if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt = null;
