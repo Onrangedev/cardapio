@@ -52,7 +52,7 @@ $(document).ready(function() {
                     }
                 } else {
                     $('.active').prev().trigger('click'); // Arrasto para a direita
-                    
+
                     if ($('.active')[0].dataset.day === `${numDia()}`) {
                         $('.today')[0].style.opacity = '1';
                     } else {
@@ -93,8 +93,7 @@ $(document).ready(function() {
     // Função que retorna o número do dia útil (1-5) ou null se for fim de semana
     function numDia() {
         const day = date.getDay();
-        // return day >= 1 && day <= 5 ? day : null;
-        return 1;
+        return day >= 1 && day <= 5 ? day : null;
     }
 
     // Lida com o clique no cartão
