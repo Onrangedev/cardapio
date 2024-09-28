@@ -50,13 +50,12 @@ document.querySelector('.back-home').addEventListener('click', () => location.hr
 document.querySelector('.btn-compartilhar').addEventListener('click', async (e) => {
     try {
         await navigator.share({
-            title: 'Cardápio Online',
-            text: 'Acesse o cardápio escolar de forma simples e digital!',
+            title: 'Onrange',
+            text: 'Acesse o cardápio da escola de forma simples, rápida e digital!',
             url: 'https://eierick.github.io/cardapio/alunos/',
         });
     } catch (err) {
         navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
-
         e.target.innerText = 'Link Copiado!';
         setTimeout(() => {
             e.target.innerText = 'Compartilhar';
