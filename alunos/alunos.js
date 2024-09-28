@@ -192,6 +192,12 @@ if (savedTheme) {
     } else {
         document.documentElement.classList.add(savedTheme);
     }
+} else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.add('light');
+    }
 }
 
 let deferredPrompt;
