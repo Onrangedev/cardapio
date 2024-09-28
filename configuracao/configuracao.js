@@ -63,14 +63,6 @@ document.querySelector('.btn-compartilhar').addEventListener('click', async (e) 
     }
 });
 
-// Altera o zoom na página
-function alterarZoom(valor) {
-    if (valor < 0.50 || valor > 3) return;
-    document.body.style.zoom = valor;
-    localStorage.setItem('cardapio-escala', valor);
-    exibirZoom(valor);
-}
-
 // Exibi o valor de zoom no elemento '.valor-escala'
 function exibirZoom(valor) {
     document.querySelector('.valor-escala').textContent = parseInt(valor*100);
