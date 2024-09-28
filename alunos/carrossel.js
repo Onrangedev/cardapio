@@ -4,7 +4,8 @@ $(document).ready(function() {
 
     if (numDia()) {
         $('.my-card:nth-child(' + numDia() +')').addClass('active');
-        $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].style.background = 'var(--green)';
+        $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].style.background = 'var(--green)'; 
+        $('.today')[0].textContent = $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].textContent;
         $('.my-card:nth-child(' + numDia() +')')[0].childNodes[1].childNodes[1].textContent = 'HOJE';
         handleCardClick($('.my-card:nth-child(' + numDia() +')'));
     } else {
@@ -43,8 +44,20 @@ $(document).ready(function() {
             if (Math.abs(diff) > 50) { // Detecta a direção do arrasto
                 if (diff > 0) {
                     $('.active').next().trigger('click'); // Arrasto para a esquerda
+                    
+                    if ($('.active')[0].dataset.day === `${numDia()}`) {
+                        $('.today')[0].style.opacity = '1';
+                    } else {
+                        $('.today')[0].style.opacity = '0';
+                    }
                 } else {
                     $('.active').prev().trigger('click'); // Arrasto para a direita
+                    
+                    if ($('.active')[0].dataset.day === `${numDia()}`) {
+                        $('.today')[0].style.opacity = '1';
+                    } else {
+                        $('.today')[0].style.opacity = '0';
+                    }
                 }
                 isDragging = false;
             }
@@ -60,15 +73,28 @@ $(document).ready(function() {
     $('html body').keydown(function(e) {
         if (e.keyCode == 37) {
             $('.active').prev().trigger('click'); // Seta esquerda
+
+            if ($('.active')[0].dataset.day === `${numDia()}`) {
+                $('.today')[0].style.opacity = '1';
+            } else {
+                $('.today')[0].style.opacity = '0';
+            }
         } else if (e.keyCode == 39) {
             $('.active').next().trigger('click'); // Seta direita
+
+            if ($('.active')[0].dataset.day === `${numDia()}`) {
+                $('.today')[0].style.opacity = '1';
+            } else {
+                $('.today')[0].style.opacity = '0';
+            }
         }
     });
 
     // Função que retorna o número do dia útil (1-5) ou null se for fim de semana
     function numDia() {
         const day = date.getDay();
-        return day >= 1 && day <= 5 ? day : null;
+        // return day >= 1 && day <= 5 ? day : null;
+        return 1;
     }
 
     // Lida com o clique no cartão
@@ -83,6 +109,12 @@ $(document).ready(function() {
         card.addClass('active');
         card.prev().addClass('prev');
         card.next().addClass('next');
+
+        if (card[0].dataset.day === `${numDia()}`) {
+            $('.today')[0].style.opacity = '1';
+        } else {
+            $('.today')[0].style.opacity = '0';
+        }
 
         updateCarousel();
     }

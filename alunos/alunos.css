@@ -32,6 +32,10 @@
     margin-bottom: 20px;
 }
 
+.today {
+    transition: .3s;
+}
+
 .menu-dia {
     border-radius: 16px;
     display: flex;
@@ -141,7 +145,7 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
     100% { transform: rotate(360deg); }
 }
 
-@media (max-height: 550px) {
+@media (max-height: 650px) {
     .container-frase {
         display: none;
     }
