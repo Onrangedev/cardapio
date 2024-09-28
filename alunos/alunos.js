@@ -1,13 +1,3 @@
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/cardapio/alunos/pwabuilder-sw.js').then((registration) => {
-            console.log('Service Worker registrado com sucesso:', registration);
-        }).catch((error) => {
-            console.log('Falha ao registrar o Service Worker:', error);
-        });
-    });
-}
-
 const API_KEY = 'AIzaSyAEOb_1iv4NXFeV7OQph2FW5UpqCUiGMcc';
 const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
