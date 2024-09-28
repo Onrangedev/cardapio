@@ -10,11 +10,11 @@ if ('serviceWorker' in navigator) {
 
 const themeSelect = document.querySelector('.theme');
 const savedTheme = localStorage.getItem('cardapio-theme');
+const ultimaAlteracao = localStorage.getItem('cardapio-ultima-alteracao');
 
 // Obtem os dados salvos em local storage e carrega o tema
 if (savedTheme) {
     themeSelect.value = savedTheme;
-    
     if (savedTheme === 'auto') {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
@@ -24,6 +24,13 @@ if (savedTheme) {
     } else {
         document.documentElement.classList.add(savedTheme);
     }
+}
+
+document.querySelector('.menu-ultima-alteracao').style.display = 'none';
+
+if (ultimaAlteracao) {
+    document.querySelector('.menu-ultima-alteracao').style.display = 'block';
+    document.querySelector('.dia-ultima-alteracao').textContent = ultimaAlteracao;
 }
 
 // Aguarda mudança no swith para alterar o tema

@@ -18,13 +18,7 @@ let tokenClient;
 let gapiInited = false;
 let gisInited = false;
 
-// document.querySelector('.container-ultima-alteracao').style.display = 'none';
-
 let cardapio = [];
-
-// Recupera os dados salvos no local storage
-// const dadosSalvos = localStorage.getItem('cardapio');
-// if (dadosSalvos) cardapio = JSON.parse(dadosSalvos);
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
@@ -36,9 +30,8 @@ imprimiFrase();
 // Aguarda o evento de clique para trocar a frase
 document.querySelector('.frase').addEventListener('click', () => imprimiFrase());
 
-document.querySelector('.title').addEventListener('click', () => {
-    playMusic();
-});
+// Aguarda clique no nome onrange para tocar música
+document.querySelector('.title').addEventListener('click', () => playMusic());
 
 // Se a página foi carregada do cache, forçamos o recarregamento para evitar bugs
 window.addEventListener('pageshow', function (event) {
@@ -47,9 +40,6 @@ window.addEventListener('pageshow', function (event) {
 
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
-    // if (cardapio && new Date().getDay() === cardapio.dia) {
-    //     imprimirDados(cardapio.menu);
-    // }
     requisitarDados();
 }
 
@@ -84,7 +74,7 @@ async function listMajors() {
         const status = range.values[0][4];
         const isManutencao = status === 'Manutenção';
         const isAlunosPage = location.href.includes('/cardapio/alunos/');
-        
+                
         if (status !== 'Ativo' || (isManutencao && isAlunosPage)) {
             foraDoAr();
             return;
@@ -109,7 +99,7 @@ function imprimirDados(range) {
     });
 
     imprimirMenuDoDia(range);
-    // imprimirUltimaModificacao(range);
+    gravarUltimaAlteracao(range);
 }
 
 // Imprimi o menu do dia
@@ -130,10 +120,9 @@ function imprimirMenuDoDia(range) {
     document.querySelector('.menu-hoje').style.display = 'block';
 }
 
-// Imprimi quando foi a última alteração no google sheets
-function imprimirUltimaModificacao(range) {
-    document.querySelector('.container-ultima-alteracao').style.display = 'block';
-    document.querySelector('.dia-ultima-alteracao').textContent = range.values[0][3];
+// Gava quando foi a última alteração no google sheets
+function gravarUltimaAlteracao(range) {
+    localStorage.setItem('cardapio-ultima-alteracao', range.values[0][3]);
 }
 
 // Escolhe e imprime uma frese aleatoriamente
