@@ -64,5 +64,12 @@ body {
 @media (max-width: 350px) {
     .my-card {
         width: 18rem;
+        height: 20rem;
+    }
+}
+
+@media (max-height: 600px) {
+    .my-card {
+        height: 20rem;
     }
 }

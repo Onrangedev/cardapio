@@ -139,7 +139,7 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
     100% { transform: rotate(360deg); }
 }
 
-@media (max-height: 650px) {
+@media (max-height: 530px) {
     .container-frase {
         display: none;
     }
