@@ -42,12 +42,16 @@ function requisitarDados() {
 
 // Callback após o cliente da API ser carregado. Carrega o discovery doc para inicializar a API.
 async function initializeGapiClient() {
-    await gapi.client.init({
-        apiKey: API_KEY,
-        discoveryDocs: [DISCOVERY_DOC],
-    });
-    gapiInited = true;
-    listMajors();
+    try {
+        await gapi.client.init({
+            apiKey: API_KEY,
+            discoveryDocs: [DISCOVERY_DOC],
+        });
+        gapiInited = true;
+        listMajors();
+    } catch (error) {
+        foraDoAr();
+    }
 }
 
 // Imprime a merenda e o lanche do dia. Spreadsheet: https://docs.google.com/spreadsheets/d/1X1p6laul5yRw330M1ROaP8F4T70asWE7IieVsT1Qb7c/edit
