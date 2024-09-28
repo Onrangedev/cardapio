@@ -74,15 +74,13 @@ async function listMajors() {
         const status = range.values[0][4];
         const isManutencao = status === 'Manutenção';
         const isAlunosPage = location.href.includes('/cardapio/alunos/');
-                
-        if (status !== 'Ativo' || (isManutencao && isAlunosPage)) {
+        
+        if (status !== 'Ativo' && (isManutencao && isAlunosPage)) {
             foraDoAr();
             return;
         }
 
         imprimirDados(range);
-        // localStorage.setItem('cardapio', JSON.stringify({ 'dia': new Date().getDay(), 'menu': range }));
-
         document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
         document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
     } catch (err) {
