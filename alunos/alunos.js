@@ -207,9 +207,6 @@ if (savedTheme) {
     }
 }
 
-// Carrega o zoom salvo em local storage
-if (localStorage.getItem('cardapio-escala')) document.body.style.zoom = localStorage.getItem('cardapio-escala');
-
 let deferredPrompt;
 let AllowsPwa = false;
 
