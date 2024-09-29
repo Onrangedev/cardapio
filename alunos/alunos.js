@@ -43,6 +43,7 @@ function gapiLoaded() {
             imprimirDados(cardapio);
             requisitarDados(telaCarregamento = false);
         } else {
+            imprimirDados(cardapio);
             foraDoAr();
         }
     } else {
