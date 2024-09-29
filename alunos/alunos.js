@@ -111,11 +111,7 @@ async function listMajors() {
 // Função para imprimir almoço e merenda de forma genérica
 function imprimirDados(range) {        
     dias.forEach((dia, index) => {
-        console.log(document.getElementById(`${dia}Almoco`).textContent);
-        console.log(range.values);
         document.getElementById(`${dia}Almoco`).textContent = range.values[index][2];
-        
-        
         document.getElementById(`${dia}Merenda`).textContent = range.values[index][1];
     });
 
