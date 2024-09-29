@@ -35,8 +35,12 @@ window.addEventListener('pageshow', function (event) {
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     if (cardapio) {
-        imprimirDados(cardapio);
-        requisitarDados(telaCarregamento = false);
+        if (navigator.onLine) {
+            imprimirDados(cardapio);
+            requisitarDados(telaCarregamento = false);
+        } else {
+            foraDoAr();
+        }
     } else {
         requisitarDados(telaCarregamento = true);
     }
@@ -84,6 +88,7 @@ async function listMajors() {
         
         if (status !== 'Ativo' && (isManutencao && isAlunosPage) || isDesligado) {
             foraDoAr();
+            
         } else {
             imprimirDados(range);
             salvarDados(range);
@@ -122,13 +127,15 @@ function imprimirMenuDoDia(range) {
         hojeMerenda.textContent = range.values[dia-1][1];
         hojeAlmoco.textContent = range.values[dia-1][2];
     }
-
-    document.querySelector('.menu-hoje').style.display = 'block';
 }
 
 // Atualiza os dados salvos no localstorage caso seja necessário
 function salvarDados(range) {
-    if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) localStorage.setItem('cardapio', JSON.stringify(range));
+    if (cardapio) {
+        if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) localStorage.setItem('cardapio', JSON.stringify(range));
+    } else {
+        localStorage.setItem('cardapio', JSON.stringify(range));
+    }
 }
 
 // Gava quando foi a última alteração no google sheets
