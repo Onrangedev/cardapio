@@ -139,6 +139,8 @@ function gravarUltimaAlteracao(range) {
 function imprimiFrase() {
     const num = Math.floor(Math.random() * (frases.length - 0) + 0);
     document.querySelector('.frase').textContent = `"${frases[num]}"`;
+    document.querySelector('.container-frase').style.opacity = 1;
+    document.querySelector('.container-frase').style.bottom = 0;
 }
 
 // Aguarda evento de clique para abrir menu de configurações

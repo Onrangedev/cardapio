@@ -105,8 +105,9 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
 }
 
 .container-frase {
+    transition: .2s;
+    opacity: 0;
     position: absolute;
-    bottom: 0;
     margin: 0 20px;
 }
 
