@@ -79,18 +79,18 @@ async function listMajors() {
 
         const status = range.values[0][4];
         const isManutencao = status === 'Manutenção';
+        const isDesligado = status === 'Desligado';
         const isAlunosPage = location.href.includes('/cardapio/alunos/');
         
-        if (status !== 'Ativo' && (isManutencao && isAlunosPage)) {
+        if (status !== 'Ativo' && (isManutencao && isAlunosPage) || isDesligado) {
             foraDoAr();
-            return;
+        } else {
+            imprimirDados(range);
+            salvarDados(range);
+
+            document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
         }
-
-        imprimirDados(range);
-        salvarDados(range);
-
-        document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
     } catch (err) {
         console.error(err.message);
         foraDoAr();
