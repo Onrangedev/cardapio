@@ -170,6 +170,8 @@ function playMusic() {
 function bannerForChrome() {
     document.querySelector('.card-carousel').style.opacity = '0';
     document.querySelector('.header').style.opacity = '0';
+    document.querySelector('.navigation').style.opacity = '0';
+    document.querySelector('.container-frase').style.opacity = '0';
 
     Swal.fire({
         title: "Abrir no Google Chrome!",
@@ -188,8 +190,12 @@ function bannerForChrome() {
             navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
         }
 
-        document.querySelector('.card-carousel').style.opacity = '1';
-        document.querySelector('.header').style.opacity = '1';
+        setTimeout(() => {
+            document.querySelector('.card-carousel').style.opacity = '1';
+            document.querySelector('.header').style.opacity = '1';
+            document.querySelector('.navigation').style.opacity = '1';
+            document.querySelector('.container-frase').style.opacity = '1';
+        }, 300);setTimeout
     });
 }
 
