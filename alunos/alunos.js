@@ -39,6 +39,7 @@ window.addEventListener('pageshow', function (event) {
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     if (cardapio) {
+        console.log('a');
         if (navigator.onLine) {
             imprimirDados(cardapio);
             requisitarDados(telaCarregamento = false);
@@ -122,10 +123,10 @@ function imprimirDados(range) {
 function salvarDados(range) {
     if (cardapio) {
         if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) {
-            localStorage.setItem('cardapio', JSON.stringify(range));
+            localStorage.setItem('cardapio-menu', JSON.stringify(range));
         }
     } else {
-        localStorage.setItem('cardapio', JSON.stringify(range));
+        localStorage.setItem('cardapio-menu', JSON.stringify(range));
     }
 }
 
