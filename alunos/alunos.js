@@ -39,14 +39,14 @@ window.addEventListener('pageshow', function (event) {
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     if (cardapio) {
-        console.log('a');
         if (navigator.onLine) {
             imprimirDados(cardapio);
             requisitarDados(telaCarregamento = false);
         } else {
             imprimirDados(cardapio);
-            foraDoAr();
         }
+    } else if (!navigator.onLine) {
+        foraDoAr();
     } else {
         requisitarDados(telaCarregamento = true);
     }
