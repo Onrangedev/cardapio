@@ -8,7 +8,11 @@ let tokenClient;
 let gapiInited = false;
 let gisInited = false;
 
-let cardapio = [];
+let cardapio;
+
+// Recupera os dados salvos no local storage
+const savedCardapio = localStorage.getItem('cardapio');
+if (savedCardapio) cardapio = JSON.parse(savedCardapio);
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
@@ -30,14 +34,22 @@ window.addEventListener('pageshow', function (event) {
 
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
-    requisitarDados();
+    if (cardapio) {
+        imprimirDados(cardapio);
+        requisitarDados(telaCarregamento = false);
+    } else {
+        requisitarDados(telaCarregamento = true);
+    }
 }
 
 // Chama a função para fazer requisição dos dados e exibi tela de load
-function requisitarDados() {
+function requisitarDados(telaCarregamento = true) {
     gapi.load('client', initializeGapiClient);
-    document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'flex');
-    document.querySelectorAll('.meal').forEach((meal) => meal.style.display = 'none');
+
+    if (telaCarregamento) {
+        document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'flex');
+        document.querySelectorAll('.meal').forEach((meal) => meal.style.display = 'none');
+    }
 }
 
 // Callback após o cliente da API ser carregado. Carrega o discovery doc para inicializar a API.
@@ -75,6 +87,8 @@ async function listMajors() {
         }
 
         imprimirDados(range);
+        salvarDados(range);
+
         document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
         document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
     } catch (err) {
@@ -84,7 +98,7 @@ async function listMajors() {
 }
 
 // Função para imprimir almoço e merenda de forma genérica
-function imprimirDados(range) {
+function imprimirDados(range) {        
     dias.forEach((dia, index) => {
         document.getElementById(`${dia}Almoco`).textContent = range.values[index][2];
         document.getElementById(`${dia}Merenda`).textContent = range.values[index][1];
@@ -110,6 +124,11 @@ function imprimirMenuDoDia(range) {
     }
 
     document.querySelector('.menu-hoje').style.display = 'block';
+}
+
+// Atualiza os dados salvos no localstorage caso seja necessário
+function salvarDados(range) {
+    if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) localStorage.setItem('cardapio', JSON.stringify(range));
 }
 
 // Gava quando foi a última alteração no google sheets
