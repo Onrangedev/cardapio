@@ -12,7 +12,9 @@ let cardapio;
 
 // Recupera os dados salvos no local storage
 const savedCardapio = localStorage.getItem('cardapio');
-if (savedCardapio) cardapio = JSON.parse(savedCardapio);
+if (savedCardapio){
+    cardapio = JSON.parse(savedCardapio);
+}
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 
@@ -29,7 +31,9 @@ document.querySelector('.title').addEventListener('click', () => playMusic());
 
 // Se a página foi carregada do cache, forçamos o recarregamento para evitar bugs
 window.addEventListener('pageshow', function (event) {
-    if (event.persisted) window.location.reload();
+    if (event.persisted)  {
+        window.location.reload();
+    }
 });
 
 // Callback após o carregamento do api.js.
@@ -79,7 +83,9 @@ async function listMajors() {
         });
 
         const range = response.result;
-        if (!range?.values?.length) throw new Error('Nenhum valor encontrado.');
+        if (!range?.values?.length) {
+            throw new Error('Nenhum valor encontrado.');
+        }
 
         const status = range.values[0][4];
         const isManutencao = status === 'Manutenção';
@@ -88,7 +94,6 @@ async function listMajors() {
         
         if (status !== 'Ativo' && (isManutencao && isAlunosPage) || isDesligado) {
             foraDoAr();
-            
         } else {
             imprimirDados(range);
             salvarDados(range);
@@ -109,30 +114,15 @@ function imprimirDados(range) {
         document.getElementById(`${dia}Merenda`).textContent = range.values[index][1];
     });
 
-    imprimirMenuDoDia(range);
     gravarUltimaAlteracao(range);
-}
-
-// Imprimi o menu do dia
-function imprimirMenuDoDia(range) {
-    const dia = new Date().getDay();
-
-    const hojeAlmoco = document.querySelector('#hojeAlmoco');
-    const hojeMerenda = document.querySelector('#hojeMerenda');
-
-    if (hojeAlmoco === null) return;
-    if (dia === 0 || dia === 6) {
-        hojeAlmoco.parentNode.textContent = 'Feriado';
-    } else {
-        hojeMerenda.textContent = range.values[dia-1][1];
-        hojeAlmoco.textContent = range.values[dia-1][2];
-    }
 }
 
 // Atualiza os dados salvos no localstorage caso seja necessário
 function salvarDados(range) {
     if (cardapio) {
-        if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) localStorage.setItem('cardapio', JSON.stringify(range));
+        if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) {
+            localStorage.setItem('cardapio', JSON.stringify(range));
+        }
     } else {
         localStorage.setItem('cardapio', JSON.stringify(range));
     }
@@ -252,6 +242,4 @@ function installApp() {
 }
 
 // Aguarda o click no botão de instalação do banner
-document.getElementById('installButton').addEventListener('click', async () => {
-    installApp();
-});
+document.getElementById('installButton').addEventListener('click', async () => installApp());
