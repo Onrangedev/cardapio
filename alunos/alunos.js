@@ -223,6 +223,18 @@ if (savedTheme) {
 let deferredPrompt;
 let AllowsPwa = false;
 
+// Detecta se o dispositivo está no iOS
+const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test( userAgent );
+}
+
+// Detects if device is in standalone mode
+const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone); // Verifica se deve exibir notificação popup de instalação:
+if (isIos() && !isInStandaloneMode()) {
+    this.setState({ showInstallMessage: true });
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
@@ -230,7 +242,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 // Verifica se o app está instalado para mostrar ou retirar o banner
-if (!window.matchMedia('(display-mode: standalone)').matches) {
+if (!window.matchMedia('(display-mode: standalone)').matches && !isIos()) {
     showBtnInstall();
 }
 
