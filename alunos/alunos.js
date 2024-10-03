@@ -137,10 +137,13 @@ function gravarUltimaAlteracao(range) {
 
 // Escolhe e imprime uma frese aleatoriamente
 function imprimiFrase() {
-    const num = Math.floor(Math.random() * (frases.length - 0) + 0);
-    document.querySelector('.frase').textContent = `"${frases[num]}"`;
-    document.querySelector('.container-frase').style.opacity = 1;
-    document.querySelector('.container-frase').style.bottom = 0;
+    if (localStorage.getItem('cardapio-frase') === 'false') {
+        return;
+    } else {
+        const num = Math.floor(Math.random() * (frases.length - 0) + 0);
+        document.querySelector('.frase').textContent = `"${frases[num]}"`;
+        document.querySelector('.container-frase').style.opacity = 1;
+    }
 }
 
 // Aguarda evento de clique para abrir menu de configurações

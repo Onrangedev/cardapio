@@ -11,6 +11,7 @@ if ('serviceWorker' in navigator) {
 const themeSelect = document.querySelector('.theme');
 const savedTheme = localStorage.getItem('cardapio-theme');
 const ultimaAlteracao = localStorage.getItem('cardapio-ultima-alteracao');
+const savedFrases = localStorage.getItem('cardapio-frase');
 
 // Obtem os dados salvos em local storage e carrega o tema
 if (savedTheme) {
@@ -30,6 +31,14 @@ if (savedTheme) {
     } else {
         document.documentElement.classList.add('light');
     }
+}
+
+document.querySelector('.checkbox-frase').addEventListener('change', () => {
+    localStorage.setItem('cardapio-frase', document.querySelector('.checkbox-frase').checked);
+});
+
+if (savedFrases) {
+    document.querySelector('.checkbox-frase').savedFrases;
 }
 
 document.querySelector('.menu-ultima-alteracao').style.display = 'none';
