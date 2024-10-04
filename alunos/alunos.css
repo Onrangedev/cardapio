@@ -101,6 +101,14 @@
     border-radius: 10px;
 }
 
+.fora-do-ar {
+    display: none;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
 div.botao-configuracao {
     background-color: transparent;
     display: flex;

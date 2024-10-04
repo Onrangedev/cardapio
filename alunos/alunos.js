@@ -9,11 +9,18 @@ let gapiInited = false;
 let gisInited = false;
 
 let cardapio;
+let isForaDoAr;
 
 // Recupera os dados salvos no local storage
 const savedCardapio = localStorage.getItem('cardapio-menu');
 if (savedCardapio){
     cardapio = JSON.parse(savedCardapio);
+}
+
+// Recuperar o dado de fora do ar
+const savedForaDoAr = localStorage.getItem('cardapio-fora-do-ar');
+if (savedForaDoAr) {
+    savedForaDoAr === 'true' ? isForaDoAr = true : isForaDoAr = false;
 }
 
 const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
@@ -44,7 +51,10 @@ window.addEventListener('pageshow', function (event) {
 // Callback após o carregamento do api.js.
 function gapiLoaded() {
     if (cardapio) {
-        if (navigator.onLine) {
+        if (navigator.onLine && isForaDoAr) {
+            foraDoAr();
+            requisitarDados(telaCarregamento = false);
+        } else if (navigator.onLine) {
             imprimirDados(cardapio);
             requisitarDados(telaCarregamento = false);
         } else {
@@ -111,6 +121,11 @@ async function listMajors() {
             document.querySelector('.load-title').style.display = 'none';
             document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
+            
+            if (isForaDoAr) {
+                localStorage.setItem('cardapio-fora-do-ar', false);
+                location.reload();
+            }
         }        
     } catch (err) {
         console.error(err.message);
@@ -162,11 +177,14 @@ document.querySelector('.botao-configuracao').addEventListener('click', () => lo
 function foraDoAr() {
     document.querySelectorAll('.meal').forEach((meal) => {
         meal.style.display = 'flex';
-        meal.textContent = 'Fora do Ar :/'
+        document.querySelector('.fora-do-ar').style.display = 'block';
+        document.querySelectorAll('.my-card').forEach((e) => e.style.display = 'none');
+        document.querySelector('.navigation').style.display = 'none';
     });
 
     document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'none');
     document.querySelector('.load-title').style.display = 'none';
+    localStorage.setItem('cardapio-fora-do-ar', true);
 }
 
 let isplaying = false;
