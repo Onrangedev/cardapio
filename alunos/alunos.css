@@ -75,6 +75,7 @@
 .meal button {
     border: 1px solid var(--orange);
     background-color: #ff660011;
+    color: var(--text-color);
     padding: 5px 10px;
 }
 
