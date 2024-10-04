@@ -23,13 +23,14 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .my-card {
     border-radius: 16px;
-    height: 24rem;
+    height: auto;
     width: 20rem;
     position: relative;
     z-index: 1;
@@ -64,12 +65,5 @@ body {
 @media (max-width: 350px) {
     .my-card {
         width: 18rem;
-        height: 20rem;
-    }
-}
-
-@media (max-height: 600px) {
-    .my-card {
-        height: 20rem;
     }
 }

@@ -29,6 +29,11 @@ document.querySelector('.frase').addEventListener('click', () => imprimiFrase())
 // Aguarda clique no nome onrange para tocar música
 document.querySelector('.title').addEventListener('click', () => playMusic());
 
+// Aguarda clique no botão de mostrar informações nutricionais
+document.querySelectorAll('.btn-nutritional-information').forEach((e) => {
+    e.addEventListener('click', () => bannerForNutritionalInformation(e.parentNode.dataset.day));
+});
+
 // Se a página foi carregada do cache, forçamos o recarregamento para evitar bugs
 window.addEventListener('pageshow', function (event) {
     if (event.persisted)  {
@@ -81,13 +86,15 @@ async function listMajors() {
     try {
         const response = await gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: '1X1p6laul5yRw330M1ROaP8F4T70asWE7IieVsT1Qb7c',
-            range: 'A2:E',
+            range: 'A2:J',
         });
 
         const range = response.result;
         if (!range?.values?.length) {
             throw new Error('Nenhum valor encontrado.');
         }
+
+        cardapio = range;
 
         const status = range.values[0][4];
         const isManutencao = status === 'Manutenção';
@@ -102,7 +109,7 @@ async function listMajors() {
 
             document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
-        }
+        }        
     } catch (err) {
         console.error(err.message);
         foraDoAr();
@@ -170,12 +177,24 @@ function playMusic() {
     }
 }
 
-function bannerForChrome() {
+function ocultarElementos() {
     document.querySelector('.card-carousel').style.opacity = '0';
     document.querySelector('.header').style.opacity = '0';
     document.querySelector('.navigation').style.opacity = '0';
     document.querySelector('.container-frase').style.opacity = '0';
+    document.querySelector('.today').style.opacity = '0';
+}
 
+function exibirElementos() {
+    document.querySelector('.card-carousel').style.opacity = '1';
+    document.querySelector('.header').style.opacity = '1';
+    document.querySelector('.navigation').style.opacity = '1';
+    document.querySelector('.container-frase').style.opacity = '1';
+    document.querySelector('.today').style.opacity = '1';
+}
+
+function bannerForChrome() {
+    ocultarElementos();
     Swal.fire({
         title: "Abrir no Google Chrome!",
         html: `
@@ -194,11 +213,29 @@ function bannerForChrome() {
         }
 
         setTimeout(() => {
-            document.querySelector('.card-carousel').style.opacity = '1';
-            document.querySelector('.header').style.opacity = '1';
-            document.querySelector('.navigation').style.opacity = '1';
-            document.querySelector('.container-frase').style.opacity = '1';
+            exibirElementos();
         }, 300);setTimeout
+    });
+}
+
+// Banner para exibição de informações nutricionais
+function bannerForNutritionalInformation(day) {
+    ocultarElementos();    
+    Swal.fire({
+        title: "Informações Nutricionais",
+        html: `
+            <h2>Merenda</h2>
+            <h3>Calorias: ${cardapio.values[day][7]}</h3>
+            <h3>Lactose: ${cardapio.values[day][9]}</h3>
+            <h2>Almoço</h2>
+            <h3>Calorias: ${cardapio.values[day][8]}</h3>
+            <h3>Lactose: ${cardapio.values[day][9]}</h3>
+        `,
+        showCloseButton: true,
+    }).then(() => {
+        setTimeout(() => {
+            exibirElementos();
+        }, 300);
     });
 }
 
