@@ -36,11 +36,6 @@ document.querySelector('.frase').addEventListener('click', () => imprimiFrase())
 // Aguarda clique no nome onrange para tocar música
 document.querySelector('.title').addEventListener('click', () => playMusic());
 
-// Aguarda clique no botão de mostrar informações nutricionais
-document.querySelectorAll('.btn-nutritional-information').forEach((e) => {
-    e.addEventListener('click', () => bannerForNutritionalInformation(e.parentNode.dataset.day));
-});
-
 // Se a página foi carregada do cache, forçamos o recarregamento para evitar bugs
 window.addEventListener('pageshow', function (event) {
     if (event.persisted)  {
