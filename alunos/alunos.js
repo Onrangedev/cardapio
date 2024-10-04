@@ -95,8 +95,6 @@ async function listMajors() {
             throw new Error('Nenhum valor encontrado.');
         }
 
-        cardapio = range;
-
         const status = range.values[0][4];
         const isManutencao = status === 'Manutenção';
         const isDesligado = status === 'Desligado';
@@ -107,6 +105,8 @@ async function listMajors() {
         } else {
             imprimirDados(range);
             salvarDados(range);
+
+            cardapio = range;
 
             document.querySelector('.load-title').style.display = 'none';
             document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
@@ -129,7 +129,7 @@ function imprimirDados(range) {
 }
 
 // Atualiza os dados salvos no localstorage caso seja necessário
-function salvarDados(range) {
+function salvarDados(range) {    
     if (cardapio) {
         if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) {
             localStorage.setItem('cardapio-menu', JSON.stringify(range));
@@ -166,7 +166,7 @@ function foraDoAr() {
     });
 
     document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'none');
-    document.querySelector('.menu-hoje').style.display = 'none';
+    document.querySelector('.load-title').style.display = 'none';
 }
 
 let isplaying = false;
