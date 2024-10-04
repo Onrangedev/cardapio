@@ -33,7 +33,7 @@ $(document).ready(function() {
     $('.card-carousel').on('touchstart', function(event) {
         startX = event.changedTouches[0].screenX;
         isDragging = true;
-        event.preventDefault();
+        // event.preventDefault();
     });
 
     $('.card-carousel').on('touchmove', function(event) {
@@ -61,7 +61,7 @@ $(document).ready(function() {
                 }
                 isDragging = false;
             }
-            event.preventDefault();
+            // event.preventDefault();
         }
     });
 
