@@ -20,6 +20,17 @@
     align-items: center;
 }
 
+.header .container-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header .container-title .load-title {
+    display: none;
+}
+
 .header .container-btn {
     display: flex;
     gap: 5px;
@@ -146,8 +157,8 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
 }
 
 .spinner {
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid var(--blue);
+    border: 3px solid #ccc;
+    border-top: 3px solid var(--orange);
     border-radius: 50%;
     width: 16px;
     height: 16px;

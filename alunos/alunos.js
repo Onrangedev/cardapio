@@ -59,6 +59,7 @@ function gapiLoaded() {
 
 // Chama a função para fazer requisição dos dados e exibi tela de load
 function requisitarDados(telaCarregamento = true) {
+    document.querySelector('.load-title').style.display = 'flex';
     gapi.load('client', initializeGapiClient);
 
     if (telaCarregamento) {
@@ -107,6 +108,7 @@ async function listMajors() {
             imprimirDados(range);
             salvarDados(range);
 
+            document.querySelector('.load-title').style.display = 'none';
             document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
         }        
