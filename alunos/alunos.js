@@ -274,12 +274,12 @@ if (cardapioImgs) {
         document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'none');
         document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'none');
     } else {
-        document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'block');
-        document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'block');
+        document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'flex');
+        document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'flex');
     }
 } else {
-    document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'block');
-    document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'block');
+    document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'flex');
+    document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'flex');
 }
 
 let deferredPrompt;
