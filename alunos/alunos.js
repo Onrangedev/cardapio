@@ -266,6 +266,22 @@ if (savedTheme) {
     }
 }
 
+// Verifica se deve carregar as imgs
+const cardapioImgs = localStorage.getItem('cardapio-imgs-toggle');
+
+if (cardapioImgs) {
+    if (cardapioImgs === 'false') {        
+        document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'none');
+        document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'none');
+    } else {
+        document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'block');
+        document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'block');
+    }
+} else {
+    document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'block');
+    document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'block');
+}
+
 let deferredPrompt;
 let AllowsPwa = false;
 

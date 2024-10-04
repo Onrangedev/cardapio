@@ -11,6 +11,7 @@
 const themeSelect = document.querySelector('.theme');
 const savedTheme = localStorage.getItem('cardapio-theme');
 const checkboxFrase = localStorage.getItem('cardapio-frase');
+const cardapioImgs = localStorage.getItem('cardapio-imgs-toggle');
 const ultimaAlteracao = localStorage.getItem('cardapio-ultima-alteracao');
 const savedFrases = localStorage.getItem('cardapio-frase');
 
@@ -41,6 +42,14 @@ if (checkboxFrase) {
 }
 
 document.querySelector('.checkbox-frase').addEventListener('change', () => localStorage.setItem('cardapio-frase', document.querySelector('.checkbox-frase').checked));
+
+if (cardapioImgs) {    
+    document.querySelector('.checkbox-imgs').checked = cardapioImgs === 'true' ? true : false;
+} else {
+    document.querySelector('.checkbox-imgs').checked = true;
+}
+
+document.querySelector('.checkbox-imgs').addEventListener('change', () => localStorage.setItem('cardapio-imgs-toggle', document.querySelector('.checkbox-imgs').checked));
 
 if (savedFrases) {
     document.querySelector('.checkbox-frase').savedFrases;
