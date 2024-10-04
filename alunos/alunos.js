@@ -192,20 +192,16 @@ function playMusic() {
     }
 }
 
+function alterarOpacidadeElementos(opacidade) {
+    ['.card-carousel', '.header', '.navigation', '.container-frase', '.today'].forEach(seletor => document.querySelector(seletor).style.opacity = opacidade);
+}
+
 function ocultarElementos() {
-    document.querySelector('.card-carousel').style.opacity = '0';
-    document.querySelector('.header').style.opacity = '0';
-    document.querySelector('.navigation').style.opacity = '0';
-    document.querySelector('.container-frase').style.opacity = '0';
-    document.querySelector('.today').style.opacity = '0';
+    alterarOpacidadeElementos('0');
 }
 
 function exibirElementos() {
-    document.querySelector('.card-carousel').style.opacity = '1';
-    document.querySelector('.header').style.opacity = '1';
-    document.querySelector('.navigation').style.opacity = '1';
-    document.querySelector('.container-frase').style.opacity = '1';
-    document.querySelector('.today').style.opacity = '1';
+    alterarOpacidadeElementos('1');
 }
 
 function bannerForChrome() {
@@ -227,13 +223,10 @@ function bannerForChrome() {
             navigator.clipboard.writeText('https://eierick.github.io/cardapio/alunos/');
         }
 
-        setTimeout(() => {
-            exibirElementos();
-        }, 300);setTimeout
+        setTimeout(exibirElementos, 300);
     });
 }
 
-// Banner para exibição de informações nutricionais
 function bannerForNutritionalInformation(day) {
     ocultarElementos();    
     Swal.fire({
@@ -248,9 +241,7 @@ function bannerForNutritionalInformation(day) {
         `,
         showCloseButton: true,
     }).then(() => {
-        setTimeout(() => {
-            exibirElementos();
-        }, 300);
+        setTimeout(exibirElementos, 300);
     });
 }
 
