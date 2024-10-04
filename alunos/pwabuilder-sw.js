@@ -1,4 +1,4 @@
-const CACHE_NAME = 'onrange-cache-v6'; // Nome do cache
+const CACHE_NAME = 'onrange-cache-v7'; // Nome do cache
 const ASSETS_TO_CACHE = [
   '/cardapio/alunos/', // Página inicial
   '/cardapio/alunos/index.html',
