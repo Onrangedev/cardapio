@@ -15,7 +15,7 @@ const cardapioImgs = localStorage.getItem('cardapio-imgs-toggle');
 const ultimaAlteracao = localStorage.getItem('cardapio-ultima-alteracao');
 const savedFrases = localStorage.getItem('cardapio-frase');
 
-// Obtem os dados salvos em local storage e carrega o tema
+// Pega os dados salvos em local storage e carrega o tema
 if (savedTheme) {
     themeSelect.value = savedTheme;
     if (savedTheme === 'auto') {
@@ -62,13 +62,13 @@ if (ultimaAlteracao) {
     document.querySelector('.dia-ultima-alteracao').textContent = ultimaAlteracao;
 }
 
-// Aguarda mudança no swith para alterar o tema
+// Aguarda mudança no switch para alterar o tema
 themeSelect.addEventListener('change', () => {
     localStorage.setItem('cardapio-theme', themeSelect.value);
     location.reload();
 });
 
-// Aguarda evento de clique no botão de voltar para voltar a ppagina inicial
+// Aguarda evento de clique no botão de voltar para voltar a pagina inicial
 document.querySelector('.back-home').addEventListener('click', (e) => {
     window.location.href = '../alunos/index.html';
     if (e.persisted) {

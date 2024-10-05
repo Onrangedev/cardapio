@@ -20,7 +20,7 @@ $(document).ready(function() {
         handleCardClick($(this));
     });
 
-    // Agurada evento de clique em nav-point
+    // Aguarda evento de clique em nav-point
     document.querySelectorAll('.nav-point').forEach((point) => {
         point.addEventListener('click', () => {
             handleCardClick($('.my-card:nth-child(' + point.dataset.day + ')'))
