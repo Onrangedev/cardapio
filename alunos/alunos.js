@@ -28,13 +28,19 @@ const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta'];
 const frases = ['Alimente seu corpo, cultive sua saúde.', 'Uma boa alimentação é o primeiro passo para uma vida mais saudável.', 'Coma bem, viva melhor.', 'Seu corpo agradece cada alimento saudável.', 'A comida é o combustível do seu corpo. Abasteça-o com o melhor!', 'A saúde começa no prato.', 'Alimente seus sonhos com uma dieta balanceada.', 'Uma dieta equilibrada é a receita para uma vida feliz e saudável.', 'Invista em sua saúde, invista em uma boa alimentação.',
 'Cada garfada é uma oportunidade para nutrir seu corpo.', 'A alimentação saudável não é uma dieta, é um estilo de vida.', 'Você é o que você come. Escolha bem!', 'A comida é o nosso melhor remédio.', 'Cozinhar com amor é nutrir a alma.', 'Uma alimentação saudável é um presente para o seu futuro.','A comida é a nossa primeira medicina.', 'A alimentação saudável é a base para uma vida ativa e produtiva.', 'Ame seu corpo, alimente-o com carinho.', 'O que você come hoje define como você se sentirá amanhã.', 'A comida não é apenas combustível, é uma experiência.', 'A alimentação é uma forma de amor próprio.', 'Escolha alimentos que alimentem seu corpo e seu espírito.', 'A comida conecta as pessoas e a natureza.', 'A alimentação saudável é um ato de amor por você mesmo.', 'A alimentação saudável é um investimento a longo prazo.', 'Cada escolha alimentar é uma oportunidade para crescer.','A comida é a nossa linguagem universal. Fale a linguagem da saúde.', 'A natureza nos oferece a melhor farmácia: os alimentos naturais.', 'Um corpo saudável é a nossa maior riqueza.', 'A comida é a arte de nutrir o corpo e a alma.', 'A felicidade se encontra também no prato.', 'A alimentação saudável é um hábito, não uma obrigação.', 'Cozinhar é um ato de amor e cuidado consigo mesmo.', 'A comida é a nossa primeira medicina preventiva.', 'Uma boa digestão é a base de uma boa saúde.', 'A alimentação saudável nos conecta com a natureza e com nós mesmos.', 'Escolha alimentos que te deixem leve e energizado.', 'A comida é celebração da vida.', 'A alimentação saudável é um estilo de vida que contagia.', 'Um corpo bem nutrido é mais resistente a doenças.', 'A comida é a nossa primeira casa.', 'A alimentação saudável é um ato de gratidão à vida.', 'Coma devagar e saboreie cada mordida.', 'A comida é a nossa melhor companhia.', 'A alimentação saudável é um investimento no futuro.', 'A comida nos conecta com nossas raízes.', 'A alimentação saudável é um ato de amor pela vida.', 'A comida é a nossa primeira paixão.', 'A alimentação saudável é um estilo de vida que transforma.', 'Um corpo saudável é uma mente saudável.'];
 
-imprimiFrase();
+imprimirFrase();
 
-// Aguarda o evento de clique para trocar a frase
-document.querySelector('.frase').addEventListener('click', () => imprimiFrase());
-
-// Aguarda clique no nome onrange para tocar música
+// Aguarda evento de clique no nome onrange para tocar música
 document.querySelector('.title').addEventListener('click', () => playMusic());
+
+// Aguarda evento de click no botão de instalação do banner
+document.getElementById('installButton').addEventListener('click', async () => installApp());
+
+// Aguarda evento de clique para abrir menu de configurações
+document.querySelector('.botao-configuracao').addEventListener('click', () => location.href = '../configuracao/index.html');
+
+// Aguarda o evento de clique na frase
+document.querySelector('.frase').addEventListener('click', () => imprimirFrase());
 
 // Se a página foi carregada do cache, forçamos o recarregamento para evitar bugs
 window.addEventListener('pageshow', function (event) {
@@ -47,16 +53,16 @@ window.addEventListener('pageshow', function (event) {
 function gapiLoaded() {
     if (cardapio) {
         if (navigator.onLine && isForaDoAr) {
-            foraDoAr();
+            imprimirForaDoAr();
             requisitarDados();
         } else if (navigator.onLine) {
-            imprimirDados(cardapio);
+            imprimirCardapio(cardapio);
             requisitarDados();
         } else {
-            imprimirDados(cardapio);
+            imprimirCardapio(cardapio);
         }
     } else if (!navigator.onLine) {
-        foraDoAr();
+        imprimirForaDoAr();
     } else {
         requisitarDados();
         imprimirDadosVazio();
@@ -79,7 +85,7 @@ async function initializeGapiClient() {
         gapiInited = true;
         listMajors();
     } catch (error) {
-        foraDoAr();
+        imprimirForaDoAr();
     }
 }
 
@@ -102,10 +108,10 @@ async function listMajors() {
         const isAlunosPage = location.href.includes('/cardapio/alunos/');
         
         if (status !== 'Ativo' && (isManutencao && isAlunosPage) || isDesligado) {
-            foraDoAr();
+            imprimirForaDoAr();
         } else {
-            imprimirDados(range);
-            salvarDados(range);
+            imprimirCardapio(range);
+            salvarCardapio(range);
 
             cardapio = range;
 
@@ -119,59 +125,30 @@ async function listMajors() {
         }        
     } catch (err) {
         console.error(err.message);
-        foraDoAr();
+        imprimirForaDoAr();
     }
 }
 
-// Função para imprimir almoço e merenda de forma genérica
-function imprimirDados(range) {        
+// Imprimi o almoço e a merenda
+function imprimirCardapio(range) {        
     dias.forEach((dia, index) => {
         document.getElementById(`${dia}Almoco`).textContent = range.values[index][2];
         document.getElementById(`${dia}Merenda`).textContent = range.values[index][1];
     });
 
-    gravarUltimaAlteracao(range);
+    salvarUltimaAlteracao(range);
 }
 
+// Imprimi o almoço e a merenda como vazio
 function imprimirDadosVazio() {
-    dias.forEach((dia, index) => {
+    dias.forEach((dia) => {
         document.getElementById(`${dia}Almoco`).textContent = '---';
         document.getElementById(`${dia}Merenda`).textContent = '---';
     });
 }
 
-// Atualiza os dados salvos no localstorage caso seja necessário
-function salvarDados(range) {    
-    if (cardapio) {
-        if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) {
-            localStorage.setItem('cardapio-menu', JSON.stringify(range));
-        }
-    } else {
-        localStorage.setItem('cardapio-menu', JSON.stringify(range));
-    }
-}
-
-// Gava quando foi a última alteração no google sheets
-function gravarUltimaAlteracao(range) {
-    localStorage.setItem('cardapio-ultima-alteracao', range.values[0][3]);
-}
-
-// Escolhe e imprime uma frese aleatoriamente
-function imprimiFrase() {
-    if (localStorage.getItem('cardapio-frase') === 'false') {
-        return;
-    } else {
-        const num = Math.floor(Math.random() * (frases.length - 0) + 0);
-        document.querySelector('.frase').textContent = `"${frases[num]}"`;
-        document.querySelector('.container-frase').style.opacity = 1;
-    }
-}
-
-// Aguarda evento de clique para abrir menu de configurações
-document.querySelector('.botao-configuracao').addEventListener('click', () => location.href = '../configuracao/index.html');
-
-// Exibi que o sistema está fora do ar
-function foraDoAr() {
+// Imprimi sistema fora do ar
+function imprimirForaDoAr() {
     document.querySelectorAll('.meal').forEach((meal) => {
         meal.style.display = 'flex';
         document.querySelector('.fora-do-ar').style.display = 'block';
@@ -183,28 +160,56 @@ function foraDoAr() {
     localStorage.setItem('cardapio-fora-do-ar', true);
 }
 
-let isplaying = false;
-
-function playMusic() {
-    if (!isplaying) {
-        const kiamSound = new Audio('../assets/kiam-sound.mp3');
-        kiamSound.play();
-        isplaying = true;
+//  Imprimi uma frese aleatoriamente
+function imprimirFrase() {
+    if (localStorage.getItem('cardapio-frase') === 'false') {
+        return;
+    } else {
+        const num = Math.floor(Math.random() * (frases.length - 0) + 0);
+        document.querySelector('.frase').textContent = `"${frases[num]}"`;
+        document.querySelector('.container-frase').style.opacity = 1;
     }
 }
 
+// Salva os dados no local storage
+function salvarCardapio(range) {    
+    if (cardapio) {
+        if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) {
+            localStorage.setItem('cardapio-menu', JSON.stringify(range));
+        }
+    } else {
+        localStorage.setItem('cardapio-menu', JSON.stringify(range));
+    }
+}
+
+// Salva quando foi a última alteração no servidor
+function salvarUltimaAlteracao(range) {
+    localStorage.setItem('cardapio-ultima-alteracao', range.values[0][3]);
+}
+
+// Toca música
+function playMusic() {
+    if (!isplaying) {
+        new Audio('../assets/kiam-sound.mp3').play();
+    }
+}
+
+// Altera a opacidade dos elementos
 function alterarOpacidadeElementos(opacidade) {
     ['.card-carousel', '.header', '.navigation', '.container-frase', '.today'].forEach(seletor => document.querySelector(seletor).style.opacity = opacidade);
 }
 
+// Diminui a opacidade de elementos
 function ocultarElementos() {
     alterarOpacidadeElementos('0');
 }
 
+// Aumenta a opacidade de elementos
 function exibirElementos() {
     alterarOpacidadeElementos('1');
 }
 
+// Exibe um banner para o google chrome
 function bannerForChrome() {
     ocultarElementos();
     Swal.fire({
@@ -228,6 +233,7 @@ function bannerForChrome() {
     });
 }
 
+// Exibe um banner de informações nutricionais
 function bannerForNutritionalInformation(day) {
     ocultarElementos();    
     Swal.fire({
@@ -267,7 +273,7 @@ if (savedTheme) {
     }
 }
 
-// Verifica se deve carregar as imgs
+// Carregar as imgs
 const cardapioImgs = localStorage.getItem('cardapio-imgs-toggle');
 
 if (cardapioImgs) {
@@ -309,6 +315,7 @@ function showBtnInstall() {
     installBanner.style.display = 'block';
 }
 
+// Chama o prompt de instalação do app
 function installApp() {
     if (AllowsPwa) {
         if (deferredPrompt) {
@@ -319,6 +326,3 @@ function installApp() {
         bannerForChrome();
     }
 }
-
-// Aguarda o click no botão de instalação do banner
-document.getElementById('installButton').addEventListener('click', async () => installApp());
