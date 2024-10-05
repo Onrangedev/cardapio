@@ -69,7 +69,12 @@ themeSelect.addEventListener('change', () => {
 });
 
 // Aguarda evento de clique no botão de voltar para voltar a ppagina inicial
-document.querySelector('.back-home').addEventListener('click', () => location.href = '../alunos/index.html');
+document.querySelector('.back-home').addEventListener('click', (e) => {
+    window.location.href = '../alunos/index.html';
+    if (e.persisted) {
+        window.location.reload();
+    }
+});
 
 // Aguarda evento de clique no botão de compartilhar para abrir o menu de compartilhamento ou copiar o link do site
 document.querySelector('.btn-compartilhar').addEventListener('click', async (e) => {
