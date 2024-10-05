@@ -137,13 +137,6 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
     font-size: 16px;
 }
 
-#loading-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
 .spinner {
     border: 3px solid #ccc;
     border-top: 3px solid var(--orange);

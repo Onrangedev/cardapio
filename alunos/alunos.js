@@ -48,29 +48,25 @@ function gapiLoaded() {
     if (cardapio) {
         if (navigator.onLine && isForaDoAr) {
             foraDoAr();
-            requisitarDados(telaCarregamento = false);
+            requisitarDados();
         } else if (navigator.onLine) {
             imprimirDados(cardapio);
-            requisitarDados(telaCarregamento = false);
+            requisitarDados();
         } else {
             imprimirDados(cardapio);
         }
     } else if (!navigator.onLine) {
         foraDoAr();
     } else {
-        requisitarDados(telaCarregamento = true);
+        requisitarDados();
+        imprimirDadosVazio();
     }
 }
 
 // Chama a função para fazer requisição dos dados e exibi tela de load
-function requisitarDados(telaCarregamento = true) {
+function requisitarDados() {
     document.querySelector('.load-title').style.display = 'flex';
     gapi.load('client', initializeGapiClient);
-
-    if (telaCarregamento) {
-        document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'flex');
-        document.querySelectorAll('.meal').forEach((meal) => meal.style.display = 'none');
-    }
 }
 
 // Callback após o cliente da API ser carregado. Carrega o discovery doc para inicializar a API.
@@ -114,7 +110,6 @@ async function listMajors() {
             cardapio = range;
 
             document.querySelector('.load-title').style.display = 'none';
-            document.querySelectorAll('#loading-screen').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.meal').forEach(el => el.style.display = 'flex');
             
             if (isForaDoAr) {
@@ -136,6 +131,13 @@ function imprimirDados(range) {
     });
 
     gravarUltimaAlteracao(range);
+}
+
+function imprimirDadosVazio() {
+    dias.forEach((dia, index) => {
+        document.getElementById(`${dia}Almoco`).textContent = '---';
+        document.getElementById(`${dia}Merenda`).textContent = '---';
+    });
 }
 
 // Atualiza os dados salvos no localstorage caso seja necessário
@@ -177,7 +179,6 @@ function foraDoAr() {
         document.querySelector('.navigation').style.display = 'none';
     });
 
-    document.querySelectorAll('#loading-screen').forEach((load) => load.style.display = 'none');
     document.querySelector('.load-title').style.display = 'none';
     localStorage.setItem('cardapio-fora-do-ar', true);
 }
