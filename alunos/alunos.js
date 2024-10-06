@@ -188,9 +188,12 @@ function salvarUltimaAlteracao(range) {
 }
 
 // Toca música
+let isPlaying = false;
+
 function playMusic() {
-    if (!isplaying) {
+    if (!isPlaying) {
         new Audio('../assets/kiam-sound.mp3').play();
+        isPlaying = true;
     }
 }
 
