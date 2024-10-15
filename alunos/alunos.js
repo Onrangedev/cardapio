@@ -12,7 +12,7 @@ let cardapio;
 let isForaDoAr;
 
 // Recupera os dados salvos no local storage
-const savedCardapio = localStorage.getItem('cardapio-menu');
+const savedCardapio = localStorage.getItem('cardapio-lista');
 if (savedCardapio){
     cardapio = JSON.parse(savedCardapio);
 }
@@ -94,15 +94,13 @@ async function listMajors() {
     try {
         const response = await gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: '1X1p6laul5yRw330M1ROaP8F4T70asWE7IieVsT1Qb7c',
-            range: 'A2:J',
+            range: 'admin!A1:E',
         });
 
-        const range = response.result;
-        if (!range?.values?.length) {
-            throw new Error('Nenhum valor encontrado.');
-        }
+        const range = transpose(response.result.values);
+        imprimirCardapio(range);
 
-        const status = range.values[0][4];
+        const status = range[2][0];
         const isManutencao = status === 'Manutenção';
         const isDesligado = status === 'Desligado';
         const isAlunosPage = location.href.includes('/cardapio/alunos/');
@@ -130,10 +128,19 @@ async function listMajors() {
 }
 
 // Imprimi o almoço e a merenda
-function imprimirCardapio(range) {        
+function imprimirCardapio(range) {           
     dias.forEach((dia, index) => {
-        document.getElementById(`${dia}Almoco`).textContent = range.values[index][2];
-        document.getElementById(`${dia}Merenda`).textContent = range.values[index][1];
+        range[3].forEach((item) => {
+            if (item !== undefined && item !== '' && item !== null) {                
+                if (range[0][index] === item.split('/')[1]) document.getElementById(`${dia}Merenda`).textContent = item.split('/')[0];
+            }
+        });
+
+        range[4].forEach((item) => {
+            if (item !== undefined && item !== '' && item !== null) {                
+                if (range[1][index] === item.split('/')[1]) document.getElementById(`${dia}Almoco`).textContent = item.split('/')[0];
+            }
+        });
     });
 
     salvarUltimaAlteracao(range);
@@ -174,17 +181,17 @@ function imprimirFrase() {
 // Salva os dados no local storage
 function salvarCardapio(range) {    
     if (cardapio) {
-        if (JSON.stringify(range.values) !== JSON.stringify(cardapio.values)) {
-            localStorage.setItem('cardapio-menu', JSON.stringify(range));
+        if (JSON.stringify(range) !== JSON.stringify(cardapio)) {
+            localStorage.setItem('cardapio-lista', JSON.stringify(range));
         }
     } else {
-        localStorage.setItem('cardapio-menu', JSON.stringify(range));
+        localStorage.setItem('cardapio-lista', JSON.stringify(range));
     }
 }
 
 // Salva quando foi a última alteração no servidor
 function salvarUltimaAlteracao(range) {
-    localStorage.setItem('cardapio-ultima-alteracao', range.values[0][3]);
+    localStorage.setItem('cardapio-ultima-alteracao', range[2][1]);
 }
 
 // Toca música
@@ -243,16 +250,31 @@ function bannerForNutritionalInformation(day) {
         title: "Informações Nutricionais",
         html: `
             <h2>Merenda</h2>
-            <h3>Calorias: ${cardapio.values[day][7]}</h3>
-            <h3>Lactose: ${cardapio.values[day][9]}</h3>
+            <h3>Calorias: ${pegarElementoId(cardapio[0][day]).split('/')[2]}</h3>
+            <h3>Lactose: ${pegarElementoId(cardapio[0][day]).split('/')[3]}</h3>
             <h2>Almoço</h2>
-            <h3>Calorias: ${cardapio.values[day][8]}</h3>
-            <h3>Lactose: ${cardapio.values[day][9]}</h3>
+            <h3>Calorias: ${pegarElementoId(cardapio[1][day]).split('/')[2]}</h3>
+            <h3>Lactose: ${pegarElementoId(cardapio[1][day]).split('/')[3]}</h3>
         `,
         showCloseButton: true,
     }).then(() => {
         setTimeout(exibirElementos, 300);
     });
+}
+
+// Pega um elemento do cardapio com o seu ID
+function pegarElementoId(id) {
+    let elemento;
+
+    cardapio[3].forEach((item) => {
+        if (item !== undefined && item !== '' && item.split('/')[1] === id) elemento = item;
+    });
+
+    cardapio[4].forEach((item) => {
+        if (item !== undefined && item !== '' && item.split('/')[1] === id) elemento = item;
+    });
+
+    return elemento;
 }
 
 // Carrega o tema
@@ -290,6 +312,11 @@ if (cardapioImgs) {
 } else {
     document.querySelectorAll('.img-merenda').forEach((e) => e.style.display = 'flex');
     document.querySelectorAll('.img-almoco').forEach((e) => e.style.display = 'flex');
+}
+
+// Função para transpor (converter linhas em colunas)
+function transpose(matrix) {
+    return matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex]));
 }
 
 let deferredPrompt;
