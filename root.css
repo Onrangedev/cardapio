@@ -8,6 +8,8 @@
     --blue-light: #9ba8ab;
     --blue-dark: #253745;
     --green: #00b809;
+    --green-light: #00dd0b;
+    --green-dark: #007206;
     --orange-light: #ff7c36;
     --orange-dark: #883000;
     --orange: #ff6600;
@@ -60,4 +62,13 @@ body {
     padding: 0;
     user-select: none;
     font-size: 18px;
+}
+
+.inp {
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 18px;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    cursor: pointer;
 }
