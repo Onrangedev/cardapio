@@ -199,3 +199,24 @@ async function adicionarItem(tipo) {
         salvarServer('admin!E1:F', [menu[4]]);
     }
 }
+
+// Carrega o tema
+const savedTheme = localStorage.getItem('cardapio-theme');
+
+if (savedTheme) {
+    if (savedTheme === 'auto') {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.add('light');
+        }
+    } else {
+        document.documentElement.classList.add(savedTheme);
+    }
+} else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.add('light');
+    }
+}

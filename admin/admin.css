@@ -8,9 +8,10 @@ body {
 
 .header {
     padding: 10px 0;
-    background-color: #33353a;
+    background-color: #1a1f24;
     width: 100%;
     margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .container {
