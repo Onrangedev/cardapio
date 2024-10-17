@@ -15,8 +15,7 @@ document.getElementById('signout_button').style.display = 'none';
 
 document.querySelector('.btn-salvar').addEventListener('click', () => salvarServer('admin!A1:B', [menu[0], menu[1]]));
 
-document.querySelector('.btn-adicionar-merenda').addEventListener('click', () => adicionarItem('merenda'));
-document.querySelector('.btn-adicionar-almoco').addEventListener('click', () => adicionarItem('almoco'));
+document.querySelector('.btn-adicionar').addEventListener('click', () => adicionarItem('merenda'));
 
 document.querySelectorAll('.select-merenda').forEach((element) => element.addEventListener('change', () => alterarMerenda(element)));
 document.querySelectorAll('.select-almoco').forEach((element) => element.addEventListener('change', () => alterarAlmoco(element)));
