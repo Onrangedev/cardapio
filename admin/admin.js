@@ -168,6 +168,10 @@ async function adicionarItem(tipo) {
         title: "Adicionar",
         html: `
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+                <select class="select" id="select">
+                    <option value="merenda" selected>Merenda</option>
+                    <option value="almoco" selected>Almoço</option>
+                </select>
                 <label for="swal-input1">Nome</label>
                 <input type="text" id="swal-input1" class="inp">
                 <label for="swal-input2">Calorias</label>
@@ -183,18 +187,16 @@ async function adicionarItem(tipo) {
         return [
             document.getElementById("swal-input1").value,
             document.getElementById("swal-input2").value,
-            document.getElementById("swal-input3").checked
+            document.getElementById("swal-input3").checked,
+            document.getElementById("select").value
         ];
         }
     });
 
-    console.log(formValues[2]);
-    
-
-    if (tipo === 'merenda') {
+    if (formValues[3] === 'merenda') {
         menu[3].push(`${formValues[0]}/${Math.floor(Date.now() * Math.random()).toString(36)}/${formValues[1]}/${formValues[2]}`);
         salvarServer('admin!D1:E', [menu[3]]);
-    } else if (tipo === 'almoco') {
+    } else if (formValues[3] === 'almoco') {
         menu[4].push(`${formValues[0]}/${Math.floor(Date.now() * Math.random()).toString(36)}/${formValues[1]}/${formValues[2]}`);
         salvarServer('admin!E1:F', [menu[4]]);
     }
