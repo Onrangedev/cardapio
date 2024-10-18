@@ -16,14 +16,11 @@
 .header h2 {
     color: var(--orange);
     margin: 0 0 0 5px;
-    display: flex;
-    align-items: center;
 }
 
 .header .container-title {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
 }
 
@@ -48,11 +45,6 @@ div.botao-configuracao {
 
 div.botao-configuracao:hover, div.botao-configuracao:active {
     background-color: transparent;
-}
-
-.today {
-    transition: .3s;
-    display: none;
 }
 
 .menu-dia h3 {
