@@ -68,7 +68,7 @@ div.botao-configuracao:hover, div.botao-configuracao:active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     padding: 10px;
 }
 
