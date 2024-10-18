@@ -20,6 +20,7 @@ JS, HTML5, CSS3 and GIT
 
 - [@eierick](https://www.github.com/eierick)
 - [@kiamMota](https://github.com/KiamMota/)
+- [@IagoMenezes555](https://github.com/IagoMenezes555)
 
 ## Autores no instagram
 
