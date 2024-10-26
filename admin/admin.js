@@ -15,7 +15,7 @@ document.getElementById('signout_button').style.display = 'none';
 
 document.querySelector('.btn-salvar').addEventListener('click', () => salvarServer('admin!A1:B', [menu[0], menu[1]]));
 
-document.querySelector('.btn-adicionar').addEventListener('click', () => adicionarItem('merenda'));
+document.querySelector('.btn-adicionar').addEventListener('click', () => adicionarItem());
 
 document.querySelectorAll('.select-merenda').forEach((element) => element.addEventListener('change', () => alterarMerenda(element)));
 document.querySelectorAll('.select-almoco').forEach((element) => element.addEventListener('change', () => alterarAlmoco(element)));
@@ -162,7 +162,7 @@ function transpose(matrix) {
     return matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex]));
 }
 
-async function adicionarItem(tipo) {
+async function adicionarItem() {
     const { value: formValues } = await Swal.fire({
         title: "Adicionar",
         html: `
@@ -199,6 +199,8 @@ async function adicionarItem(tipo) {
         menu[4].push(`${formValues[0]}/${Math.floor(Date.now() * Math.random()).toString(36)}/${formValues[1]}/${formValues[2]}`);
         salvarServer('admin!E1:F', [menu[4]]);
     }
+
+    window.location.reload();
 }
 
 // Carrega o tema
