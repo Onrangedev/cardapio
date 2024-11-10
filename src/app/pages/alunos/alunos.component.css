@@ -1,0 +1,128 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #1a1f24;
+}
+
+header h2 {
+    color: var(--orange);
+    margin: 0 0 0 5px;
+}
+
+header .spinner {
+    border: 3px solid #ccc;
+    border-top: 3px solid var(--orange);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .container-btn {
+    display: flex;
+    gap: 5px;
+}
+
+header mat-icon {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+div.settings-btn:hover, div.settings-btn:active {
+    background-color: transparent;
+}
+
+main {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+main swiper-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+main swiper-container swiper-slide {
+    position: relative;
+    background-color: var(--pg-color);
+    border-radius: 10px;
+    width: 280px;
+    height: 290px;
+}
+
+main swiper-container swiper-slide div strong {
+    font-family: "League Spartan", sans-serif;
+}
+
+main swiper-container swiper-slide button {
+    position: absolute;
+    transform: translate(-50%, -120%);
+    top: 100%;
+    width: 170px;
+}
+
+main swiper-container swiper-slide div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+main swiper-container swiper-slide h3 {
+    font-family: "League Spartan", sans-serif;
+    text-transform: uppercase;
+    background-color: var(--orange);
+    padding: 10px 0;
+    margin: 10px;
+    font-size: 24px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+main swiper-container swiper-slide .today {
+    background-color: var(--green);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    position: fixed;
+    transform: translate(-50%);
+    left: 50%;
+    bottom: 10px;
+}
+
+footer p {
+    background-color: var(--pg-color);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

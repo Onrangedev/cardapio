@@ -1,0 +1,39 @@
+<header>
+    <div>
+        <h2 class="title" (click)="playSound()">On-range</h2>
+        @if (load) {
+            <div class="spinner load-title"></div>
+        }
+    </div>
+    <div class="container-btn">
+        @if (shouldShowInstallButton) {
+            <button mat-flat-button (click)="openPwaDialog()">Instalar App</button>
+        }
+        <mat-icon [routerLink]="['/configuracoes']" class="btns" aria-hidden="false" aria-label="settings" fontIcon="settings"></mat-icon>
+    </div>
+</header>
+<main>
+    <swiper-container #swiper slides-per-view="auto" space-between="30" keyboard="true" centered-slides="true" centered-slides="true" grab-cursor="true" mousewheel="true">
+        @for (item of menu; track $index) {
+            <swiper-slide>
+                @if (today === item.day) {
+                    <h3 class="today">Hoje</h3>
+                } @else {
+                    <h3>{{ item.day }}</h3>
+                }
+                <div>
+                    <strong class="merenda">MERENDA</strong>
+                    <span class="data-merenda" id="segundaMerenda">{{ item.snack }}</span>
+                    <strong class="almoco">ALMOÇO</strong>
+                    <span class="data-almoco" id="segundaAlmoco">{{ item.louch }}</span>
+                </div>
+                <button mat-flat-button (click)="openNutritionalDialog(item.snackCalories, item.snackLactose, item.louchCalories, item.louchLactose)">Info Nutricionais</button>
+            </swiper-slide>
+        }
+    </swiper-container>
+</main>
+@if (phrase) {
+    <footer>
+        <p (click)="loadPhrase()">{{ phrase }}</p>
+    </footer>
+}

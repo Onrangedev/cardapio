@@ -1,0 +1,53 @@
+<header [routerLink]="['']">
+    <mat-icon aria-hidden="false" aria-label="back" fontIcon="arrow_back"></mat-icon>
+    <h3>Configurações</h3>
+</header>
+
+<main>
+    <div class="menu-theme">
+        <h3>Tema</h3>
+        <select #theme class="select" (change)="callSetTheme()">
+            @for (item of themes; track item) {
+                <option [value]="item.value" [selected]="item.value === selectedTheme">{{ item.viewValue }}</option>
+            }
+        </select>
+    </div>
+
+    <div class="menu-phrases">
+        <p>Exibir Frases</p>
+        <mat-slide-toggle (change)="setTogglePhrases()" [(ngModel)]="togglePhrases"></mat-slide-toggle>
+    </div>
+
+    <!-- <div class="menu-imgs">
+        <p>Exibir Imagens</p>
+        <mat-slide-toggle (change)="setToggleImgs()" [(ngModel)]="toggleImgs"></mat-slide-toggle>
+    </div> -->
+
+    <div class="menu-time">
+        <h3>Horários do Refeitório</h3>
+        <p>Lanche: 10h às 10h30min</p>
+        <p>Almoço: 12h às 13h</p>
+        <p>Lanche: 15h30min às 16h</p>
+    </div>
+
+    <div class="menu-last-chage">
+        <h3>Última Alteração no Servidor</h3>
+        <span>{{ date }}</span>
+    </div>
+
+    <div class="menu-credits">
+        <h3>Créditos</h3>
+        <a target="_blank" href="https://www.instagram.com/onrangedev">Onrangedev</a>
+        <a target="_blank" href="https://www.instagram.com/davi_barbosa3009">Davi Barbosa</a>
+        <a target="_blank" href="https://www.instagram.com/eierickdasilva">Érick da Silva</a>
+        <a target="_blank" href="https://www.instagram.com/gustavolima_sem_o_t">Gustavo Lima</a>
+        <a target="_blank" href="https://www.instagram.com/iagomenezes37">Iago Menezes</a>
+        <a target="_blank" href="https://www.instagram.com/kiammota">Kiam Mota</a>
+    </div>
+
+    <div class="menu-qrcode">
+        <h3>qr code</h3>
+        <img src="qrcode.png" alt="qr code">
+        <button mat-flat-button (click)="share()">Compartilhar</button>
+    </div>
+</main>

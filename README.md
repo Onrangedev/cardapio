@@ -1,31 +1,27 @@
-# Cardapio
+# Onrange
 
-Projeto do carpadio oline!
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
 
-![Logo](https://eierick.github.io/cardapio/assets/icon-transparent.png)
+## Development server
 
-## Screenshot
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-<img src="assets/screenshot.png" alt="sreenshot" width="400"/> 
+## Code scaffolding
 
-## Site do projeto
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-[Cardápio online](https://eierick.github.io/cardapio/alunos/)
+## Build
 
-## Tech Stack
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-JS, HTML5, CSS3 and GIT
+## Running unit tests
 
-## Autores no github
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-- [@eierick](https://www.github.com/eierick)
-- [@kiamMota](https://github.com/KiamMota/)
-- [@IagoMenezes555](https://github.com/IagoMenezes555)
+## Running end-to-end tests
 
-## Autores no instagram
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-- [Davi Barbosa](https://www.instagram.com/davi_barbosa3009)
-- [Érick da Silva](https://www.instagram.com/eierickdasilva)
-- [Gustavo Lima](https://www.instagram.com/gustavolima_sem_o_t)
-- [Iago Menezes](https://www.instagram.com/iagomenezes37)
-- [Kiam Mota](https://www.instagram.com/kiammota)
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -1,0 +1,45 @@
+header {
+    position: relative;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1f24;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header mat-icon {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+header h3 {
+    color: #fff;
+}
+
+main div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main div, main .menu-credits a  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+main div p, main .menu-credits a {
+    color: var(--text-color);
+}
+
+main .menu-qrcode img {
+    border-radius: 20px;
+}
