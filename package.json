@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build && ng deploy --base-href=/onrange/ --branch='web'"
+    "deploy": "ng build && ng deploy --branch='web'"
   },
   "private": true,
   "dependencies": {
