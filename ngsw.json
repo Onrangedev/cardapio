@@ -1,0 +1,89 @@
+{
+  "configVersion": 1,
+  "timestamp": 1731235135449,
+  "index": "/onrange/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/onrange/chunk-2QWX7NN4.js",
+        "/onrange/chunk-DDAZ6JK6.js",
+        "/onrange/icon.png",
+        "/onrange/index.html",
+        "/onrange/main-QFGGI4RG.js",
+        "/onrange/manifest.webmanifest",
+        "/onrange/polyfills-FFHMD2TL.js",
+        "/onrange/styles-U7FCW4RS.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/onrange/chrome.svg",
+        "/onrange/icons/icon-128x128.png",
+        "/onrange/icons/icon-144x144.png",
+        "/onrange/icons/icon-152x152.png",
+        "/onrange/icons/icon-192x192.png",
+        "/onrange/icons/icon-384x384.png",
+        "/onrange/icons/icon-512x512.png",
+        "/onrange/icons/icon-72x72.png",
+        "/onrange/icons/icon-96x96.png",
+        "/onrange/qrcode.png",
+        "/onrange/screenshot.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/onrange/chrome.svg": "5cad59e7b65c4527cc9f2a6d0f46f5b62a528305",
+    "/onrange/chunk-2QWX7NN4.js": "091b250ffddd058a13761bae15a87fe209ab6d1e",
+    "/onrange/chunk-DDAZ6JK6.js": "8d6b03bfcbfac805c67a7f936e62faa442c3363b",
+    "/onrange/icon.png": "becff096fcbca2925ca28481d00485fe214076ba",
+    "/onrange/icons/icon-128x128.png": "880c8b87eaa10bcc0ba2981e0641d0c792738869",
+    "/onrange/icons/icon-144x144.png": "37b3e9f8ef08233123c2aa49937220f83a9caf1b",
+    "/onrange/icons/icon-152x152.png": "a647edb41fa374f1f7b806f0c9a2785abec2fedc",
+    "/onrange/icons/icon-192x192.png": "a99169d41851365153fade8a6c38002d5ce2b8ee",
+    "/onrange/icons/icon-384x384.png": "dc1b932b5aaff3b0ed24f22dc63fd51db927f0df",
+    "/onrange/icons/icon-512x512.png": "64cdf2b13430bbccf6ce1c83c12129c234f81986",
+    "/onrange/icons/icon-72x72.png": "54c59c548f4726bef7a11c6c23527bfeb0eabaf4",
+    "/onrange/icons/icon-96x96.png": "6d43c68d245ca0d8d5e4c97b454730db5ee6809e",
+    "/onrange/index.html": "7671fe161486c6a3c74fc8c90e678a03171eb7ee",
+    "/onrange/main-QFGGI4RG.js": "0667b59ecc45b535555d7c62c57796be4dc26f18",
+    "/onrange/manifest.webmanifest": "8f4b9a7cf5aafb315be716b2c842e65af3e1978a",
+    "/onrange/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/onrange/qrcode.png": "a1b332d5d930dd56f6128b18f6a090c01d71c36c",
+    "/onrange/screenshot.png": "1d4b0334a9bf8de57817804cb6f46f4209e56417",
+    "/onrange/styles-U7FCW4RS.css": "169a584b31ac3d2e5bb4169cddcf9655d20889fb"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
