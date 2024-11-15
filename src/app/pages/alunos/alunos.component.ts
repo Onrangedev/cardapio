@@ -83,8 +83,8 @@ export class AlunosComponent {
 
         const lastChange = this.data[2][0];
         const status = this.data[2][1];
-        const isMaintenance = status === 'Manutenção';
-        const isOff = status === 'Desligado';
+        const isMaintenance = status === 'manutencao';
+        const isOff = status === 'desligado';
         const isAlunosPage = location.href.includes('onrange.com.br');
 
         this.load = false;
